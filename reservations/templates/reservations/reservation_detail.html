@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div style="display: flexbox;">
+    <h1>{{ user.email }}'s Reservation for {{ reservation.date }}</h1>
+    <h3>Time Slot: {{ reservation.get_time_slot_display }}</h3>
+    <p>Boat: {{ reservation.boat.name }}</p>
+    <p>Pickup Time: {{ reservation.exact_time }}</p>
+    <p>Notes: {{ reservation.notes }}</p>
+    <p>Confirmed: {{ reservation.confirmed }}</p>
+    <img src="{{ reservation.boat.image.url }}" alt="{{ boat.name }}" style="max-width: 25%; height: 25%;">
+</div>
+<a href="{% url 'cancel_reservation' reservation.id %}">Cancel Reservation</a>
+
+<!-- JavaScript for the confirmation popup-->
+
+<script>
+    document.getElementById('cancel-button').addEventListener('click', function() {
+        if (confirm('Are you sure you want to cancel this reservation?')) {
+            window.location.href = "{% url 'cancel_reservation' reservation.id %}";
+        }
+    });
+</script> 
+{% endblock %}

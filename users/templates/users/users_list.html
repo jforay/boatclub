@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/amenities.css' %}">
+<h1>Users Management</h1>
+<h2>Boss Group</h2>
+<ul>
+  {% for boss in boss_users %}
+    <li><a href="{% url 'user-profile' boss.pk %}">{{ boss.email }}</a></li>
+  {% empty %}
+    <li>No users in the Boss group</li>
+  {% endfor %}
+</ul>
+{% for marina, marina_groups in users_by_marina_and_group.items %}
+    <h2> {{ marina }} </h2>
+
+    {% for group_name, users in marina_groups.items %}
+        <h3> {{ group_name }}</h3>
+        <ul>    
+            {% for user in users %}
+                <li><a href="{% url 'user-profile' user.pk %}">{{ user.email }}</a></li>
+            {% empty %}
+                <li>No users in this group</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/messages.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Destination Boat Clubs of the Carolinas{% endblock %}</title>
+
+
+</head>
+<body>
+    <!-- Header Section -->
+    <header style="background-color: #0f1d32; color: #FFFFFF;">
+        <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+            <div class="logo" style="flex: 1; text-align: center;">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/dbc-logo-large.png' %}" alt="Boat Club Logo" style="height: 60px;">
+                </a>
+            </div>
+            <nav class="navbar"style="flex: 2; text-align: center;">
+                <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: center;">
+                    <li><a href="{% url 'home' %}" style="color: #FFFFFF; text-decoration: none;">Home</a></li>
+                    <li><a href="{% url 'boats' %}" style="color: #FFFFFF; text-decoration: none;">Our Fleet</a></li>
+                    <li><a href="{% url 'locations' %}" style="color: #FFFFFF; text-decoration: none;">Locations</a></li>
+                    <li><a href="{% url 'home' %}" style="color: #FFFFFF; text-decoration: none;">Contact Us</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'user_profile' user.pk %}" style="color: #FFFFFF; text-decoration: none;">Profile</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_manager %}
+                        <li><a href="{% url 'marinas' %}" style="color: #FFFFFF; text-decoration: none;">Users</a></li>
+                        <li><a href="{% url 'marinas_for_schedule' %}" style="color: #FFFFFF; text-decoration: none;">Schedule</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="contact-info" style="flex: 1; text-align: center;">
+                <p>Call Us: 844-322-2582</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main style="background-color: #4978ba ;padding: 20px; height: 100%;">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}
+        <!-- Page-specific content will go here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
+        <div style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
+            <div class="footer-info">
+                <p>The Ultimate Boating Club: 844-322-2582</p>
+                <p>Greater Charlotte Market: 239-745-0110</p>
+                <p>Wilmington-Outer Banks Market: 740-317-1158</p>
+            </div>
+            <div class="social-media">
+                <a href="#"><img src="{% static 'images/facebook-icon.jpg' %}" alt="Facebook" style="width: 30px; margin: 0 10px;"></a>
+                <a href="#"><img src="{% static 'images/twitter-icon.jpg' %}" alt="Twitter" style="width: 30px; margin: 0 10px;"></a>
+                <a href="#"><img src="{% static 'images/instagram-icon.png' %}" alt="Instagram" style="width: 30px; margin: 0 10px;"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

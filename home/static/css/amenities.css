@@ -1,0 +1,137 @@
+.amenities {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% + 40px); /* Stretching to full width */
+    height: auto;
+    background-color: #0f1d32; /* Dark background */
+    padding: 20px; /* Add inner spacing */
+    margin-left: -20px;
+    margin-right: -20px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.amenities-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-template-rows: repeat(2, auto); /* Automatically sized rows */
+    gap: 20px; /* Space between grid items */
+    margin: 0 auto; /* Center the grid horizontally */
+    padding: 20px; /* Add spacing inside the grid box */
+    color: #0f1d32;
+    box-sizing: border-box;
+}
+
+.grid-item {
+    display: flex; /* Center content vertically and horizontally */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white; /* Optional: Slightly lighter background for items */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+.image-item img {
+    width: 100%; /* Ensure the image takes the full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image fills the container neatly */
+}
+
+/* Responsive Design */
+@media (max-width: 760px) {
+    .amenities-box {
+        grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns */
+    }
+}
+
+@media (max-width: 480px) {
+    .amenities-box {
+        grid-template-columns: 1fr; /* Switch to 1 column */
+    }
+}
+
+/* General button styling */
+.learn-more-btn {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: white; /* Button background color */
+    color: #0f1d32; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size */
+    font-weight: bold; /* Make text bold */
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid white; /* Border around the button */
+    text-align: center; /* Center the text */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+/* Button hover effect */
+.learn-more-btn:hover {
+    background-color: #0078A0; /* Darker blue on hover */
+    color: #ffffff; /* Ensure the text stays white */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.small-images-container {
+    display: flex; /* Use flexbox to arrange images in a row */
+    justify-content: center; /* Center-align the images */
+    gap: 10px; /* Add spacing between the images */
+    margin-bottom: 10px; /* Add spacing between images and text */
+}
+
+.small-images-container img {
+    width: 50px; /* Set a fixed width for the images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+.home-carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: relative;
+}
+
+.home-carousel {
+    display: flex;
+    transition: transform .8 ease-in-out;
+}
+
+.home-carousel-item {
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+.home-carousel img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.home-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.home-prev {
+    left: 10px;
+}
+
+.home-next {
+    right: 10px;
+}

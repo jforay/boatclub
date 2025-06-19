@@ -1,0 +1,31 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 75px;
+    justify-content: center;
+    align-content: start;
+    margin: auto;
+    max-width: 1200px;
+    padding: 40px;
+}
+
+.grid-item {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid black;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item div {
+    width: 100%;
+    height: 100%;
+}

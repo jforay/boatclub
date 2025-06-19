@@ -1,0 +1,38 @@
+
+.boat-info-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.boat-image {
+    max-width: 10%;
+}
+
+.boat-image img {
+    width: 50%;
+    height: auto;
+}
+
+.boat-text-content {
+    flex: 2 1 50%;
+}
+/* .boat-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+.boat-details img {
+    max-width: 100%;
+    height: auto;
+}
+.boat-details div {
+    padding: 10px;
+}
+.boat-details h2 {
+    grid-column: span 2;
+    text-align: center;
+} */

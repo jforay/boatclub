@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+<div class="grid-container">
+    {% for marina in marinas %}
+    <a href ="{% url 'schedule_or_reservations' marina.id %}" class="grid-item">
+        <div>
+            <h3> {{ marina.name }} ({{ marina.lake }}) </h3>
+            <p>{{ marina.address }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

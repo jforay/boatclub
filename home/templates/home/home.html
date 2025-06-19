@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/tabs.css' %}">
+<link rel="stylesheet" href="{% static 'css/photos.css' %}">
+<link rel="stylesheet" href="{% static 'css/amenities.css' %}">
+<link rel="stylesheet" href="{% static 'css/first-responders.css' %}">
+<link rel="stylesheet" href="{% static 'css/perks.css' %}">
+
+
+
+<script src="{% static 'js/tabs.js' %}"></script>
+<script src="{% static 'js/carousel.js' %}" defer></script>
+
+<h1>Welcome to Destination Boat Club!</h1>
+<div class="tabs">
+    <button class="tab-button active" onclick="showTab('welcome')">Welcome</button>
+    <button class="tab-button" onclick="showTab('boat-club')">What is a Boat Club?</button>
+    <button class="tab-button" onclick="showTab('how-it-works')">How it Works?</button>
+    
+</div>
+
+<div class="tab-content" id="welcome">
+    <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe  src="https://player.vimeo.com/video/678911241?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0; width:100%;height:100%;" title="Destination Boat Clubs Carolinas Opening"></iframe>
+    </div>
+</div> 
+
+<div class="tab-content" id="boat-club" style="display: none;">
+    <div style="padding: 56.25% 0 0 0;position: relative;">
+        <iframe src="https://player.vimeo.com/video/798803825?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0; width:100%;height:100%;" title="Destination What is a Boat Club"></iframe>
+    </div>
+</div>
+
+<div class="tab-content" id="how-it-works" style="display: none;">
+    <div style="padding:56.25% 0 0 0;position:relative;">
+        <iframe src="https://player.vimeo.com/video/678912129?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="How it Works"></iframe>
+    </div>
+</div><br><br><br>
+
+<div class="photos">
+    <img src="{% static 'images/Fueling_boat.jpg' %}" alt="We do the dirty work">
+    <div class="photo-text top">
+        <p>We'll handle all the dirty work!</p>
+        <p>All you need to do is pull up to the dock, pay for the fuel, and go home!</p>
+        <p><a href="{% url 'maintenance' %}" style="color: white;">Click here to learn more!</a></p>
+    </div>
+
+</div>
+
+<div class="carousel-text-container">
+
+    <div class="photos">
+        <img src="{% static 'images/on_boat.jpg' %}" alt="Enjoying the boat" style="object-fit: cover; height: 500px;">    
+
+    </div>
+
+    <div class="text-container" style="padding: 30px;">
+        <h1>We Are Here To Get You Back To Doing What You Love.</h1>
+
+        <p>All you need to do is show up and hop on your boat!</p>
+    </div>
+   
+</div>
+
+<div class="amenities">
+    <h1 style="padding-left: 20px;">The Amenities You Deserve</h1>
+    <p style="padding-left: 20px;">As a member, you have an amazing collection of amenities to choose from at many of our locations.</p>
+    <div class="amenities-box">
+        <!-- Text and image grid items -->
+        <div class="grid-item text-item">
+            <p>Destination Boat Clubs Carolinas™ operates in many luxurious resort-like marinas.</p>
+        </div>
+        <div class="grid-item image-item">
+            <img src="{% static 'images/marina.jpg' %}" alt="Resort Marina">
+        </div>
+        <div class="grid-item text-item">
+            <p>Enjoy a dip in the resort-like pools at some locations.</p>
+        </div>
+        <div class="grid-item image-item">
+            <img src="{% static 'images/pool_resort.jpg' %}" alt="Pool">
+        </div>
+        <div class="grid-item text-item">
+            <p>Enjoy lunch or dinner at one of the indoor or outdoor restaurants, a refreshing sunset cocktail at one of the bars.</p>
+        </div>
+        <div class="grid-item image-item">
+            <img src="{% static 'images/food.jpg' %}" alt="Dining Experience">
+        </div>
+    </div>
+    <a href="{% url 'amenities' %}" class="learn-more-btn">Learn More</a>
+</div>
+
+
+<div class="carousel-text-container">
+    <div class="text-container">
+        <h2>Equipment</h2>
+
+        <p>We provide everything you need for a safe and comfortable boating experience - Depth finders, GPS, Radios, Speakers, Lights, VHF, Life Vests, and more. Our boats are equipped with life jackets for all passengers, a first aid kit, biminis, dual anchors and other essentials</p>
+        <a href="{% url 'equipment' %}" class="learn-more-btn">Learn More</a>
+    </div>
+    <div class="photos">
+        <img src="{% static 'images/boating_equipment.jpg'%}" style="object-fit: cover; height: 500px;">
+
+    </div>
+   
+</div>
+
+<div class="photos" style="height: 500px;">
+    <img src="{% static 'images/first_responders.jpg' %}" alt="We do the dirty work">
+
+    <div class="photo-text bottom">
+        <h1>First Responders</h1>
+        <p style="line-height: 1.6; font-size: medium;">Destination Boat Clubs Carolinas™ proudly offers discounts to all active and retired military and their immediate families. We offer this to all first responders, firemen, police officers, and nurses. Enjoy all the pleasures and excitement of boating without the hassles associated with owning a boat.</p>
+        <div class="button-container">
+            <a href="{% url 'first-responders' %}" class="learn-more" style="text-shadow: none;">Learn More</a>
+        </div> 
+
+    </div>
+
+</div>
+
+<div class="carousel-text-container">
+
+    <div class="carousel-container">
+        <div class="carousel">
+            {% for boat in boats %}
+            <div class="carousel-item">
+                <img src="{{ boat.image.url }}" alt="{{ boat.name}}">
+
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-btn prev">&lt;</button>
+        <button class="carousel-btn next">&gt;</button>
+    </div>
+
+    <div class="text-container">
+        <h2>Our Fleet</h2>
+        <p style="line-height: 1.6;">Whether you are planning to go fishing with friends, take the family cruising or just float and soak up the sun close to the beach for the day, our club has the boat you need. We have professionally maintained deck boats, center consoles, flats boats, walk-arounds, surf boats, ski boats and pontoons ranging from 18’- 35’ in length.</p>
+        <a href="{% url 'boats' %}" class="learn-more-btn">View Our Fleet</a>
+
+    </div>
+
+   
+</div>
+<div class="carousel-text-container">
+    <!-- Carousel Section --> 
+    <div class="text-container">
+        <h2>Our Locations</h2>
+        <p style="line-height: 1.6;">Destination Boat Clubs Carolinas™ is constantly adding new locations in North Carolina, South Carolina, Georgia, Tennesee, Alabama, Texas, California and has many reciprocal locations in Florida.</p>
+        <a href="{% url 'locations' %}" class="learn-more-btn">View Our Locations</a>
+
+    </div>
+    <div class="carousel-container">
+        <div class="carousel">
+            {% for lake in unique_lakes %}
+            <div class="carousel-item" style="background-color: #4978ba; max-width: fit-content; display: flex; flex-direction: row;">
+                <img src="{{ lake.image.url }}" alt="{{ lake.lake }}" style="object-fit:fill; height: auto; max-width: 800px;">
+                <!-- <div class="photo-text bottom">
+                    <h3>{{lake.lake}}</h3>
+                </div> -->
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-btn prev">&lt;</button>
+        <button class="carousel-btn next">&gt;</button>
+    </div>
+   
+</div>
+
+
+
+<div class="perks">
+    <div class="box">
+        <h2 style="font-weight: bold;">Membership Perks</h2>
+        <p>At Destination Boat Clubs Carolinas™ we are adding benefits to our members and guests all the time. Whether it is baseball tickets, hockey tickets, football tickets, beach house access, jet skis, kayaks, or paddleboards, we have something for everyone.</p>
+        <div class="button-container">
+            <a href="{% url 'perks' %}" class="learn-more-btn" style="background-color: #0f1d32; color: white;">Learn More</a>
+        </div>
+        <img src="{% static 'images/carolina-panthers.png'%}" alt="Logo 1" class="logo logo-top-left">
+        <img src="{% static 'images/charlotte_checkers.png'%}" alt="Logo 2" class="logo logo-top-right">
+        <img src="{% static 'images/charlotte_knights.png'%}" alt="Logo 3" class="logo logo-bottom-left">
+        <img src="{% static 'images/KannapolisCannonBallers.png'%}" alt="Logo 4" class="logo logo-bottom-right">
+    </div>
+
+        
+
+</div>
+<div style="display: flex; align-items: center; justify-content: center;">
+    <img src="{% static 'images/Coca-Cola-600.png'%}" alt="Logo 4" style="width: 300px;">
+
+</div>
+
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+
+{% endblock %}

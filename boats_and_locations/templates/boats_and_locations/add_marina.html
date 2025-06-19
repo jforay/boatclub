@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Add Marina</h2>
+  <form method="post" enctype="multipart/form-data">  <!-- Add enctype to handle file uploads -->
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Add Marina</button>
+  </form>
+{% endblock %}

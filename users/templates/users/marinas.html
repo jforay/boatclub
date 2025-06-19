@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+
+<h2>Boss Group</h2>
+{% for boss in boss_users %}
+<li><a href="{% url 'user_profile' boss.pk %}">{{ boss.email }}</a>
+    <!-- Option to delete user
+    <form action="{% url 'delete_user' boss.id %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    </form> -->
+</li>
+{% empty %}
+<li>No users in the Boss group</li>
+{% endfor %}
+
+<h1>Locations</h1>
+
+<div class="grid-container">
+    {% for marina in marinas %}
+    <a href ="{% url 'users_in_marina' marina.id %}" class="grid-item">
+        <div>
+            <h3> {{ marina.name }} ({{ marina.lake }}) </h3>
+            <p>{{ marina.address }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+        
+<a href="{% url 'add_user' %}">Add New User</a>
+{% endblock  %}

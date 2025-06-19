@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
+<h2>Schedule for {{ marina.name }}</h2>
+<div id="calendar" data-marina-id="{{ marina.id }}"></div>
+<script src="{% static 'js/schedule_calendar.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+
+{% endblock %}

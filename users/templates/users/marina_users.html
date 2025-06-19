@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+<link rel="stylesheet" href="{% static 'css/amenities.css' %}">
+
+<h1>{{ marina.name }} ({{marina.lake}})</h1>
+<p> {{ marina.address }} </p>
+<p> {{ marina.description }}</p>
+
+<h2> Staff at {{ marina.name }}</h2>
+
+{% for group_name, users in users_in_groups.items %}
+
+    <h3> {{ group_name }}</h3>
+    <ul>
+        {% for user in users %}
+        <li>
+            <a href="{% url 'user_profile' user.pk %}">{{user.first_name }} {{ user.last_name }} - {{ user.email }}</a> 
+        </li>    
+        {% endfor %}
+    </ul>
+
+    {% endfor %}
+    <button class="learn-more-btn" style="background-color: #0f1d32; color: white;"><a href="{% url 'add_user' %}" style="color: white;">Add New User</a></button>
+
+{% endblock %}

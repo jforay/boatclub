@@ -1,0 +1,126 @@
+.first-responders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    background-image: url('../images/first_responders.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    padding: 20px;
+
+}
+
+.text {
+    position: absolute;
+    color: white;
+    background: rgba(0,0,0,0.7);
+    width: auto;
+
+    
+}
+
+.button-container {
+    text-align: center;
+}
+
+/* General button styling */
+.learn-more{
+    display: inline-block;
+    width: auto;
+    padding: 15px 30px; /* Padding inside the button */
+    background-color: white ; /* Button background color */
+    color: #0f1d32; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Font size */ 
+    font-weight: bold; /* Make text bold */
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid white; /* Border around the button */
+    text-align: center; /* Center the text */
+    transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+/* Button hover effect */
+.learn-more:hover {
+    background-color: #0078A0; /* Darker blue on hover */
+    color: #ffffff; /* Ensure the text stays white */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+
+.carousel-container {
+    flex: 1;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+
+
+}
+
+.carousel {
+    display: flex;
+    transition: transform .8s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    max-width: 600px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .carousel-text-container {
+        flex-direction: column; /* Stack carousel and text vertically */
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    .carousel-container,
+    .text-container {
+        max-width: 100%; /* Take full width on smaller screens */
+        flex: none; /* Remove flex shrinking */
+        margin-bottom: 20px; /* Add space between sections */
+    }
+}
+
+.page {
+    color: white;
+}

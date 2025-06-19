@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}First Responders{% endblock %}
+
+{% block content %}
+{% load static %}
+<script src="{% static 'js/carousel.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'css/first-responders.css' %}">
+<div class="page">
+    <h1 style="">First Responders & Military</h1>
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="carousel-item">
+                <img src="{% static 'images/police.jpg' %}" alt="police">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/firemen.jpg' %}" alt="firemen">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/emt.jpg' %}" alt="emt">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/military.jpg' %}" alt="military">
+            </div>
+        </div>
+        <button class="carousel-btn prev">&lt;</button>
+        <button class="carousel-btn next">&gt;</button>
+    </div>
+
+
+    <h1 style="text-align: center;">First Responders & Military</h1>
+    <p style="line-height: 2;">Destination Boat Clubs Carolinas™ proudly offers discounts to active military and to first responders. Enjoy all the pleasures and excitement of boating without the hassles associated with owning a boat. The cost of boat ownership far exceeds what a typical membership would cost. Just the storage costs alone are more than our monthly membership fee. Typical considerations are the cost of the boat itself, maintenance, cleaning, insurance, routine repairs and storage. Our staff takes care of all that. As a DBC member, you get to enjoy what boating truly is all about – enjoying the pleasures and excitement of boating without the headaches, hassles and high costs. And what sets us apart – you get to enjoy that at Ultimate resort locations with all the amenities included in your membership at no additional costs. Not one single boat club out there can claim that! In fact our amenities are so great, that sometimes our members use the facilities by themselves, even when they do not go boating .</p>
+</div>
+
+{% endblock %}

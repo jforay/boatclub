@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Destination Boat Clubs of the Carolinas{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    <link rel="icon" href="{% static 'images/dbc-logo-small.png' %}" type="image/png">
+
+    <!-- <script src="{% static 'js/nav_toggle.js' %}"></script> -->
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        
+        <div class="header-container">
+            
+            <div style="flex: 1; text-align: center;">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/dbc-logo-large.png' %}" alt="Boat Club Logo" style="height: 100px;">
+                </a>
+            </div>
+
+            <nav class="navbar"style="flex: 3; text-align: center;">
+                
+                <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: center;">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'boats' %}">Our Fleet</a></li>
+                    <li><a href="{% url 'locations' %}">Locations</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'user_profile' user.pk %}">Profile</a></li>
+                    {% else %}
+                    <li><a href="{% url 'first-responders' %}">First Responders</a></li>
+                    <li class="dropdown">
+                        <a href="#">Reasons To Join ▼</a>
+                        <div class="dropdown-content">
+                            <a href="{% url 'perks' %}">Membership Perks</a>
+                            <a href="{% url 'FAQs' %}">FAQs</a>
+                            <a href="{% url 'amenities' %}">Amenities</a>
+                            <a href="{% url 'equipment' %}">Equipment</a>
+                            <a href="{% url 'maintenance' %}">Maintenance</a>
+                            <a href="{% url 'accessibilities' %}">Accessibilities</a>
+                            <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
+
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated and user.is_manager %}
+                        <li><a href="{% url 'marinas' %}">Users</a></li>
+                        <li><a href="{% url 'marinas_for_schedule' %}">Schedule</a></li>
+                    {% endif %}
+                    
+                    <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
+
+                    {% if user.is_authenticated %}
+                    <form id="logout-form" action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="learn-more-btn" style="background-color: #0f1d32; color: white; border: none;">Logout</button>
+                    </form>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+                
+            </nav>
+
+        </div>
+    </header>
+    <!-- Main Content Area -->
+    <main style="background-color: #4978ba ;padding: 20px; overflow-x: auto;">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" style="color: red; background-color: white; font-size: large; font-weight: bold;">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}
+        <!-- Page-specific content will go here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
+        <div style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
+            <div class="footer-info">
+                <p>The Ultimate Boating Club: 844-322-2582</p>
+                <p>Greater Charlotte Market: 239-745-0110</p>
+                <p>Wilmington-Outer Banks Market: 740-317-1158</p>
+            </div>
+            <div class="social-media">
+                <a href="#"><img src="{% static 'images/facebook-icon.jpg' %}" alt="Facebook" style="width: 30px; margin: 0 10px;"></a>
+                <a href="#"><img src="{% static 'images/twitter-icon.jpg' %}" alt="Twitter" style="width: 30px; margin: 0 10px;"></a>
+                <a href="#"><img src="{% static 'images/instagram-icon.png' %}" alt="Instagram" style="width: 30px; margin: 0 10px;"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+.perks {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.box {
+    background-color: white;
+    padding: 40px;
+    width: 70%;
+    text-align: center;
+}
+
+.logo {
+    position: absolute; 
+    width: 100px; 
+    z-index: 1;
+}
+
+.logo-top-left {
+    top: 1%;
+    left: 5%;
+}
+
+.logo-top-right {
+    top: 1%;
+    right: 5%;
+}
+
+.logo-bottom-left {
+    bottom: 1%;
+    left: 5%;
+}
+
+.logo-bottom-right {
+    bottom: 1%;
+    right: 5%;
+}

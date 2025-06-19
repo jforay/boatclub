@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+<script src="{% static 'js/filtering.js' %}"></script>
+
+<h1>Our Fleet</h1>
+
+<div>
+    <label for="boat_type">Filter by Boat Type:</label>
+    <select name="boat_type" id="boat_type">
+        <option value="">All Boat Types</option>
+        {% for type in boat_types %}
+        <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div id="boat-grid" class="grid-container">
+    {% for boat in boats %}
+    <a href="{% url 'boat_detail' boat.id %}" class="grid-item">
+        <div>
+            <h3> {{ boat.name }}</h3>
+            <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+
+            <p>{{ boat.boat_type }}</p>
+
+        </div>
+    </a>
+    {% endfor %}
+        
+</div>
+{% if user.is_authenticated and is_boss %}
+
+    <a href="{% url 'add_boat' %}">Add New Boat</a>
+{% endif %}
+
+{% endblock  %}

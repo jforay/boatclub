@@ -1,0 +1,51 @@
+/* Parent container to use flexbox */
+.page-container {
+    display: flex;
+    justify-content: space-between;  /* Ensure space between grid and calendar */
+    align-items: flex-start;         /* Align items at the top */
+}
+
+/* Grid container for boats takes 70% of the width */
+.page-container .grid-container {
+    width: 60%;
+}
+/* Flexbox for the details section (photo and text) */
+.page-container .grid-container .details-container {
+    display: flex;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.boat-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Boat information text styling */
+.boat-info {
+    width: 28%;
+    padding: 20px;
+}
+
+/* Calendar container takes 30% of the width */
+.calendar-container {
+    width: 40%;
+    margin-left: 20px;   /* Optional margin for spacing */
+    box-sizing: border-box;
+}
+
+/* Ensure the calendar itself is constrained within the calendar container */
+#calendar {
+    width: 100%;  /* Make sure the calendar fits the container */
+    height: auto; /* Allow calendar height to adjust dynamically */
+}
+
+/* Style to block Mondays */
+.fc-daygrid-day.monday-disabled {
+    background-color:red; /* Grey background for closed days */
+    pointer-events: none;      /* Prevent clicking */
+    opacity: 0.5;              /* Dim the appearance */
+}

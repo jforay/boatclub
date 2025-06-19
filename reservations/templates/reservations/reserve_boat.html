@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> Reserve {{ form.boat.name }} on {{ date }} for the {{ time_slot }} time slot. </h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Reserve</button>
+</form>
+
+
+{% endblock %}

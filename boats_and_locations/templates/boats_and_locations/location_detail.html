@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+<link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
+
+<div id="marina-id" data-marina-id="{{ marina.id }}"></div>
+<h1>{{ marina.name }}'s Boats</h1>
+
+<div>
+    <label for="boat_type">Filter by Boat Type:</label>
+    <select name="boat_type" id="boat_type">
+        <option value="">All Boat Types</option>
+        {% for type in boat_types %}
+        <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="page-container"> 
+    <div id="boat-grid" class="grid-container">
+        {% for boat in boats %}
+        <a href="{% url 'boat_detail' boat.id %}" class="grid-item">
+            <div>
+                <h3> {{ boat.name }}</h3>
+                <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+
+                <p>{{ boat.boat_type }}</p>
+
+            </div>
+        </a>
+        {% endfor %} 
+    </div> 
+    <div class="calendar-container">
+        <h2>Boat Availabilty</h2>
+        <div id="calendar"></div>
+    </div>
+</div>
+
+{% if user.is_authenticated and user.is_boss %}
+
+    <a href="{% url 'edit_location' marina.pk %}">Edit Marina</a>
+    <a href="{% url 'add_boat' %}">Add New Boat</a>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+
+<script src="{% static 'js/marina_detail_calendar.js' %}"></script>
+<script src="{% static 'js/filtering.js' %}"></script>
+
+
+{% endblock %}

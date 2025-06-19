@@ -1,0 +1,25 @@
+html, body {
+    height: 100%; /* Full height of the viewport */
+    margin: 0; /* Remove default margin */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Stack header, main, and footer */
+}
+
+main {
+    flex: 1; /* Allow the main content to grow and fill available space */
+    display: flex;
+    flex-direction: column; /* Stack content vertically inside main */
+    justify-content: center; /* Center content if the page is small */
+    background-color: #4978ba;
+    padding: 20px;
+}
+
+footer {
+    background-color: #0f1d32;
+    color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+}

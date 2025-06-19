@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+{% if user.is_boss %}
+<h1>Reservations for {{ date }} at {{ marina }}</h1>
+
+<h2>Reserved Morning Boats</h2>
+<div class="grid-container">
+    {% for reservation in morning_reservations %}
+    {% if reservation.boat.marina.id == marina.id %}
+
+        {% if reservation.confirmed %}
+
+            <a href="{% url 'reservation_detail' reservation.id %}" class="grid-item">
+                <div>
+                    <h3>Boat: {{ reservation.boat.name }}</h3>
+                    <img src="{{ reservation.boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+                    <p>Reserved By: {{ reservation.user.email }}</p>
+                    <p>Date: {{ reservation.date }}</p>
+                    <p>Time Slot: {{ reservation.get_time_slot_display }}</p>
+                    
+                </div>
+            </a>
+        {% endif %}
+            <a href="{% url 'boat_availabilty' reservation.boat.id reservation.date %}" class="grid-item">
+                <div>
+                    <h3>Boat: {{ reservation.boat.name }}</h3>
+                    <img src="{{ reservation.boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+                    <p>Reserved By: {{ reservation.user.email }}</p>
+                    <p>Date: {{ reservation.date }}</p>
+                    <p>Time Slot: {{ reservation.get_time_slot_display }}</p>
+                    <h3>Cancelled!!</h3>                    
+                </div>
+            </a>
+    {% endif %}
+    {% empty %}
+
+    <p>No boats reserved for this day.</p>
+    {% endfor %}
+</div>
+
+<h2>Reserved Afternoon Boats</h2>
+<div class="grid-container">
+    {% for reservation in afternoon_reservations %}
+
+    {% if reservation.boat.marina.id == marina.id %}
+
+        {% if reservation.confirmed %}
+
+            <a href="{% url 'reservation_detail' reservation.id %}" class="grid-item">
+                <div>
+                    <h3>Boat: {{ reservation.boat.name }}</h3>
+                    <img src="{{ reservation.boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+                    <p>Reserved By: {{ reservation.user.email }}</p>
+                    <p>Date: {{ reservation.date }}</p>
+                    <p>Time Slot: {{ reservation.get_time_slot_display }}</p>                    
+                </div>
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'reserve_boat' reservation.boat.id reservation.date %}" class="grid-item">
+                <div>
+                    <h3>Boat: {{ reservation.boat.name }}</h3>
+                    <img src="{{ reservation.boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+                    <p>Reserved By: {{ reservation.user.email }}</p>
+                    <p>Date: {{ reservation.date }}</p>
+                    <p>Time Slot: {{ reservation.get_time_slot_display }}</p>
+                    <h3>Cancelled!!!</h3>                    
+                </div>
+            </a>
+        {% endif %}
+    {% endif %}
+    {% empty %}
+    <p>No boats reserved for this day.</p>
+    {% endfor %}
+</div>
+
+<h2>Reserved All Day Boats</h2>
+<div class="grid-container">
+    {% for reservation in all_day_reservations %}
+    {% if reservation.boat.marina.id == marina.id %}
+
+        {% if reservation.confirmed %}
+
+            <a href="{% url 'reservation_detail' reservation.id %}" class="grid-item">
+                <div>
+                    <h3>Boat: {{ reservation.boat.name }}</h3>
+                    <img src="{{ reservation.boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+                    <p>Reserved By: {{ reservation.user.email }}</p>
+                    <p>Date: {{ reservation.date }}</p>
+                    <p>Time Slot: {{ reservation.get_time_slot_display }}</p>
+                    
+                </div>
+            </a>
+        {% endif %}
+            <a href="{% url 'boat_availabilty' reservation.boat.id reservation.date %}" class="grid-item">
+                <div>
+                    <h3>Boat: {{ reservation.boat.name }}</h3>
+                    <img src="{{ reservation.boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+                    <p>Reserved By: {{ reservation.user.email }}</p>
+                    <p>Date: {{ reservation.date }}</p>
+                    <p>Time Slot: {{ reservation.get_time_slot_display }}</p>
+                    <h3>Cancelled!!</h3>                    
+                </div>
+            </a>
+    {% endif %}
+    {% empty %}
+    <p>No boats reserved for this day.</p>
+    {% endfor %}
+    {% endif %}
+</div>
+<h1>Available Boats for {{ date }} at {{ marina }}</h1>
+
+<h2>Morning Boats</h2>
+<div class="grid-container">
+    {% for boat in available_morning_boats %}
+    {% if boat.marina.id == marina.id %}
+    <div class="grid-item">
+        <h3>{{ boat.name }}</h3>
+        <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
+
+        <p>{{ boat.boat_type }}</p>
+        <!-- Optionally add a link to reserve this boat -->
+        <a href="{% url 'reserve_boat' boat.id date %}?time_slot=Morning">
+            <button type="button">Reserve Morning</button>
+        </a>
+    </div>
+    {% endif %}
+    {% empty %}
+    <p>No available boats for the morning.</p>
+    {% endfor %}
+</div>
+
+<h2>Afternoon Boats</h2>
+<div class="grid-container">
+    {% for boat in available_afternoon_boats %}
+    {% if boat.marina.id == marina.id %}
+    <div class="grid-item">
+        <h3>{{ boat.name }}</h3>
+        <img src="{{ boat.image.url }}" alt="{{ boat.name}}" style="max-width: 75%; height: auto;">
+        <p>{{ boat.boat_type }}</p>
+        <a href="{% url 'reserve_boat' boat.id date %}?time_slot=Afternoon">
+            <button type="button">Reserve Afternoon</button>
+        </a>
+    </div>
+    {% endif %}
+    {% empty %}
+    <p>No available boats for the afternoon.</p>
+    {% endfor %}
+</div>
+
+<h2>All-Day Boats</h2>
+<div class="grid-container">
+    {% for boat in available_all_day_boats %}
+    {% if boat.marina.id == marina.id %}
+    <div class="grid-item">
+        <h3>{{ boat.name }}</h3>
+        <img src="{{ boat.image.url }}" alt="{{ boat.name}}" style="max-width: 75%; height: auto;">
+
+        <p>{{ boat.boat_type }}</p>
+        <a href="{% url 'reserve_boat' boat.id date %}?time_slot=All Day">
+            <button type="button">Reserve All Day</button>
+        </a>
+    </div>
+    {% endif %}
+    {% empty %}
+   
+    <p>No available boats for the entire day.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

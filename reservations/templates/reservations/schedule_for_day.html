@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex;justify-content: center; align-items: center; flex-direction: column; font-size: larger;">
+    <h1>Schedule For {{ date }} at {{ marina }}</h1>
+
+    <table border="2" style="background-color: white;">
+        <tr style="padding: 25px 25px;">
+            <th>Member</th>
+            <th>Boat</th>
+            <th>Pick up time</th>
+            <th>Notes</th>
+            <th>All Day</th>
+            
+        </tr>
+        {% for reservation in reservations %}
+        <tr style="margin-left: 30px;">
+            <td style="padding: 20px;"><a href="{% url 'reservation_detail' reservation.id %}">{{ reservation.user.last_name }}</td>
+            <td style="padding: 20px;">{{ reservation.boat.name }}</td>
+            <td style="padding: 20px;">{{ reservation.exact_time }}</td>
+            {% if reservation.notes %}
+            <td style="padding: 20px;"> {{ reservation.notes }}</td>
+            {% else %}
+            <td style="padding: 20px;">None</td>
+            {% endif %}
+            {% if reservation.time_slot == 'All Day' %}
+            <td style="padding: 20px;">Yes</td>
+            {% else %}
+            <td style="padding: 20px;">No</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+
+{% endblock %}
