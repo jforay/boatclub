@@ -1,7 +1,6 @@
 .tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 .tab-button {
@@ -22,4 +21,8 @@
 .tab-button:hover {
     background-color: #0056b3;
     color: white;
+}
+
+.tab-content {
+    margin-top: 0;
 }

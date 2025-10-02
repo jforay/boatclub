@@ -16,18 +16,50 @@ body {
     color: #FFFFFF;
     padding: 10px 20px;
 }
+.header-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.header-text a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-text h1 {
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 2.75rem;
+  margin: 0;
+  font-style: italic;
+}
 
 .logo {
     margin-bottom: 10px; /* Add space between logo and navigation */
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.navbar {
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+.navbar ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: nowrap;
 }
 
 .navbar ul li {
@@ -43,6 +75,30 @@ body {
 
 .navbar ul li a:hover {
     color: #00AEEF; /* Lighter blue for hover effect */
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;  /* spreads items evenly */
+  align-items: center;
+  margin: 0;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.nav-list li {
+  flex: 1 1 0;                     /* makes them stretch out evenly */
+  text-align: center;
+  min-width: 0px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: white;                /* or your preferred color */
+  font-weight: bold;
+  padding: 0.5rem;
+  display: block;
 }
 
 .dropdown {
@@ -96,3 +152,8 @@ body {
     margin: 0 10px;
 }
 
+.video-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

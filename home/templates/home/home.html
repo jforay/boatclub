@@ -14,35 +14,43 @@
 
 <script src="{% static 'js/tabs.js' %}"></script>
 <script src="{% static 'js/carousel.js' %}" defer></script>
+<br>
 
-<h1>Welcome to Destination Boat Club!</h1>
 <div class="tabs">
     <button class="tab-button active" onclick="showTab('welcome')">Welcome</button>
     <button class="tab-button" onclick="showTab('boat-club')">What is a Boat Club?</button>
-    <button class="tab-button" onclick="showTab('how-it-works')">How it Works?</button>
-    
 </div>
+<br>
 
 <div class="tab-content" id="welcome">
-    <div style="padding:56.25% 0 0 0;position:relative;">
-        <iframe  src="https://player.vimeo.com/video/678911241?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0; width:100%;height:100%;" title="Destination Boat Clubs Carolinas Opening"></iframe>
-    </div>
-</div> 
-
-<div class="tab-content" id="boat-club" style="display: none;">
-    <div style="padding: 56.25% 0 0 0;position: relative;">
-        <iframe src="https://player.vimeo.com/video/798803825?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0; width:100%;height:100%;" title="Destination What is a Boat Club"></iframe>
+    <div style="height: 700px; position: relative; width: 100%; margin: 0 auto;">
+        <iframe
+            src="https://player.vimeo.com/video/678911241?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+            title="Destination Boat Clubs Carolinas Opening">
+        </iframe>
     </div>
 </div>
 
-<div class="tab-content" id="how-it-works" style="display: none;">
-    <div style="padding:56.25% 0 0 0;position:relative;">
-        <iframe src="https://player.vimeo.com/video/678912129?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="How it Works"></iframe>
+<div class="tab-content" id="boat-club" style="display: none;">
+    <div style="height: 700px; position: relative; width: 100%; margin: 0 auto;">
+        <iframe
+            src="https://player.vimeo.com/video/798803825?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+            title="Destination Boat Clubs Carolinas Opening">
+        </iframe>
     </div>
-</div><br><br><br>
+</div>
 
+
+
+<br><br><br>
 <div class="photos">
-    <img src="{% static 'images/Fueling_boat.jpg' %}" alt="We do the dirty work">
+    <img src="{% static 'home/images/Dirty-Work1.jpg' %}" alt="We do the dirty work">
     <div class="photo-text top">
         <p>We'll handle all the dirty work!</p>
         <p>All you need to do is pull up to the dock, pay for the fuel, and go home!</p>
@@ -54,7 +62,7 @@
 <div class="carousel-text-container">
 
     <div class="photos">
-        <img src="{% static 'images/on_boat.jpg' %}" alt="Enjoying the boat" style="object-fit: cover; height: 500px;">    
+        <img src="{% static 'home/images/on_boat.jpg' %}" alt="Enjoying the boat" style="object-fit: cover; height: 500px;">    
 
     </div>
 
@@ -75,19 +83,19 @@
             <p>Destination Boat Clubs Carolinas™ operates in many luxurious resort-like marinas.</p>
         </div>
         <div class="grid-item image-item">
-            <img src="{% static 'images/marina.jpg' %}" alt="Resort Marina">
+            <img src="{% static 'home/images/marina.jpg' %}" alt="Resort Marina">
         </div>
         <div class="grid-item text-item">
             <p>Enjoy a dip in the resort-like pools at some locations.</p>
         </div>
         <div class="grid-item image-item">
-            <img src="{% static 'images/pool_resort.jpg' %}" alt="Pool">
+            <img src="{% static 'home/images/pool_resort.jpg' %}" alt="Pool">
         </div>
         <div class="grid-item text-item">
             <p>Enjoy lunch or dinner at one of the indoor or outdoor restaurants, a refreshing sunset cocktail at one of the bars.</p>
         </div>
         <div class="grid-item image-item">
-            <img src="{% static 'images/food.jpg' %}" alt="Dining Experience">
+            <img src="{% static 'home/images/food.jpg' %}" alt="Dining Experience">
         </div>
     </div>
     <a href="{% url 'amenities' %}" class="learn-more-btn">Learn More</a>
@@ -102,14 +110,14 @@
         <a href="{% url 'equipment' %}" class="learn-more-btn">Learn More</a>
     </div>
     <div class="photos">
-        <img src="{% static 'images/boating_equipment.jpg'%}" style="object-fit: cover; height: 500px;">
+        <img src="{% static 'home/images/boating_equipment.jpg'%}" style="object-fit: cover; height: 500px;">
 
     </div>
    
 </div>
 
 <div class="photos" style="height: 500px;">
-    <img src="{% static 'images/first_responders.jpg' %}" alt="We do the dirty work">
+    <img src="{% static 'home/images/first_responders.jpg' %}" alt="We do the dirty work" style="height: 500px !important;">
 
     <div class="photo-text bottom">
         <h1>First Responders</h1>
@@ -180,17 +188,17 @@
         <div class="button-container">
             <a href="{% url 'perks' %}" class="learn-more-btn" style="background-color: #0f1d32; color: white;">Learn More</a>
         </div>
-        <img src="{% static 'images/carolina-panthers.png'%}" alt="Logo 1" class="logo logo-top-left">
-        <img src="{% static 'images/charlotte_checkers.png'%}" alt="Logo 2" class="logo logo-top-right">
-        <img src="{% static 'images/charlotte_knights.png'%}" alt="Logo 3" class="logo logo-bottom-left">
-        <img src="{% static 'images/KannapolisCannonBallers.png'%}" alt="Logo 4" class="logo logo-bottom-right">
+        <img src="{% static 'home/images/carolina-panthers.png'%}" alt="Logo 1" class="logo logo-top-left">
+        <img src="{% static 'home/images/charlotte_checkers.png'%}" alt="Logo 2" class="logo logo-top-right">
+        <img src="{% static 'home/images/charlotte_knights.png'%}" alt="Logo 3" class="logo logo-bottom-left">
+        <img src="{% static 'home/images/KannapolisCannonBallers.png'%}" alt="Logo 4" class="logo logo-bottom-right">
     </div>
 
         
 
 </div>
 <div style="display: flex; align-items: center; justify-content: center;">
-    <img src="{% static 'images/Coca-Cola-600.png'%}" alt="Logo 4" style="width: 300px;">
+    <img src="{% static 'home/images/Coca-Cola-600.png'%}" alt="Logo 4" style="width: 300px;">
 
 </div>
 
