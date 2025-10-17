@@ -1,0 +1,26 @@
+.map-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.map-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#map {
+  width: 90%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: 15px;
+  border: 3px solid #ccc;
+}
+
+.map-instructions {
+  width: 80%;
+  max-width: 900px;
+  margin: 20px auto 0;
+  font-size: 0.95rem;
+  color: #ddd;
+}

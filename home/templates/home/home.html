@@ -117,9 +117,9 @@
         <div class="carousel-container">
             <div class="carousel">
                 {% for boat in boats %}
-                <div class="carousel-item">
-                    <img src="{{ boat.image.url }}" alt="{{ boat.name}}">
-
+                <div class="carousel-item" style="object-fit: contain;">
+                    <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="object-fit: contain;">
+                    <h3 style="text-align: center;">{{boat.name}}</h3>
                 </div>
                 {% endfor %}
             </div>
@@ -164,8 +164,13 @@
         <div class="carousel-container">
             <div class="carousel">
                 {% for lake in unique_lakes %}
-                <div class="carousel-item" style="background-color: #4978ba; max-width: fit-content; display: flex; flex-direction: row;">
-                    <img src="{{ lake.image.url }}" alt="{{ lake.lake }}" style="object-fit:fill; height: auto; max-width: 800px;">
+                <div class="carousel-item" style="justify-content: center;align-items: center;text-align: center;">
+                    <h3>{{lake.lake}}</h3>
+
+                    <img src="{{ lake.image.url }}" alt="{{ lake.lake }}" style="object-fit:contain; height: auto; width: 100%;">
+                    
+                    <h3>{{lake.state}}</h3>
+
                     <!-- <div class="photo-text bottom">
                         <h3>{{lake.lake}}</h3>
                     </div> -->
@@ -178,6 +183,32 @@
     
     </div>
 </div>
+
+
+<section class="perks-section">
+  <div class="perks-logos left">
+    <img src="{% static 'images/carolina-panthers.png' %}" alt="Carolina Panthers">
+    <img src="{% static 'images/charlotte_knights.png' %}" alt="Charlotte Knights">
+  </div>
+
+  <div class="perks-card">
+    <h2>Membership Perks</h2>
+    <p>
+      At Destination Boat Clubs Carolinas™ we are adding benefits to our
+      members and guests all the time. Whether it is baseball tickets, hockey
+      tickets, football tickets, beach house access, jet skis, kayaks, or
+      paddleboards, we have something for everyone.
+    </p>
+    <a href="{% url 'perks' %}" class="learn-more">Learn More</a>
+  </div>
+
+  <div class="perks-logos right">
+    <img src="{% static 'images/charlotte_checkers.png' %}" alt="Charlotte Checkers">
+    <img src="{% static 'images/KannapolisCannonBallers.png' %}" alt="Kannapolis Cannon Ballers">
+  </div>
+
+  <img class="perks-bottom-logo" src="{% static 'images/Coca-Cola-600.png' %}" alt="Coca-Cola 600">
+</section>
 
 
 
@@ -197,8 +228,11 @@
         
 
 </div>
-<div style="display: flex; align-items: center; justify-content: center;">
-    <img src="{% static 'images/Coca-Cola-600.png'%}" alt="Logo 4" style="width: 300px;">
+<div class="perks">
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="{% static 'images/Coca-Cola-600.png'%}" alt="Logo 4" style="width: 300px;">
+
+    </div>
 
 </div>
 

@@ -1,6 +1,6 @@
 .perks {
     position: relative;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 30px;
@@ -38,4 +38,89 @@
 .logo-bottom-right {
     bottom: 1%;
     right: 5%;
+}
+
+
+/* Full-width blue band like the current site */
+.perks-section {
+  /* If your page has 20px side padding, uncomment next two lines to go edge-to-edge */
+  /* width: calc(100% + 40px);
+     margin-left: -20px; margin-right: -20px; */
+
+  width: 100vw;                      /* full bleed */
+  margin-left: 50%; transform: translateX(-50%); /* center the 100vw block */
+
+  background: #4a7dc3;
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 620px) 1fr; /* L | card | R */
+  grid-template-rows: auto auto;       /* logos + card, then bottom badge */
+  align-items: center;
+  column-gap: clamp(16px, 3vw, 48px);
+  padding: clamp(32px, 6vw, 90px) clamp(16px, 3vw, 40px);
+  box-sizing: border-box;
+}
+
+/* Left & right logo stacks */
+.perks-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 2.5vw, 28px);
+}
+
+.perks-logos img {
+  /* Scale with screen size; grows big on desktop, stays reasonable on mobile */
+  width: clamp(120px, 18vw, 320px);
+  height: auto;
+}
+
+/* Center white card */
+.perks-card {
+  background: #fff;
+  color: #0f1d32;
+  text-align: center;
+  padding: clamp(24px, 3vw, 48px) clamp(28px, 4vw, 60px);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  justify-self: center;
+  max-width: 620px;   /* matches grid middle column max */
+}
+
+.perks-card h2 { margin: 0 0 12px; }
+.perks-card p  { margin: 0 0 20px; line-height: 1.6; }
+
+/* Bottom center badge/logo */
+.perks-bottom-logo {
+  grid-column: 1 / -1;                  /* span all 3 columns */
+  justify-self: center;
+  margin-top: clamp(20px, 4vw, 60px);
+  width: clamp(220px, 28vw, 560px);
+  height: auto;
+}
+
+/* Responsive: stack neatly on tablets/phones */
+@media (max-width: 900px) {
+  .perks-section { grid-template-columns: 1fr; }
+  .perks-logos { 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    order: 2; 
+    gap: clamp(10px, 3vw, 16px);
+  }
+  .perks-logos img { width: clamp(110px, 25vw, 180px); }
+  .perks-card { order: 1; margin-bottom: clamp(16px, 4vw, 28px); }
+  .perks-bottom-logo { order: 3; grid-column: 1; }
+}
+
+
+/* Show on smaller screens */
+@media (max-width: 1100px) {
+  .perks {
+    display: flex; /* now flex only applies when visible */
+  }
+
+  .perks-section {
+    display: none; /* hide the desktop version */
+  }
 }
