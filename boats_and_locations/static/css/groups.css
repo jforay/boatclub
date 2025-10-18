@@ -1,0 +1,35 @@
+.states-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1000px;
+}
+.state-column {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.state-column h2 {
+    text-align: center;
+    color: #0f1d32;
+    margin-bottom: 10px;
+}
+.state-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.state-column li {
+    text-align: center;
+    padding: 6px 0;
+}
+.state-column a {
+    color: #004aad;
+    text-decoration: none;
+    font-weight: 500;
+}
+.state-column a:hover {
+    text-decoration: underline;
+}

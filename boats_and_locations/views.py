@@ -7,6 +7,7 @@ from reservations.models import Reservation
 from django.utils import timezone
 from django.http import JsonResponse
 import json
+from collections import defaultdict
 # Create your views here.
 
 def fleet_view(request):
@@ -120,9 +121,12 @@ class BoatAvailabilityView(TemplateView):
 
 def locations_view(request):
     marinas = Marina.objects.all()
-    if request.user.is_authenticated and request.user.home_marina:
-        marinas = marinas.exclude(id=request.user.home_marina.id)
-    return render(request, 'boats_and_locations/locations.html', {'marinas':marinas, 'user':request.user})
+    marinas_by_state = Marina.objects.order_by('state','name')
+    grouped_marinas = defaultdict(list)
+    for marina in marinas:
+        grouped_marinas[marina.state].append(marina)
+    print(grouped_marinas)
+    return render(request, 'boats_and_locations/locations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
 
 def marina_detail_view(request, marina_id):
     marina = get_object_or_404(Marina, pk = marina_id)

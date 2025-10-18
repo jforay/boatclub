@@ -6,7 +6,8 @@ class Marina(models.Model):
     lake = models.TextField(default='Unkown')
     image = models.ImageField(default= '..static/images/dbc-logo-small.png')
     state = models.TextField(max_length=100, default='Unknown')
-
+    video_url = models.URLField(blank=True,null=True)
+    
     def available_boats_count(self):
         return self.boats.filter(available_to_customers=True).count()
 

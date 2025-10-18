@@ -4,6 +4,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/grid.css' %}">
 <link rel="stylesheet" href="{% static 'css/map.css' %}">
+<link rel="stylesheet" href="{% static 'css/groups.css' %}">
 
 <section class="map-section">
   <h2 class="map-title">Our Locations</h2>
@@ -17,40 +18,24 @@
   {% load static %}
   <script src="{% static 'js/map.js' %}"></script>
 </section>
+<h1 style="text-align: center;">Our Locations</h1>
 
-{% if user.is_member %}
-    <h1>{{ user.first_name }}'s Home Marina:</h1>
-        <div class="grid-container">
-
-            {% if user.home_marina %}
-                <a href="{% url 'marina_detail' user.home_marina.id %}" class="grid-item">
-                    <div>
-                        <h3> {{ user.home_marina.name }} ({{ user.home_marina.lake }}) </h3>
-                        <p>{{ user.home_marina.address }}</p>
-                        <p>Boats available at this marina: {{ user.home_marina.marina_boats_count }}</p>
-                    </div>
-                </a>
-            {% else %}
-                <p>You don't have a home marina set yet.</p>
-            {% endif %}
-        </div>
-    <h1>Other Locations</h1>
-{% else %}
-    <h1>Locations</h1>
-{% endif %}
-    <div class="grid-container">
-        {% for marina in marinas %}
-        <a href ="{% url 'marina_detail' marina.id %}" class="grid-item">
-            <div>
-                <h3> {{ marina.name }} ({{ marina.lake }}) </h3>
-                <p>{{ marina.address }}</p>
-            </div>
-        </a>
-        {% endfor %}
+<div class="grid-container">
+    {% for state, marinas in grouped_marinas.items %}
+    <div class="state-column">
+        <h2>{{ state }}</h2>
+        <ul>
+            {% for marina in marinas %}
+            <li>
+                <a href="{% url 'marina_detail' marina.pk %}">
+                    {{ marina.name }}
+                </a><br>
+                <small>{{ marina.address }}</small>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
-
-    {% if user.is_authenticated and user.is_boss %}
-        <a href="{% url 'add_location' %}">Add New Marina</a>
-    {% endif %}
+    {% endfor %}
+</div>
 
 {% endblock  %}

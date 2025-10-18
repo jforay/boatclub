@@ -1,53 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
+
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/grid.css' %}">
-<link rel="stylesheet" href="{% static 'css/calendar.css' %}">
 
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
-
-<div id="marina-id" data-marina-id="{{ marina.id }}"></div>
-<h1>{{ marina.name }}'s Boats</h1>
-
-<div>
-    <label for="boat_type">Filter by Boat Type:</label>
-    <select name="boat_type" id="boat_type">
-        <option value="">All Boat Types</option>
-        {% for type in boat_types %}
-        <option value="{{ type }}">{{ type }}</option>
-        {% endfor %}
-    </select>
-</div>
-
-<div class="page-container"> 
-    <div id="boat-grid" class="grid-container">
-        {% for boat in boats %}
-        <a href="{% url 'boat_detail' boat.id %}" class="grid-item">
-            <div>
-                <h3> {{ boat.name }}</h3>
-                <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
-
-                <p>{{ boat.boat_type }}</p>
-
-            </div>
-        </a>
-        {% endfor %} 
-    </div> 
-    <div class="calendar-container">
-        <h2>Boat Availabilty</h2>
-        <div id="calendar"></div>
+<div style="text-align: center;">
+    <h1>{{ marina.name }}</h1>
+    <div style="position:relative;width: 100%;height: 700px;margin: auto;">
+        <iframe src="{{ marina.video_url| safe }}"
+        frameborder="0" 
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        style="position:absolute;top:0;left:0;width:100%;height:75%;" 
+        title="Inland Sea Marina">
+        </iframe>
     </div>
-</div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</div>   
+<div style="text-align: center; margin-top: -130px;">
+    <h1>{{ marina.name }}</h1>
+    <h1>{{ marina.lake }}</h1>
+    <h2>{{ marina.address }}</h2>
+    <h2>{{ marina.state }}</h2>
 
-{% if user.is_authenticated and user.is_boss %}
+</div> 
+    
 
-    <a href="{% url 'edit_location' marina.pk %}">Edit Marina</a>
-    <a href="{% url 'add_boat' %}">Add New Boat</a>
-{% endif %}
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
 
-<script src="{% static 'js/marina_detail_calendar.js' %}"></script>
-<script src="{% static 'js/filtering.js' %}"></script>
+
 
 
 {% endblock %}
