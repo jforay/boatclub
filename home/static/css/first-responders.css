@@ -52,7 +52,7 @@
 }
 
 
-.carousel-container {
+.rotater-container {
     flex: 1;
     max-width: 100%;
     position: relative;
@@ -61,17 +61,17 @@
 
 }
 
-.carousel {
+.rotater {
     display: flex;
     transition: transform .8s ease-in-out;
 }
 
-.carousel-item {
+.rotater-item {
     min-width: 100%;
     max-width: 600px;
 }
 
-.carousel-item img {
+.rotater-item img {
     width: 100%;
     height: auto;
     max-height: 600px;
@@ -81,7 +81,7 @@
 
 
 /* Carousel Navigation Buttons */
-.carousel-btn {
+.rotater-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -94,15 +94,15 @@
     z-index: 2;
 }
 
-.carousel-btn:hover {
+.rotater-btn:hover {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
-.carousel-btn.prev {
+.rotater-btn.prev {
     left: 10px;
 }
 
-.carousel-btn.next {
+.rotater-btn.next {
     right: 10px;
 }
 
@@ -113,7 +113,7 @@
         height: auto; /* Adjust height for smaller screens */
     }
 
-    .carousel-container,
+    .rotater-container,
     .text-container {
         max-width: 100%; /* Take full width on smaller screens */
         flex: none; /* Remove flex shrinking */

@@ -1,8 +1,8 @@
-document.querySelectorAll('.carousel-container').forEach(container => {
-    const carousel = container.querySelector('.carousel'); // Scope carousel
-    const prevBtn = container.querySelector('.carousel-btn.prev'); // Scope prev button
-    const nextBtn = container.querySelector('.carousel-btn.next'); // Scope next button
-    const items = container.querySelectorAll('.carousel-item'); // Scope items
+document.querySelectorAll('.rotater-container').forEach(container => {
+    const carousel = container.querySelector('.rotater'); // Scope carousel
+    const prevBtn = container.querySelector('.rotater-btn.prev'); // Scope prev button
+    const nextBtn = container.querySelector('.rotater-btn.next'); // Scope next button
+    const items = container.querySelectorAll('.rotater-item'); // Scope items
     const totalItems = items.length; // Calculate total items in the current carousel
     let currentIndex = 0;
 

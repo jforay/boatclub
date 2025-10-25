@@ -173,10 +173,11 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* ✅ parallax effect */
-  height: 550px; /* adjust height as needed */
+  height: auto; /* adjust height as needed */
+  min-height: 500px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   text-align: center;
   margin-left: -20px;
   margin-right: -20px;
@@ -188,4 +189,16 @@
   padding: 40px 60px;
   border-radius: 10px;
   max-width: 700px;
+  line-height: .5rm;
 }
+
+.rotate-photo img {
+    width: 400px; /* adjust as needed */
+    animation: spin 20s linear infinite;
+    height: auto;
+}
+ 
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+ }

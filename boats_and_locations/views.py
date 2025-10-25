@@ -10,6 +10,15 @@ import json
 from collections import defaultdict
 # Create your views here.
 
+def reservations(request):
+    marinas = Marina.objects.all()
+    marinas_by_state = Marina.objects.order_by('state','name')
+    grouped_marinas = defaultdict(list)
+    for marina in marinas:
+        grouped_marinas[marina.state].append(marina)
+    print(grouped_marinas)
+    return render(request, 'boats_and_locations/locations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
+
 def fleet_view(request):
     boats = Boat.objects.all()
     boat_types = boats.values_list('boat_type', flat=True).distinct()
@@ -130,9 +139,7 @@ def locations_view(request):
 
 def marina_detail_view(request, marina_id):
     marina = get_object_or_404(Marina, pk = marina_id)
-    boats = marina.boats.all()
-    boat_types = boats.values_list('boat_type', flat=True).distinct()
-    return render(request, 'boats_and_locations/location_detail.html',{'marina':marina, 'boats': boats, 'boat_types':boat_types})
+    return render(request, 'boats_and_locations/location_detail.html',{'marina':marina})
 
 
 class AddBoatView(CreateView):

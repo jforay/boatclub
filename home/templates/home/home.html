@@ -105,7 +105,7 @@
         </div>
     </div>
     <div class="photos">
-        <img src="{% static 'images/old/equipment.jpg'%}" style="height: 500px;max-width: 700px;width: 60vw; object-fit: cover;">
+        <img src="{% static 'images/old/equiptment.jpg'%}" style="height: 500px;max-width: 700px;width: 60vw; object-fit: cover;">
 
     </div> 
 </div>
@@ -114,17 +114,17 @@
 
     <div class="carousel-text-container">
 
-        <div class="carousel-container">
-            <div class="carousel">
+        <div class="rotater-container">
+            <div class="rotater">
                 {% for boat in boats %}
-                <div class="carousel-item" style="object-fit: contain;">
+                <div class="rotater-item" style="object-fit: contain;">
                     <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="object-fit: contain;">
                     <h3 style="text-align: center;">{{boat.name}}</h3>
                 </div>
                 {% endfor %}
             </div>
-            <button class="carousel-btn prev">&lt;</button>
-            <button class="carousel-btn next">&gt;</button>
+            <button class="rotater-btn prev">&lt;</button>
+            <button class="rotater-btn next">&gt;</button>
         </div>
 
         <div class="text-container">
@@ -139,17 +139,23 @@
 </div>
 
 <div class="parallax-section" style="background-image: url('{% static "images/old/firstresponders.jpg" %}');">
+    <div class="rotate-photo">
+        <div class="photo">
+            <img src="{% static 'images/old/Military-Emblems-Circle.png' %}" alt="Rotating emblems">
+
+        </div>
+    </div>
+
+
     <div class="overlay">
         <h2>First Responders & Military</h2>
         <p>
-        We proudly offer discounts to all active and retired military and first responders,
-        including firemen, police officers, and nurses.
+        Destination Boat Clubs Carolinas™ proudly offers discounts to all active and retired military and their immediate families. We offer this to all first responders, firemen, police officers, and nurses. Enjoy all the pleasures and excitement of boating without the hassles associated with owning a boat.
         </p>
         <a href="{% url 'first-responders' %}" class="learn-more-btn">Learn More</a>
     </div>
+
 </div>
-
-
 
 
 <div class="amenities">
@@ -161,24 +167,20 @@
             <a href="{% url 'locations' %}" class="learn-more-btn">View Our Locations</a>
 
         </div>
-        <div class="carousel-container">
-            <div class="carousel">
+        <div class="rotater-container">
+            <div class="rotater">
                 {% for lake in unique_lakes %}
-                <div class="carousel-item" style="justify-content: center;align-items: center;text-align: center;">
+                <div class="rotater-item" style="justify-content: center;align-items: center;text-align: center;">
                     <h3>{{lake.lake}}</h3>
 
                     <img src="{{ lake.image.url }}" alt="{{ lake.lake }}" style="object-fit:contain; height: auto; width: 100%;">
                     
                     <h3>{{lake.state}}</h3>
-
-                    <!-- <div class="photo-text bottom">
-                        <h3>{{lake.lake}}</h3>
-                    </div> -->
                 </div>
                 {% endfor %}
             </div>
-            <button class="carousel-btn prev">&lt;</button>
-            <button class="carousel-btn next">&gt;</button>
+            <button class="rotater-btn prev">&lt;</button>
+            <button class="rotater-btn next">&gt;</button>
         </div>
     
     </div>
