@@ -1,52 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/calendar.css' %}">
-<link rel="stylesheet" href="{% static 'css/three_columns.css' %}">
-<link rel="stylesheet" href="{% static 'css/amenities.css' %}">
 
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
-
-
-
-<div class="container">
-    <div class="left-25">
-        <h2>{{ boat.name }} ({{ boat.marina.name }})</h2>
-        <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="width: 95%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    </div>    
-    <div class="middle-25">
-        <br><br><br>
-        <br><br><br>
-        <p><strong>Type:</strong> {{ boat.boat_type }}</p>
-        <p><strong>Description:</strong> {{ boat.description }}</p>
-        <p><strong>Issues:</strong> {{ boat.issues }}</p>
-        <p><strong>Rules:</strong> {{ boat.rules }}</p>
+<div style="text-align: center;">
+    <h1>{{ marina.name }}</h1>
+    <div style="position:relative;width: 100%;height: 700px;margin: auto;">
+        <iframe src="{{ marina.video_url| safe }}"
+        frameborder="0" 
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        style="position:absolute;top:0;left:0;width:100%;height:75%;" 
+        title="Inland Sea Marina">
+        </iframe>
     </div>
-    <div class="right-50">
-        {% if user.is_authenticated and user.home_marina == boat.marina or user.is_boss %}    
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</div>   
+<div style="text-align: center; margin-top: -130px;">
+    <h1>{{ marina.name }}</h1>
+    <h1>{{ marina.lake }}</h1>
+    <h2>{{ marina.address }}</h2>
+    <h2>{{ marina.state }}</h2>
+
+</div> 
     
-        <h2>Boat Availabilty</h2>
-        <div id="calendar"></div>
-    
-        {% endif %}
-        {% if user.home_marina != boat.marina and not user.is_boss %}
-        <p><strong>To reserve a boat, Join Us here!</strong></p>
-        <a href="{% url 'join' %}" class="learn-more-btn">Join!</a>
-
-        {% endif %}
-</div>
-</div>
 
 
-{% if user.is_authenticated and user.is_boss %}
-
-    <a href="{% url 'edit_boat' boat.pk %}">Edit Boat</a>
-{% endif %}
-<script>
-    var calendarEvents = {{ calendar_events_json|safe }};
-</script>
-<script src="{% static 'js/boat_detail_calendar.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
 
 {% endblock %}
 

@@ -1,24 +1,59 @@
 {% extends 'base.html' %}
 
-{% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/middle.css' %}">
-<div class="middle">
-  <div style="background-color: white; padding: 10px;">
-    <h1>Contact Us!</h1>
-    <h4>Please feel free to reach out to us by phone:</h4>
-    <p>The Ultimate Boating Club: 844-322-2582</p>
-    <p>Greater Charlotte Market: 239-745-0110</p>
-    <p>Wilmington-Outer Banks Market: 740-317-1158</p>
-    <h4>Or fill out this form and we will get back to you!</h4>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
-  </div>
- 
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+
+<div class="contact-bg">
+    <br>        
+    <div class="rate-box">
+        <h1 style="color: white; text-align: center;">Contact Us:</h1>
+        <h4>Please feel free to reach out to us by phone:</h4>
+        <p>The Ultimate Boating Club: 844-322-2582</p>
+        <p>Greater Charlotte Market: 239-745-0110</p>
+        <p>Wilmington-Outer Banks Market: 740-317-1158</p>
+        <h4>Or fill out this form and we will get back to you!</h4>
+
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group text-white">
+                {{ form.desired_location.label_tag }}
+                {{ form.desired_location }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.question.label_tag }}
+                {{ form.question }}
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <br>
 </div>
 
 {% endblock %}

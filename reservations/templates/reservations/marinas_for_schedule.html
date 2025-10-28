@@ -2,7 +2,7 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/grid.css' %}">
 <div class="grid-container">
     {% for marina in marinas %}
     <a href ="{% url 'schedule_or_reservations' marina.id %}" class="grid-item">

@@ -4,16 +4,16 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/tabs.css' %}">
-<link rel="stylesheet" href="{% static 'css/photos.css' %}">
-<link rel="stylesheet" href="{% static 'css/amenities.css' %}">
-<link rel="stylesheet" href="{% static 'css/first-responders.css' %}">
-<link rel="stylesheet" href="{% static 'css/perks.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/tabs.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/photos.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/amenities.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/first-responders.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/perks.css' %}">
 
 
 
-<script src="{% static 'js/tabs.js' %}"></script>
-<script src="{% static 'js/carousel.js' %}" defer></script>
+<script src="{% static 'home/js/tabs.js' %}"></script>
+<script src="{% static 'home/js/carousel.js' %}" defer></script>
 
 <div class="tabs">
     <button class="tab-button active" onclick="showTab('welcome')">Welcome</button>
@@ -24,7 +24,7 @@
 
 <div class="tab-content" id="welcome">
     <div style="padding:56.25% 0 0 0;position:relative;">
-        <iframe  src="https://player.vimeo.com/video/678911241?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0; width:100%;height:100%;" title="Destination Boat Clubs Carolinas Opening"></iframe>
+        <iframe  src="https://player.vimeo.com/video/678911241?autoplay=1&amp;muted=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0; width:100%;height:100%;" title="Destination Boat Clubs Carolinas Opening"></iframe>
     </div>
 </div> 
 
@@ -41,7 +41,7 @@
 </div><br><br><br>
 
 <div class="photos">
-    <img src="{% static 'images/old/Dirty-Work1.jpg' %}" alt="We do the dirty work" style="height: 700px;">
+    <img src="{% static 'home/images/old/Dirty-Work1.jpg' %}" alt="We do the dirty work" style="height: 700px;">
     <div class="photo-text" style="bottom: 15%;">
         <p>We'll handle all the dirty work!</p>
         <p>All you need to do is pull up to the dock, pay for the fuel, and go home!</p>
@@ -53,7 +53,7 @@
 <div class="carousel-text-container">
     <div class="scroll-photo">
         <div class="photos">
-            <img src="{% static 'images/old/A-Woman-Boat.jpg' %}" alt="Enjoying the boat" style="object-fit: cover; height: 500px;max-width: 700px;width: 60vw;">    
+            <img src="{% static 'home/images/old/A-Woman-Boat.jpg' %}" alt="Enjoying the boat" style="object-fit: cover; height: 500px;max-width: 700px;width: 60vw;">    
 
         </div>
     </div>
@@ -76,19 +76,19 @@
             <p>Destination Boat Clubs Carolinas™ operates in many luxurious resort-like marinas.</p>
         </div>
         <div class="grid-item image-item">
-            <img src="{% static 'images/marina.jpg' %}" alt="Resort Marina">
+            <img src="{% static 'home/images/marina.jpg' %}" alt="Resort Marina">
         </div>
         <div class="grid-item text-item">
             <p>Enjoy a dip in the resort-like pools at some locations.</p>
         </div>
         <div class="grid-item image-item">
-            <img src="{% static 'images/pool_resort.jpg' %}" alt="Pool">
+            <img src="{% static 'home/images/pool_resort.jpg' %}" alt="Pool">
         </div>
         <div class="grid-item text-item">
             <p>Enjoy lunch or dinner at one of the indoor or outdoor restaurants, a refreshing sunset cocktail at one of the bars.</p>
         </div>
         <div class="grid-item image-item">
-            <img src="{% static 'images/food.jpg' %}" alt="Dining Experience">
+            <img src="{% static 'home/images/food.jpg' %}" alt="Dining Experience">
         </div>
     </div>
     <a href="{% url 'amenities' %}" class="learn-more-btn">Learn More</a>
@@ -105,7 +105,7 @@
         </div>
     </div>
     <div class="photos">
-        <img src="{% static 'images/old/equiptment.jpg'%}" style="height: 500px;max-width: 700px;width: 60vw; object-fit: cover;">
+        <img src="{% static 'home/images/old/equiptment.jpg'%}" style="height: 500px;max-width: 700px;width: 60vw; object-fit: cover;">
 
     </div> 
 </div>
@@ -141,7 +141,7 @@
 <div class="parallax-section" style="background-image: url('{% static "images/old/firstresponders.jpg" %}');">
     <div class="rotate-photo">
         <div class="photo">
-            <img src="{% static 'images/old/Military-Emblems-Circle.png' %}" alt="Rotating emblems">
+            <img src="{% static 'home/images/old/Military-Emblems-Circle.png' %}" alt="Rotating emblems">
 
         </div>
     </div>
@@ -189,8 +189,8 @@
 
 <section class="perks-section">
   <div class="perks-logos left">
-    <img src="{% static 'images/carolina-panthers.png' %}" alt="Carolina Panthers">
-    <img src="{% static 'images/charlotte_knights.png' %}" alt="Charlotte Knights">
+    <img src="{% static 'home/images/carolina-panthers.png' %}" alt="Carolina Panthers">
+    <img src="{% static 'home/images/charlotte_knights.png' %}" alt="Charlotte Knights">
   </div>
 
   <div class="perks-card">
@@ -205,11 +205,11 @@
   </div>
 
   <div class="perks-logos right">
-    <img src="{% static 'images/charlotte_checkers.png' %}" alt="Charlotte Checkers">
-    <img src="{% static 'images/KannapolisCannonBallers.png' %}" alt="Kannapolis Cannon Ballers">
+    <img src="{% static 'home/images/charlotte_checkers.png' %}" alt="Charlotte Checkers">
+    <img src="{% static 'home/images/KannapolisCannonBallers.png' %}" alt="Kannapolis Cannon Ballers">
   </div>
 
-  <img class="perks-bottom-logo" src="{% static 'images/Coca-Cola-600.png' %}" alt="Coca-Cola 600">
+  <img class="perks-bottom-logo" src="{% static 'home/images/Coca-Cola-600.png' %}" alt="Coca-Cola 600">
 </section>
 
 
@@ -221,10 +221,10 @@
         <div class="button-container">
             <a href="{% url 'perks' %}" class="learn-more-btn" style="background-color: #0f1d32; color: white;">Learn More</a>
         </div>
-        <img src="{% static 'images/carolina-panthers.png'%}" alt="Logo 1" class="logo logo-top-left">
-        <img src="{% static 'images/charlotte_checkers.png'%}" alt="Logo 2" class="logo logo-top-right">
-        <img src="{% static 'images/charlotte_knights.png'%}" alt="Logo 3" class="logo logo-bottom-left">
-        <img src="{% static 'images/KannapolisCannonBallers.png'%}" alt="Logo 4" class="logo logo-bottom-right">
+        <img src="{% static 'home/images/carolina-panthers.png'%}" alt="Logo 1" class="logo logo-top-left">
+        <img src="{% static 'home/images/charlotte_checkers.png'%}" alt="Logo 2" class="logo logo-top-right">
+        <img src="{% static 'home/images/charlotte_knights.png'%}" alt="Logo 3" class="logo logo-bottom-left">
+        <img src="{% static 'home/images/KannapolisCannonBallers.png'%}" alt="Logo 4" class="logo logo-bottom-right">
     </div>
 
         
@@ -232,7 +232,7 @@
 </div>
 <div class="perks">
     <div style="display: flex; align-items: center; justify-content: center;">
-        <img src="{% static 'images/Coca-Cola-600.png'%}" alt="Logo 4" style="width: 300px;">
+        <img src="{% static 'home/images/Coca-Cola-600.png'%}" alt="Logo 4" style="width: 300px;">
 
     </div>
 
@@ -240,7 +240,7 @@
 
 
 <script src="https://player.vimeo.com/api/player.js"></script>
-<script src="{% static 'js/photo.js' %}"></script>
+<script src="{% static 'home/js/photo.js' %}"></script>
 
 
 {% endblock %}

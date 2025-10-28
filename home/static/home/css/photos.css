@@ -169,7 +169,7 @@
 
 .parallax-section {
   position: relative;
-  background-image: url("{% static 'images/old/firstresponders.jpg' %}");
+  background-image: url("{% static 'home/images/old/firstresponders.jpg' %}");
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* ✅ parallax effect */

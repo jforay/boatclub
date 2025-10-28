@@ -2,26 +2,47 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/grid.css' %}">
-<link rel="stylesheet" href="{% static 'css/map.css' %}">
-<link rel="stylesheet" href="{% static 'css/groups.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/grid.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/map.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/groups.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/photos.css' %}">
 
-<img src="{% static 'images/marina.jpg' %}">
-<h1 style="text-align: center;">Our Locations</h1>
+<div class="photos" style="overflow: hidden; width: calc(100% + 40px);margin-left: -20px;margin-right: -20px;margin-top:-20px ;">
+    <img src="{% static 'iboats_and_locations/mages/reservations.jpg' %}" style="width: 120%; height: 600px;object-fit: cover;margin-top: -40px; margin-left: -40px;overflow-x: hidden;">
 
+</div>
+
+<div class="carousel-text-container">
+    <div class="photos">
+        <img src="{% static 'boats_and_locations/images/2019Starcraft223.jpg' %}" alt="Enjoying the boat" style="object-fit: cover; height: 500px;max-width: 700px;width: 60vw;">    
+
+    </div>
+
+
+    <div class="text-container" style="padding: 30px;">
+        <h1 style="font-weight: bolder;font-style: italic;">Reservations</h1>
+        <h4>Our state of the art system makes reserving your Ultimate Boating escape a snap.</h4>
+        <p>When you sign up with Destination Boat Clubs Carolinas™, you will receive your user ID and password for accessing the reservation system. Just click on the button and you are on your way to a great time on the water.</p>
+    </div>
+   
+</div>
 <div class="grid-container">
-    {% for state, marinas in grouped_marinas.items %}
+    {% for state, lakes in grouped_marinas.items %}
     <div class="state-column">
-        <h2>{{ state }}</h2>
+        <h2 style="color: #0f1d32;">{{ state }}</h2>
+        {% for lake, marinas in lakes.items %}
+        <h4>{{ lake }}</h4>
+
         <ul>
             {% for marina in marinas %}
             <li>
-                <a href="{% url 'marina_detail' marina.pk %}">
+                <a href="{{ marina.checkfront_url | safe }}">
                     {{ marina.name }}
                 </a><br>
                 <small>{{ marina.address }}</small>
             </li>
             {% endfor %}
+        {% endfor %}
         </ul>
     </div>
     {% endfor %}

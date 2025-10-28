@@ -7,17 +7,29 @@ from reservations.models import Reservation
 from django.utils import timezone
 from django.http import JsonResponse
 import json
+import os
 from collections import defaultdict
+from django.conf import settings
 # Create your views here.
 
-def reservations(request):
+def reservations_view(request):
     marinas = Marina.objects.all()
-    marinas_by_state = Marina.objects.order_by('state','name')
-    grouped_marinas = defaultdict(list)
-    for marina in marinas:
-        grouped_marinas[marina.state].append(marina)
-    print(grouped_marinas)
-    return render(request, 'boats_and_locations/locations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
+    reservations = Marina.objects.filter(checkfront_url__isnull=False).exclude(checkfront_url__exact='None').order_by('state','lake','name')
+    grouped_marinas = defaultdict(lambda: defaultdict(list))
+    for marina in reservations:
+        grouped_marinas[marina.state][marina.lake].append(marina)
+    grouped_marinas = {
+        state: dict(sorted(lakes.items()))  # ✅ sort lakes alphabetically
+        for state, lakes in sorted(grouped_marinas.items())  # ✅ also sorts states alphabetically
+    }
+    grouped_marinas = dict(
+        sorted(
+            grouped_marinas.items(),
+            key=lambda item: sum(len(m) for m in item[1].values()),  # count marinas under each state
+            reverse=True
+        )
+    )
+    return render(request, 'boats_and_locations/reservations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
 
 def fleet_view(request):
     boats = Boat.objects.all()
@@ -27,54 +39,20 @@ def fleet_view(request):
 
 def boat_detail_view(request, boat_id):
     boat = get_object_or_404(Boat, pk = boat_id)
-    reservations = Reservation.objects.filter(date__gte=timezone.now(), boat=boat)
+    folder_name = boat.name.replace(" ", "-")
     
+    # static path (as used in templates)
+    static_folder = f"boats_and_locations/images/{folder_name}/"
     
-    availability = {}
-    for reservation in reservations:
-        if reservation.date not in availability:
-            availability[reservation.date] = {'Morning': False, 'Afternoon': False, 'All Day': False}
-        
-        # Mark the time slot as booked
-        if reservation.time_slot == 'Morning':
-            availability[reservation.date]['Morning'] = True
-        elif reservation.time_slot == 'Afternoon':
-            availability[reservation.date]['Afternoon'] = True
-        elif reservation.time_slot == 'All Day':
-            availability[reservation.date]['All Day'] = True
-    # Debug print to check the availability dictionary
-    print("Availability Dictionary:", availability)
+    # Get all image URLs relative to static/
+    image_urls = []
+    static_dir = os.path.join(settings.BASE_DIR, "boats_and_locations", "static", static_folder)
+    if os.path.exists(static_dir):
+        for filename in sorted(os.listdir(static_dir)):
+            if filename.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
+                image_urls.append(f"/static/{static_folder}{filename}")
 
-    # Build the calendar events
-    calendar_events = []
-    for date, slots in availability.items():
-        # Debug print to check slot values before conditions
-        print(f"Date: {date}, Slots: {slots}")
-        
-        if slots['All Day'] or (slots['Morning'] and slots['Afternoon']):
-            text = 'Fully Booked'
-            print(f"{date} - Condition: Fully Booked")
-        elif slots['Morning'] and not slots['Afternoon']:
-            text = 'AM Booked'
-            print(f"{date} - Condition: Available in Afternoon")
-        elif slots['Afternoon'] and not slots['Morning']:
-            text = 'PM Booked'
-            print(f"{date} - Condition: Available in Morning")
-        else:
-            text = 'All Day'
-            print(f"{date} - Condition: Available All Day")
-
-        # Append each date as an event with its text
-        calendar_events.append({
-            'date': str(date),  # Convert date to string for JSON compatibility
-            'text': text
-        }) 
-
-
-    return render(request, 'boats_and_locations/boat_detail.html', {
-        'boat':boat,
-        'calendar_events_json':json.dumps(calendar_events)
-        })
+    return render(request, "boats_and_locations/boat_detail.html", {"boat": boat, "image_urls": image_urls})
 
 class BoatAvailabilityView(TemplateView):
     template_name = 'boats_and_locations/boat_availability.html'
@@ -130,11 +108,22 @@ class BoatAvailabilityView(TemplateView):
 
 def locations_view(request):
     marinas = Marina.objects.all()
-    marinas_by_state = Marina.objects.order_by('state','name')
-    grouped_marinas = defaultdict(list)
+    marinas_by_state = Marina.objects.order_by('state','lake','name')
+    grouped_marinas = defaultdict(lambda: defaultdict(list))
     for marina in marinas:
-        grouped_marinas[marina.state].append(marina)
-    print(grouped_marinas)
+        grouped_marinas[marina.state][marina.lake].append(marina)
+    grouped_marinas = {
+        state: dict(sorted(lakes.items()))  # ✅ sort lakes alphabetically
+        for state, lakes in sorted(grouped_marinas.items())  # ✅ also sorts states alphabetically
+    }
+    # ✅ Sort states by number of total marinas (descending)
+    grouped_marinas = dict(
+        sorted(
+            grouped_marinas.items(),
+            key=lambda item: sum(len(m) for m in item[1].values()),  # count marinas under each state
+            reverse=True
+        )
+    )
     return render(request, 'boats_and_locations/locations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
 
 def marina_detail_view(request, marina_id):

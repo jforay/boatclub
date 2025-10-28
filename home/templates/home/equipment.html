@@ -4,8 +4,8 @@
 
 {% block content %}
 {% load static %}
-<script src="{% static 'js/carousel.js' %}" defer></script>
-<link rel="stylesheet" href="{% static 'css/photos.css' %}">
+<script src="{% static 'home/js/carousel.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'home/css/photos.css' %}">
 <h1 style="text-align: center;">Boating Equipment</h1>
 <div style="display: flex; flex-direction: row;">
     <div class="carousel-text-container">
@@ -13,13 +13,13 @@
         <div class="carousel-container">
             <div class="carousel">
                 <div class="carousel-item">
-                    <img src="{% static 'images/boating_equipment.jpg' %}" alt="Boating Equipment">
+                    <img src="{% static 'home/images/boating_equipment.jpg' %}" alt="Boating Equipment">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'images/simrad.jpg' %}" alt="Simrad">
+                    <img src="{% static 'home/images/simrad.jpg' %}" alt="Simrad">
                 </div>
                 <div class="carousel-item">
-                    <img src="{% static 'images/johnny_and_brian.jpg' %}" alt="johnny and brian">
+                    <img src="{% static 'home/images/johnny_and_brian.jpg' %}" alt="johnny and brian">
                 </div>
             </div>
             <button class="carousel-btn prev">&lt;</button>

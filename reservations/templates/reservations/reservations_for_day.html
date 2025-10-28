@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/grid.css' %}">
 {% if user.is_boss %}
 <h1>Reservations for {{ date }} at {{ marina }}</h1>
 
