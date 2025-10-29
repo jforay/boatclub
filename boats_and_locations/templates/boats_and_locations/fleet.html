@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/grid.css' %}">
 <script src="{% static 'boats_and_locations/js/filtering.js' %}"></script>
 
-<h1>Our Fleet</h1>
+<h1 style="text-align: center; color: white;">Our Fleet</h1>
 
 <div>
-    <label for="boat_type">Filter by Boat Type:</label>
+    <label for="boat_type" style="color: white;">Filter by Boat Type:</label>
     <select name="boat_type" id="boat_type">
         <option value="">All Boat Types</option>
         {% for type in boat_types %}
