@@ -2,17 +2,44 @@
 
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'home/css/middle.css' %}">
-<div class="middle">
-    <div style="padding: 10px; background-color: white;">
-        <h1>Interested in Joining?</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Submit</button>
-        </form>
-    </div>
 
+
+<link rel="stylesheet" href="{% static 'home/css/middle.css' %}">
+<br><br>
+<div class="form-container">
+    <h1 style="color: white; text-align: center;">Join Us:</h1>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group text-white">
+                {{ form.desired_location.label_tag }}
+                {{ form.desired_location }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+
+            <div class="form-group text-white">
+                {{ form.phone_number.label_tag }}
+                {{ form.phone_number }}
+            </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
 </div>
+
+
 
 {% endblock %}

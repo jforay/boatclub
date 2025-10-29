@@ -1,0 +1,35 @@
+.contact-bg {
+    background-image: url('/static/home/images/contact-background.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 15px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 400px;
+    flex: 1 1 300px;
+}
+
+.contact-box h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #9cd4ff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-box p {
+    font-size: 1.1rem;
+    margin: 0 0 10px;
+    text-align: center;
+}

@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/detail.css' %}">
 
-<div style="text-align: center;">
-    <h1>{{ marina.name }}</h1>
-    <div style="position:relative;width: 100%;height: 700px;margin: auto;">
-        <iframe src="{{ marina.video_url| safe }}"
-        frameborder="0" 
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        style="position:absolute;top:0;left:0;width:100%;height:75%;" 
-        title="Inland Sea Marina">
-        </iframe>
+<div class="boat-gallery-container">
+    <h1>{{ boat.name }}</h1>
+
+    <!-- Large display image -->
+    <div class="main-image-container">
+        <button class="nav-btn prev" onclick="changeImage(-1)">&#10094;</button>
+        <img id="mainImage" src="{{ image_urls.0 }}" alt="{{ boat.name }}">
+        <button class="nav-btn next" onclick="changeImage(1)">&#10095;</button>
     </div>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-</div>   
-<div style="text-align: center; margin-top: -130px;">
-    <h1>{{ marina.name }}</h1>
-    <h1>{{ marina.lake }}</h1>
-    <h2>{{ marina.address }}</h2>
-    <h2>{{ marina.state }}</h2>
 
-</div> 
+    <!-- Thumbnails -->
+    <div class="thumbnail-row">
+        {% for image in image_urls %}
+            <img class="thumbnail" src="{{ image }}" alt="{{ boat.name }}" onclick="setImage({{ forloop.counter0 }})">
+        {% endfor %}
+    </div>
+</div>
     
-
+<script>
+    const images = {{ image_urls|safe }};
+</script>
+<script src="{% static 'boats_and_locations/js/boat_detail.js' %}"></script>
 
 
 {% endblock %}
