@@ -12,7 +12,7 @@ venv/
 *.db
 
 # Media and static files
-media/
+# media/
 staticfiles/
 
 # Local settings
