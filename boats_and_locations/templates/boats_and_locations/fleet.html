@@ -6,11 +6,13 @@
 <script src="{% static 'boats_and_locations/js/filtering.js' %}"></script>
 
 <div style="position:relative;
-            height: 60vh;
-            width: 150vw;
-            margin-left: -25vw;
-            margin-top: -20px;
-            overflow: hidden;">
+            height: 70vh;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-top: -100px;
+            overflow: hidden;
+            max-width: none !important;
+            background: white;">
     <iframe src="https://player.vimeo.com/video/826353789?autoplay=1&amp;muted=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
     frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
     referrerpolicy="strict-origin-when-cross-origin"
@@ -18,7 +20,7 @@
             absolute;
             top:50%;
             left:50%;
-            width:250%;
+            width:120vw;
             height:100%;
             object-fit: cover;
             transform: translate(-50%, -50%) scale(1.4);"
@@ -29,7 +31,9 @@
 
 <br><br>
 
-<h1 style="text-align: center; color: white;">Our Fleet</h1>
+<h1 style="text-align: center; color: white; font-style: italic; font-weight: bold;font-size: 4rem;">Our Fleet</h1>
+
+<br>
 
 <div style="text-align: center;">
     <label for="boat_type" style="color: white;">Filter by Boat Type:</label>

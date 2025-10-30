@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-z$qd=(8%%)!l8$#6ka^*_iekp)kxs57=076n2%lxpcl55=f81-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost','127.0.0.1']
 
 
 # Application definition
@@ -83,14 +83,23 @@ WSGI_APPLICATION = 'boatclub.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
+# Default: use SQLite locally
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# If a DATABASE_URL is set (like on Heroku), use Postgres instead
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.config(
+        default=DATABASE_URL,
         conn_max_age=600,
         ssl_require=True
     )
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
