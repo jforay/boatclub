@@ -5,11 +5,22 @@
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/grid.css' %}">
 <script src="{% static 'boats_and_locations/js/filtering.js' %}"></script>
 
-<div style="position:relative;height: 60vh;width: 100vw;">
+<div style="position:relative;
+            height: 60vh;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            overflow: hidden;">
     <iframe src="https://player.vimeo.com/video/826353789?autoplay=1&amp;muted=1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
     frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
     referrerpolicy="strict-origin-when-cross-origin"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit: cover;"
+    style="position:
+            absolute;
+            top:50%;
+            left:50%;
+            width:100%;
+            height:100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%) scale(1.2);"
     title="Destination full_Vimeo">
     </iframe>
 </div>
