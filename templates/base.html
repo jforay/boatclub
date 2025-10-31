@@ -94,7 +94,11 @@
                                 <a class="nav-link text-white" href="{% url 'locations' %}">Our Locations</a> 
                             </li>
 
-                        
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{% url 'reservations' %}">Reservations</a> 
+                            </li>
+
+
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{% url 'first-responders' %}">First Responders</a> 
@@ -102,7 +106,7 @@
 
                             <li class="nav-item">
                                 <li class="dropdown">
-                                    <a href="#">Reasons To Join ▼</a>
+                                    <a class ="nav-link text-white" href="#">Reasons To Join ▼</a>
                                     <div class="dropdown-content">
                                         <a href="{% url 'perks' %}">Membership Perks</a>
                                         <a href="{% url 'FAQs' %}">FAQs</a>
