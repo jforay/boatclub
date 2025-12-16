@@ -1,10 +1,18 @@
-.states-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 20px auto;
-    max-width: 1000px;
+.states-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 75%;
+  gap:30px;
+  margin: 20px auto;
+  align-items: start;
 }
+@media (max-width: 1100px){
+  .states-grid{ grid-template-columns: repeat(2, 1fr); max-width: 900px; }
+}
+@media (max-width: 700px){
+  .states-grid{ grid-template-columns: 1fr; max-width: 420px; }
+}
+
 .state-column {
     background: #f9f9f9;
     border-radius: 10px;
@@ -12,9 +20,15 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .state-column h2 {
-    text-align: center;
     color: #0f1d32;
     margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.state-column h4 {
+    text-align: center;
+    text-decoration: underline;
 }
 .state-column ul {
     list-style: none;
@@ -22,13 +36,13 @@
     margin: 0;
 }
 .state-column li {
-    text-align: center;
     padding: 6px 0;
 }
 .state-column a {
     color: #004aad;
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.3rem;
 }
 .state-column a:hover {
     text-decoration: underline;

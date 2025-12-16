@@ -20,7 +20,7 @@
 </section>
 <h1 style="text-align: center;">Our Locations</h1>
 
-<div class="grid-container">
+<div class="states-grid">
     {% for state, lakes in grouped_marinas.items %}
     <div class="state-column">
         <h2 style="color: #0f1d32;">{{ state }}</h2>
@@ -36,6 +36,7 @@
                 <small>{{ marina.address }}</small>
             </li>
             {% endfor %}
+            <hr>
         {% endfor %}
         </ul>
     </div>
