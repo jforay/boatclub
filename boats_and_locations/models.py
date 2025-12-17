@@ -27,6 +27,11 @@ class Boat(models.Model):
     max_hp = models.CharField(max_length=10)
     description = models.TextField()
     image = models.ImageField(default='..static/images/dbc-logo-small.png')
+    marinas = models.ManyToManyField(
+        Marina,
+        related_name="boats",
+        blank=True,
+    )
 
     def __str__(self):
         return f"{self.name}"
