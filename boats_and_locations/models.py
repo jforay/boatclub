@@ -1,11 +1,11 @@
 from django.db import models
 # Create your models here.
 class Marina(models.Model):
-    name = models.CharField(max_length=100)
-    address = models.CharField(max_length=255)
-    lake = models.TextField(default='Unkown')
-    image = models.ImageField(default= '..static/images/dbc-logo-small.png')
-    state = models.TextField(max_length=100, default='Unknown')
+    name = models.CharField(max_length=100,null=True,blank=True)
+    address = models.CharField(max_length=255,null=True,blank=True)
+    lake = models.TextField(default='Unkown',null=True,blank=True)
+    image = models.ImageField(default= '..static/images/dbc-logo-small.png',null=True,blank=True)
+    state = models.TextField(max_length=100, default='Unknown',null=True,blank=True)
     video_url = models.URLField(blank=True,null=True)
     checkfront_url = models.URLField(blank=True,null=True)
     

@@ -107,10 +107,11 @@ class BoatAvailabilityView(TemplateView):
         return context
 
 def locations_view(request):
-    marinas = Marina.objects.all()
-    marinas_by_state = Marina.objects.order_by('state','lake','name')
+    COMING_SOON_STATE = "Coming Soon!"
+    active_marinas = Marina.objects.exclude(state=COMING_SOON_STATE)
+    coming_soon = Marina.objects.filter(state=COMING_SOON_STATE)
     grouped_marinas = defaultdict(lambda: defaultdict(list))
-    for marina in marinas:
+    for marina in active_marinas:
         grouped_marinas[marina.state][marina.lake].append(marina)
     grouped_marinas = {
         state: dict(sorted(lakes.items()))  # ✅ sort lakes alphabetically
@@ -124,7 +125,7 @@ def locations_view(request):
             reverse=True
         )
     )
-    return render(request, 'boats_and_locations/locations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
+    return render(request, 'boats_and_locations/locations.html', {'marinas':active_marinas, 'coming_soon':coming_soon, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
 
 def marina_detail_view(request, marina_id):
     marina = get_object_or_404(Marina, pk = marina_id)

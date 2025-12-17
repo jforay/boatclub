@@ -39,8 +39,17 @@
             <hr>
         {% endfor %}
         </ul>
+        
     </div>
     {% endfor %}
+    <div class="state-column">
+        <h2 style="color: #0f1d32;">Coming Soon!</h2>
+        {% for lakes in coming_soon %}
+        <h4>{{ lakes.lake }}</h4>
+        <br>
+        {% endfor %}
+        <h5 style="font-style: italic; text-align: center;">More to come...</h5>
+    </div>
 </div>
 
 {% endblock  %}

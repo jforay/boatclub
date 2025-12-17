@@ -5,7 +5,7 @@ from django.http import JsonResponse
 # Create your views here.
 def home(request):
     boats = Boat.objects.all()
-    marinas = Marina.objects.all()
+    marinas = Marina.objects.exclude(image="").exclude(image__isnull=True)
     unique_lakes = []
     seen_lakes = []
     for marina in marinas:
