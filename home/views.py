@@ -56,7 +56,8 @@ def filter_boats(request):
 
     boats = Boat.objects.all()
     if marina_id:
-        boats = boats.filter(marina__id=marina_id)
+        # Boat has a ManyToMany relationship to Marina (`Boat.marinas`).
+        boats = boats.filter(marinas__id=marina_id).distinct()
 
     if boat_type:
         boats = boats.filter(boat_type=boat_type)
@@ -67,8 +68,6 @@ def filter_boats(request):
             'id': boat.id,
             'name': boat.name,
             'boat_type': boat.boat_type,
-            'issues': boat.issues,
-            'rules': boat.rules,
             'image': request.build_absolute_uri(boat.image.url) if boat.image else None,
         })
 

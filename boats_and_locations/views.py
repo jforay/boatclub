@@ -34,8 +34,9 @@ def reservations_view(request):
 def fleet_view(request):
     boats = Boat.objects.all()
     boat_types = boats.values_list('boat_type', flat=True).distinct()
+    marinas = Marina.objects.all().order_by("name")
 
-    return render(request, 'boats_and_locations/fleet.html', {'boats': boats, 'boat_types':boat_types})
+    return render(request, 'boats_and_locations/fleet.html', {'boats': boats, 'boat_types':boat_types,'marinas':marinas})
 
 def boat_detail_view(request, boat_id):
     boat = get_object_or_404(Boat, pk = boat_id)

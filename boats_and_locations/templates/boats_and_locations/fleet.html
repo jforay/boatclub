@@ -35,6 +35,16 @@
 <br>
 
 <div style="text-align: center;">
+    <label for="marina" style="color: white;">Filter by Marina:</label>
+    <select name="marina" id="marina">
+        <option value="">All Marinas</option>
+        {% for marina in marinas %}
+        <option value="{{ marina.id }}">{{ marina.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div style="text-align: center;">
     <label for="boat_type" style="color: white;">Filter by Boat Type:</label>
     <select name="boat_type" id="boat_type">
         <option value="">All Boat Types</option>
