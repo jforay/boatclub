@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/groups.css' %}">
 
 <section class="map-section">
-  <h2 class="map-title">Our Locations</h2>
+  <h2 style="text-align: center; color: white; font-style: italic; font-weight: bold;font-size: 4rem;">Our Locations</h2>
   <div id="map"></div>
 
   <!-- Mapbox JS & CSS -->
@@ -18,7 +18,6 @@
   {% load static %}
   <script src="{% static 'boats_and_locations/js/map.js' %}"></script>
 </section>
-<h1 style="text-align: center;">Our Locations</h1>
 
 <div class="states-grid">
     {% for state, lakes in grouped_marinas.items %}

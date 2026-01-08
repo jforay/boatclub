@@ -6,20 +6,33 @@
 {% load static %}
 <script src="{% static 'home/js/carousel.js' %}" defer></script>
 <link rel="stylesheet" href="{% static 'home/css/first-responders.css' %}">
+
+
 <div class="page">
-    <div class="rotater-container">
+    <div class="rotater-container" data-interval="3000">
         <div class="rotater">
             <div class="rotater-item">
-                <img src="{% static 'home/images/police.jpg' %}" alt="police">
+                <img src="{% static 'home/images/First-Responder.jpg' %}" alt="First responder 0">
             </div>
+
             <div class="rotater-item">
-                <img src="{% static 'home/images/firemen.jpg' %}" alt="firemen">
+                <img src="{% static 'home/images/First-Responder1.jpg' %}" alt="First responder 1">
             </div>
+
             <div class="rotater-item">
-                <img src="{% static 'home/images/emt.jpg' %}" alt="emt">
+                <img src="{% static 'home/images/First-Responder2.jpg' %}" alt="First responder 2">
             </div>
+            
             <div class="rotater-item">
-                <img src="{% static 'home/images/military.jpg' %}" alt="military">
+                <img src="{% static 'home/images/First-Responder3.jpg' %}" alt="First responder 3">
+            </div>
+
+            <div class="rotater-item">
+                <img src="{% static 'home/images/First-Responder5.jpg' %}" alt="First responder 5">
+            </div>
+
+            <div class="rotater-item">
+                <img src="{% static 'home/images/First-Responder6.jpg' %}" alt="First responder 6">
             </div>
         </div>
         <button class="rotater-btn prev">&lt;</button>

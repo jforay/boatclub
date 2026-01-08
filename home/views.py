@@ -4,7 +4,7 @@ from .forms import ContactUs, JoinUs
 from django.http import JsonResponse
 # Create your views here.
 def home(request):
-    boats = Boat.objects.all()
+    boats = Boat.objects.order_by('?')[:12]
     marinas = Marina.objects.exclude(image="").exclude(image__isnull=True)
     unique_lakes = []
     seen_lakes = []
