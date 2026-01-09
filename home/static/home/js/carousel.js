@@ -1,98 +1,63 @@
 document.querySelectorAll('.rotater-container').forEach(container => {
-    const carousel = container.querySelector('.rotater');
-    const prevBtn = container.querySelector('.rotater-btn.prev');
-    const nextBtn = container.querySelector('.rotater-btn.next');
-    const items = Array.from(container.querySelectorAll('.rotater-item'));
-    const totalItems = items.length;
-    const intervalMs = Number(container.dataset.interval) || 4000;
+  const carousel = container.querySelector('.rotater');
+  const prevBtn = container.querySelector('.rotater-btn.prev');
+  const nextBtn = container.querySelector('.rotater-btn.next');
+  const items = Array.from(container.querySelectorAll('.rotater-item'));
+  const totalItems = items.length;
+  const intervalMs = Number(container.dataset.interval) || 4000;
 
-    if (totalItems === 0) return;
+  if (!carousel || totalItems === 0) return;
 
-    // Clone ends for seamless loop
-    const firstClone = items[0].cloneNode(true);
-    const lastClone = items[totalItems - 1].cloneNode(true);
-    carousel.appendChild(firstClone);
-    carousel.insertBefore(lastClone, items[0]);
+  let currentIndex = 0;
+  let autoTimer = null;
 
-    let currentIndex = 1;      // start on first real slide
-    let isJumping = false;     // prevents visible snap logic
-    let autoTimer = null;
+  function setTransition(enabled) {
+    carousel.style.transition = enabled ? 'transform .8s ease-in-out' : 'none';
+  }
 
-    function setTransition(enabled) {
-        carousel.style.transition = enabled ? 'transform .8s ease-in-out' : 'none';
-    }
+  function updateCarousel() {
+    carousel.style.transform = `translateX(${-100 * currentIndex}%)`;
+  }
 
-    function updateCarousel() {
-        const offset = currentIndex * -100;
-        carousel.style.transform = `translateX(${offset}%)`;
-    }
+  function goTo(index, { animate = true } = {}) {
+    if (index < 0) index = totalItems - 1;
+    if (index >= totalItems) index = 0;
 
-    function scheduleNext() {
-        clearTimeout(autoTimer);
-        autoTimer = setTimeout(() => {
-            goTo(currentIndex + 1);
-        }, intervalMs);
-    }
+    setTransition(animate);
+    currentIndex = index;
+    updateCarousel();
+  }
 
-    function goTo(index, { animate = true } = {}) {
-        setTransition(animate);
-        currentIndex = index;
-        updateCarousel();
+  function scheduleNext() {
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(() => {
+      // If we're at the last slide, snap back to first (no animation).
+      if (currentIndex === totalItems - 1) {
+        goTo(0, { animate: false });
+        // Re-enable transition for next moves
+        requestAnimationFrame(() => setTransition(true));
+      } else {
+        goTo(currentIndex + 1, { animate: true });
+      }
+      scheduleNext();
+    }, intervalMs);
+  }
 
-        // If we are NOT animating (initial load / instant jump),
-        // schedule immediately because there won't be a transitionend.
-        if (!animate) {
-            requestAnimationFrame(() => setTransition(true));
-            scheduleNext();
-        }
-        // If we ARE animating, we schedule in transitionend
-        // so the timer starts when the new slide is fully visible.
-    }
+  nextBtn?.addEventListener('click', () => {
+    clearTimeout(autoTimer);
+    goTo(currentIndex + 1);
+    scheduleNext();
+  });
 
-    function jumpTo(index) {
-        isJumping = true;
-        setTransition(false);
-        currentIndex = index;
-        updateCarousel();
+  prevBtn?.addEventListener('click', () => {
+    clearTimeout(autoTimer);
+    goTo(currentIndex - 1);
+    scheduleNext();
+  });
 
-        // Re-enable transition on the next frame
-        requestAnimationFrame(() => {
-            setTransition(true);
-            isJumping = false;
-
-            // After a clone->real jump, the "real" slide is now visible
-            // (still no animation), so restart the timer here.
-            scheduleNext();
-        });
-    }
-
-    nextBtn?.addEventListener('click', () => {
-        clearTimeout(autoTimer);
-        goTo(currentIndex + 1);
-    });
-
-    prevBtn?.addEventListener('click', () => {
-        clearTimeout(autoTimer);
-        goTo(currentIndex - 1);
-    });
-
-    carousel.addEventListener('transitionend', event => {
-        if (event.target !== carousel || isJumping) return;
-
-        // Handle wraparound
-        if (currentIndex === totalItems + 1) {
-            jumpTo(1); // cloned first -> real first
-            return;
-        }
-        if (currentIndex === 0) {
-            jumpTo(totalItems); // cloned last -> real last
-            return;
-        }
-
-        // Normal slide finished animating -> start full interval now
-        scheduleNext();
-    });
-
-    // Init at first real slide (no animation) AND start autoplay
-    goTo(1, { animate: false });
+  // Init
+  setTransition(false);
+  goTo(0, { animate: false });
+  requestAnimationFrame(() => setTransition(true));
+  scheduleNext();
 });

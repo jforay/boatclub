@@ -32,7 +32,7 @@ def reservations_view(request):
     return render(request, 'boats_and_locations/reservations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
 
 def fleet_view(request):
-    boats = Boat.objects.all()
+    boats = Boat.objects.order_by('?')
     boat_types = boats.values_list('boat_type', flat=True).distinct()
     marinas = Marina.objects.all().order_by("name")
 

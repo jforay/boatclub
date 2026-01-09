@@ -67,8 +67,8 @@
 }
 
 .rotater-item {
-    min-width: 100%;
-    max-width: 600px;
+    max-width: 100%;
+    flex: 0 0 100%;
 }
 
 .rotater-item img {
@@ -76,6 +76,8 @@
     height: auto;
     max-height: 600px;
     object-fit:cover;
+    align-items: center;
+    justify-content: center;
 }
 
 
