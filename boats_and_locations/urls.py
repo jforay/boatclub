@@ -11,4 +11,6 @@ urlpatterns = [
     path('edit-boat/<int:pk>/',views.BoatEditView.as_view(),name='edit_boat'),
     path('add-location/',views.AddMarinaView.as_view(),name='add_location'),
     path('edit-location/<int:pk>/', views.MarinaEditView.as_view(), name='edit_location'),
+    path('locations/<slug:slug>/flyer/',views.marina_flyer_view,name='marina_flyer'),
+
 ]

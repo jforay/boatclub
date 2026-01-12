@@ -1,0 +1,201 @@
+/* page background: subtle, not loud blue */
+.flyer-wrap{
+  padding: 28px 16px 40px;
+  background: #f3f6fb;
+}
+
+/* the flyer itself */
+.flyer-card{
+  max-width: 980px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 45px rgba(0,0,0,.12);
+  border: 1px solid rgba(15,29,50,.08);
+}
+
+/* HERO */
+.flyer-hero{
+  position: relative;
+  height: 360px;
+  background: #0f1d32;
+}
+.flyer-hero img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+
+/* overlay gradient */
+.flyer-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to bottom,
+    rgba(15,29,50,.10),
+    rgba(15,29,50,.78)
+  );
+}
+
+.flyer-hero-overlay{
+  position:absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 18px;
+  z-index: 1;
+  color: #fff;
+}
+
+.flyer-hero-overlay h1{
+  margin: 0;
+  font-size: 46px;
+  line-height: 1.05;
+  letter-spacing: .2px;
+  font-style: italic;
+}
+.flyer-hero-overlay p{
+  margin: 10px 0 0;
+  font-size: 18px;
+  opacity: .92;
+}
+
+/* BODY */
+.flyer-body{
+  padding: 26px 26px 30px;
+}
+.flyer-grid{
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.flyer-block{
+  padding: 0 0 18px;
+  border-bottom: 1px solid rgba(15,29,50,.08);
+  margin-bottom: 18px;
+}
+.flyer-block:last-child{
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.flyer-block h2{
+  margin: 0 0 10px;
+  font-size: 16px;
+  letter-spacing: .2px;
+  color: #0f1d32;
+  text-transform: uppercase;
+}
+
+.muted{
+  margin: 0;
+  color: rgba(15,29,50,.82);
+  line-height: 1.55;
+}
+
+/* highlights list */
+.highlights{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(15,29,50,.85);
+}
+.highlights li{
+  margin: 8px 0;
+}
+
+/* CTA card */
+.cta-card{
+  background: #f7f9fc;
+  border: 1px solid rgba(15,29,50,.10);
+  border-radius: 16px;
+  padding: 18px;
+}
+.cta-card h2{
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #0f1d32;
+}
+.cta-card p{
+  margin: 0 0 14px;
+}
+
+/* buttons */
+.btn{
+  display: block;
+  text-align: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  margin-top: 10px;
+}
+.btn.primary{
+  background: #0f1d32;
+  color: #fff;
+}
+.btn.secondary{
+  background: #fff;
+  color: #0f1d32;
+  border: 1px solid rgba(15,29,50,.20);
+}
+
+/* mini stats */
+.mini-stats{
+  display:flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.stat{
+  flex:1;
+  background:#fff;
+  border: 1px solid rgba(15,29,50,.10);
+  border-radius: 14px;
+  padding: 12px;
+  text-align:center;
+}
+.stat .num{
+  font-size: 22px;
+  font-weight: 900;
+  color: #0f1d32;
+}
+.stat .lbl{
+  font-size: 12px;
+  color: rgba(15,29,50,.70);
+}
+
+/* This makes it sit under BOTH columns */
+.flyer-cta-full{
+  grid-column: 1 / -1;
+}
+
+/* Optional: make CTA centered + constrained */
+.flyer-cta-full .cta-card{
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+
+/* responsive */
+@media (max-width: 720px){
+  .flyer-grid{ grid-template-columns: 1fr; }
+  .flyer-hero{ height: 300px; }
+  .flyer-hero-overlay h1{ font-size: 36px; }
+
+}
+
+/* print */
+@media print{
+  header, nav, footer{ display:none !important; }
+  .flyer-wrap{ background: white; padding: 0; }
+  .flyer-card{
+    box-shadow:none;
+    border-radius:0;
+    border:0;
+  }
+  .btn{ display:none !important; } /* optional */
+  .flyer-hero::after{ display:none; }
+}
