@@ -16,7 +16,7 @@ def marina_flyer_view(request,slug):
     marina = get_object_or_404(Marina,slug=slug)
     boats = marina.boats.all()[:6]
 
-    return render(request , 'boats_and_locations/marina_flyer.html', {'marina':marina,'boats':boats})
+    return render(request , 'boats_and_locations/marina_flyer2.html', {'marina':marina,'boats':boats})
 
 def reservations_view(request):
     marinas = Marina.objects.all()

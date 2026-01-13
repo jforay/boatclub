@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count
 # Create your models here.
 class Marina(models.Model):
     name = models.CharField(max_length=100,null=True,blank=True)
@@ -14,10 +15,14 @@ class Marina(models.Model):
     checkfront_url = models.URLField(blank=True,null=True)
     slug = models.SlugField(unique=True,blank=True,null=True)
 
-    def available_boats_count(self):
-        return self.boats.filter(available_to_customers=True).count()
+    def boats_by_type(self):
+            """Returns [{'boat_type': 'Pontoon', 'count': 3}, ...] for this marina."""
+            return (self.boats
+                    .values('boat_type')
+                    .annotate(count=Count('id'))
+                    .order_by('boat_type'))
 
-    def marina_boats_count(self):
+    def total_boats(self):
         return self.boats.count()
     
     def __str__(self):
