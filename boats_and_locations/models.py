@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import Count
+from django.utils.text import slugify
+
 # Create your models here.
 class Marina(models.Model):
     name = models.CharField(max_length=100,null=True,blank=True)
@@ -42,6 +44,21 @@ class Boat(models.Model):
         related_name="boats",
         blank=True,
     )
+
+    slug = models.SlugField(unique=True,blank=True,null=True)
+
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.name)
+            slug = base
+            i = 2
+            # ensure uniqueness in case two boats have same/similar names
+            while Boat.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f"{base}-{i}"
+                i += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.name}"
