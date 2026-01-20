@@ -23,11 +23,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', include('home.urls')),
+    
     path('fleet/',include('boats_and_locations.urls')),
     path('users/', include('users.urls')),
     path('reservations/', include('reservations.urls')),
-    path('filter-boats/',views.filter_boats,name='filter_boats'),
     path("floatplans/", include("pdf_form.urls")),
     path("docusign/", include("docusign.urls")),
 

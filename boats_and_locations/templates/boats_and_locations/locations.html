@@ -29,7 +29,7 @@
         <ul>
             {% for marina in marinas %}
             <li>
-                <a href="{% url 'marina_detail' marina.pk %}">
+                <a href="{% url 'marina_detail' marina.slug %}">
                     {{ marina.name }}
                 </a><br>
                 <small>{{ marina.address }}</small>

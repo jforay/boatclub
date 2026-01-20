@@ -49,27 +49,3 @@ def accessibilities(request):
 def contact_us(request):
     form = ContactUs()
     return render(request,'home/contact-us.html',{'form':form})
-
-def filter_boats(request):
-    boat_type = request.GET.get('boat_type')
-    marina_id = request.GET.get('marina_id')
-
-    boats = Boat.objects.all()
-    if marina_id:
-        # Boat has a ManyToMany relationship to Marina (`Boat.marinas`).
-        boats = boats.filter(marinas__id=marina_id).distinct()
-
-    if boat_type:
-        boats = boats.filter(boat_type=boat_type)
-    
-    boats_data = []
-    for boat in boats:
-        boats_data.append({
-            'id': boat.id,
-            'name': boat.name,
-            'boat_type': boat.boat_type,
-            'image': request.build_absolute_uri(boat.image.url) if boat.image else None,
-        })
-
-    return JsonResponse({'boats':boats_data})
-

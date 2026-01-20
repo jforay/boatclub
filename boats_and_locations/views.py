@@ -44,8 +44,8 @@ def fleet_view(request):
 
     return render(request, 'boats_and_locations/fleet.html', {'boats': boats, 'boat_types':boat_types,'marinas':marinas})
 
-def boat_detail_view(request, boat_id):
-    boat = get_object_or_404(Boat, pk = boat_id)
+def boat_detail_view(request, slug):
+    boat = get_object_or_404(Boat, slug = slug)
     folder_name = boat.name.replace(" ", "-")
     
     # static path (as used in templates)
@@ -134,9 +134,9 @@ def locations_view(request):
     )
     return render(request, 'boats_and_locations/locations.html', {'marinas':active_marinas, 'coming_soon':coming_soon, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
 
-def marina_detail_view(request, marina_id):
-    marina = get_object_or_404(Marina, pk = marina_id)
-    return render(request, 'boats_and_locations/location_detail.html',{'marina':marina})
+def marina_detail_view(request, slug):
+    marina = get_object_or_404(Marina, slug = slug)
+    return render(request, 'boats_and_locations/marina_flyer2.html',{'marina':marina})
 
 
 class AddBoatView(CreateView):
@@ -172,3 +172,29 @@ class MarinaEditView(UpdateView):
         
     def form_valid(self, form):
         return super().form_valid(form)
+    
+
+
+def filter_boats(request):
+    boat_type = request.GET.get('boat_type')
+    marina_id = request.GET.get('marina_id')
+
+    boats = Boat.objects.all()
+    if marina_id:
+        # Boat has a ManyToMany relationship to Marina (`Boat.marinas`).
+        boats = boats.filter(marinas__id=marina_id).distinct()
+
+    if boat_type:
+        boats = boats.filter(boat_type=boat_type)
+    
+    boats_data = []
+    for boat in boats:
+        boats_data.append({
+            'id': boat.id,
+            'name': boat.name,
+            'boat_type': boat.boat_type,
+            'image': request.build_absolute_uri(boat.image.url) if boat.image else None,
+        })
+
+    return JsonResponse({'boats':boats_data})
+

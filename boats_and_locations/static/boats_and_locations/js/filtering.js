@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function (){
         if (marinaId) params.set('marina_id', marinaId);
 
         const query = params.toString();
-        return query ? `/filter-boats/?${query}` : '/filter-boats/';
+        return query ? `/fleet/filter/?${query}` : '/fleet/filter/';
     }
 
     function renderBoats(data) {
