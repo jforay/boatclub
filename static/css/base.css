@@ -25,3 +25,42 @@ footer {
     padding: 20px 0;
     text-align: center;
 }
+
+/* --- Header scroll behavior --- */
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+}
+
+
+/* Home page starts transparent over hero */
+.site-header.is-transparent{
+  background: transparent;
+  box-shadow: none;
+}
+
+/* When scrolled past hero */
+.site-header.is-scrolled{
+  background: #0f1d32;
+  box-shadow: 0 10px 28px rgba(0,0,0,.25);
+}
+
+/* Main content default */
+.site-main{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #4978ba;
+  padding: 20px;
+  overflow-x: hidden;
+  padding-top: 130px;
+
+}
+
+/* On home page, we want the hero full-bleed (no padding) */
+body.home-hero-page .site-main{
+  padding-top: 0;
+}

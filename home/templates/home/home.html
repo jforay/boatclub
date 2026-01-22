@@ -1,22 +1,60 @@
 {% extends "base.html" %}
 
 {% block title %}Destination Boat Clubs{% endblock %}
-
-{% block content %}
 {% load static %}
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'home/css/tabs.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/photos.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/amenities.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/first-responders.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/perks.css' %}">
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/fleet.css' %}">
-
-
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
 
 <script src="{% static 'home/js/tabs.js' %}"></script>
 <script src="{% static 'boats_and_locations/js/fleet.js' %}"></script>
 
 <script src="{% static 'home/js/carousel.js' %}" defer></script>
+{% block body_class %}home-hero-page{% endblock %}
+
+{% block content %}
+<section class="home-hero" data-hero>
+    <img class="home-hero-img" src="{% static 'home/images/hero.jpg' %}" alt="Destination Boat Clubs">
+
+    <div class="home-hero-overlay">
+        <div class="home-hero-inner">
+            <h1>Boating without owning.</h1>
+            <p>Show up, hop on, and go — we handle maintenance, cleaning, and dock support.</p>
+
+            <div class="home-hero-actions">
+                <a class="hero-btn primary" href="{% url 'contact-us' %}">Schedule a Tour</a>
+                <a class="hero-btn ghost" href="{% url 'boats' %}">View Fleet</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-cards">
+    <div class="home-cards-inner">
+        <div class="home-card">
+            <h3>Reserve online</h3>
+            <p>Choose a location and a boat — simple booking.</p>
+        </div>
+        <div class="home-card">
+            <h3>Show up & go</h3>
+            <p>Your boat is ready when you arrive.</p>
+        </div>
+        <div class="home-card">
+            <h3>We handle the hassle</h3>
+            <p>No cleaning, maintenance, or storage.</p>
+        </div>
+        <div class="home-card">
+            <h3>Premium fleet</h3>
+            <p>Fishing, cruising, tubing, sunsets — pick the day’s boat.</p>
+        </div>
+    </div>
+</section>
 
 <div class="tabs">
     <button class="tab-button active" onclick="showTab('welcome')">Welcome</button>
@@ -240,6 +278,7 @@
     </div>
 
 </div>
+
 
 
 <script src="https://player.vimeo.com/api/player.js"></script>

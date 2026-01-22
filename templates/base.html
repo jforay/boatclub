@@ -2,178 +2,179 @@
 
 
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Destination Boat Clubs{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
-    <link rel="icon" href="{% static 'images/dbc-logo-small.png' %}" type="image/png">
-        
-    <link rel="stylesheet" href="{% static 'home/css/middle.css' %}">
-    <link rel="stylesheet" href="{% static 'home/css/contact.css' %}">
-    {% block extra_css %}{% endblock %}
-    <!-- <script src="{% static 'js/nav_toggle.js' %}"></script> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Destination Boat Clubs{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+        <link rel="icon" href="{% static 'images/dbc-logo-small.png' %}" type="image/png">
+            
+        <link rel="stylesheet" href="{% static 'home/css/middle.css' %}">
+        <link rel="stylesheet" href="{% static 'home/css/contact.css' %}">
+        {% block extra_css %}{% endblock %}
+        <!-- <script src="{% static 'js/nav_toggle.js' %}"></script> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-</head>
+    </head>
 
-<body>
-    <!-- Header Section -->
-     <!-- Large Screens -->
-    <header>
-        <div class="d-none d-md-block">
-            <div class="header-container">
-                
-                <div class="header-text">
-                    <a href="{% url 'home' %}">
-                        <img src="{% static 'images/dbc-logo-small.png' %}" alt="Boat Club Logo" style="height: 100px;">
-                        <h1>Destination  Boat  Clubs™</h1>
-                    </a>
-                </div>
-
-                <nav class="navbar"style="flex: 3; text-align: center;">
-                    
-                    <ul class="nav-list">
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'boats' %}">Our Fleet</a></li>
-                        <li><a href="{% url 'locations' %}">Locations</a></li> 
-                        <li><a href="{% url 'reservations' %}">Reservations</a></li>                                         
-                        <li><a href="{% url 'first-responders' %}">First Responders</a></li>
-                        <li class="dropdown">
-                            <a href="#">Reasons To Join ▼</a>
-                            <div class="dropdown-content">
-                                <a href="{% url 'perks' %}">Membership Perks</a>
-                                <a href="{% url 'FAQs' %}">FAQs</a>
-                                <a href="{% url 'amenities' %}">Amenities</a>
-                                <a href="{% url 'equipment' %}">Equipment</a>
-                                <a href="{% url 'maintenance' %}">Maintenance</a>
-                                <a href="{% url 'accessibilities' %}">Accessibilities</a>
-                                <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
-
-                            </div>
-                        </li>
-                        <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
-                    </ul>
-                    
-                </nav>
-
-            </div>
-        </div>
-        <!-- Mobile screens -->
-            <div class="d-block d-md-none">
-                <nav class="navbar navbar-dark" style="background-color: #0f1d32;">
+    <body class="{% block body_class %}{% endblock %}">
+        <!-- Header Section -->
+        <!-- Large Screens -->
+        <header id="siteHeader" class="site-header">
+            <div class="d-none d-md-block">
+                <div class="header-container">
                     
                     <div class="header-text">
                         <a href="{% url 'home' %}">
                             <img src="{% static 'images/dbc-logo-small.png' %}" alt="Boat Club Logo" style="height: 100px;">
-                            <h1 style="font-size: 2rem;">Destination  Boat  Clubs™</h1>
+                            <h1>Destination  Boat  Clubs™</h1>
                         </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarToggleSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                
+                    </div>
+
+                    <nav class="navbar navbar-dark">
                         
-                    </div>
+                        <ul class="nav-list">
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'boats' %}">Our Fleet</a></li>
+                            <li><a href="{% url 'locations' %}">Locations</a></li> 
+                            <li><a href="{% url 'reservations' %}">Reservations</a></li>                                         
+                            <li><a href="{% url 'first-responders' %}">First Responders</a></li>
+                            <li class="dropdown">
+                                <a href="#">Reasons To Join ▼</a>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'perks' %}">Membership Perks</a>
+                                    <a href="{% url 'FAQs' %}">FAQs</a>
+                                    <a href="{% url 'amenities' %}">Amenities</a>
+                                    <a href="{% url 'equipment' %}">Equipment</a>
+                                    <a href="{% url 'maintenance' %}">Maintenance</a>
+                                    <a href="{% url 'accessibilities' %}">Accessibilities</a>
+                                    <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
 
-                  
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{% url 'home' %}">Home</a> 
+                                </div>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{% url 'boats' %}">Our Fleet</a> 
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{% url 'locations' %}">Our Locations</a> 
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{% url 'reservations' %}">Reservations</a> 
-                            </li>
-
-
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{% url 'first-responders' %}">First Responders</a> 
-                            </li>
-
-                            <li class="nav-item">
-                                <li class="dropdown">
-                                    <a class ="nav-link text-white" href="#">Reasons To Join ▼</a>
-                                    <div class="dropdown-content">
-                                        <a href="{% url 'perks' %}">Membership Perks</a>
-                                        <a href="{% url 'FAQs' %}">FAQs</a>
-                                        <a href="{% url 'amenities' %}">Amenities</a>
-                                        <a href="{% url 'equipment' %}">Equipment</a>
-                                        <a href="{% url 'maintenance' %}">Maintenance</a>
-                                        <a href="{% url 'accessibilities' %}">Accessibilities</a>
-                                        <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
-
-                                    </div>
-                                </li>                            
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{% url 'contact-us' %}">Contact Us</a> 
-                            </li>
-
+                            <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
                         </ul>
-                    </div>
-                </nav>
-            </div>
-    </header>
-    <!-- Main Content Area -->
-    <main style="background-color: #4978ba ;padding: 20px; overflow-x: auto;">
-        {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}" style="color: red; background-color: white; font-size: large; font-weight: bold;">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
-        {% block content %}
-        <!-- Page-specific content will go here -->
-        {% endblock %}
-    </main>
+                        
+                    </nav>
 
-    <!-- Footer Section -->
-    <footer style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
-        <div style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
-            <div class="footer-info">
-                <p>The Ultimate Boating Club: 239-745-0110</p>
-                <p>Greater Charlotte Market: 239-745-0110</p>
-                <p>Wilmington-Outer Banks Market: 740-317-1158</p>
-                <p>A Part of Destination Boat Club™</p>
+                </div>
             </div>
-            <div class="social-media">
-                <a href="https://www.facebook.com/destinationboatclubscarolinas"><img src="{% static 'images/facebook-icon.jpg' %}" alt="Facebook" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://x.com/DBCCfamily"><img src="{% static 'images/twitter-icon.jpg' %}" alt="Twitter" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.instagram.com/dbccfamily/"><img src="{% static 'images/instagram-icon.png' %}" alt="Instagram" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.linkedin.com/company/destination-boat-clubs-carolinas/"><img src="{% static 'images/linkedin-icon.png' %}" alt="Linkedin" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.pinterest.com/destinationfamily/"><img src="{% static 'images/pinterest-icon.png' %}" alt="Pintrest" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.instagram.com/dbccfamily/"><img src="{% static 'images/youtube-icon.png' %}" alt="Youtube" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.reddit.com/user/destinationfamily/"><img src="{% static 'images/reddit-icon.png' %}" alt="Reddit" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.tumblr.com/destinationfamily"><img src="{% static 'images/tumblr-icon.jpg' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://vimeo.com/destinationfamilies"><img src="{% static 'images/vimeo-icon.png' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.flickr.com/people/destinationfamily/"><img src="{% static 'images/flickr-icon.png' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
-                <a href="https://www.tiktok.com/@destinationfamily"><img src="{% static 'images/tiktok-icon.png' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
+            <!-- Mobile screens -->
+                <div class="d-block d-md-none">
+                    <nav class="navbar navbar-dark mobile-nav">
+                        
+                        <div class="header-text">
+                            <a href="{% url 'home' %}">
+                                <img src="{% static 'images/dbc-logo-small.png' %}" alt="Boat Club Logo" style="height: 100px;">
+                                <h1 style="font-size: 2rem;">Destination  Boat  Clubs™</h1>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarToggleSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                    
+                            
+                        </div>
+
+                    
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{% url 'home' %}">Home</a> 
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{% url 'boats' %}">Our Fleet</a> 
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{% url 'locations' %}">Our Locations</a> 
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{% url 'reservations' %}">Reservations</a> 
+                                </li>
 
 
-            
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{% url 'first-responders' %}">First Responders</a> 
+                                </li>
+
+                                <li class="nav-item">
+                                    <li class="dropdown">
+                                        <a class ="nav-link text-white" href="#">Reasons To Join ▼</a>
+                                        <div class="dropdown-content">
+                                            <a href="{% url 'perks' %}">Membership Perks</a>
+                                            <a href="{% url 'FAQs' %}">FAQs</a>
+                                            <a href="{% url 'amenities' %}">Amenities</a>
+                                            <a href="{% url 'equipment' %}">Equipment</a>
+                                            <a href="{% url 'maintenance' %}">Maintenance</a>
+                                            <a href="{% url 'accessibilities' %}">Accessibilities</a>
+                                            <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
+
+                                        </div>
+                                    </li>                            
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{% url 'contact-us' %}">Contact Us</a> 
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+        </header>
+        <!-- Main Content Area -->
+        <main class="site-main">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}" style="color: red; background-color: white; font-size: large; font-weight: bold;">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% block content %}
+            <!-- Page-specific content will go here -->
+            {% endblock %}
+        </main>
+
+        <!-- Footer Section -->
+        <footer style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
+            <div style="background-color: #0f1d32; color: #FFFFFF; padding: 20px 0; text-align: center;">
+                <div class="footer-info">
+                    <p>The Ultimate Boating Club: 239-745-0110</p>
+                    <p>Greater Charlotte Market: 239-745-0110</p>
+                    <p>Wilmington-Outer Banks Market: 740-317-1158</p>
+                    <p>A Part of Destination Boat Club™</p>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/destinationboatclubscarolinas"><img src="{% static 'images/facebook-icon.jpg' %}" alt="Facebook" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://x.com/DBCCfamily"><img src="{% static 'images/twitter-icon.jpg' %}" alt="Twitter" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.instagram.com/dbccfamily/"><img src="{% static 'images/instagram-icon.png' %}" alt="Instagram" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.linkedin.com/company/destination-boat-clubs-carolinas/"><img src="{% static 'images/linkedin-icon.png' %}" alt="Linkedin" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.pinterest.com/destinationfamily/"><img src="{% static 'images/pinterest-icon.png' %}" alt="Pintrest" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.instagram.com/dbccfamily/"><img src="{% static 'images/youtube-icon.png' %}" alt="Youtube" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.reddit.com/user/destinationfamily/"><img src="{% static 'images/reddit-icon.png' %}" alt="Reddit" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.tumblr.com/destinationfamily"><img src="{% static 'images/tumblr-icon.jpg' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://vimeo.com/destinationfamilies"><img src="{% static 'images/vimeo-icon.png' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.flickr.com/people/destinationfamily/"><img src="{% static 'images/flickr-icon.png' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
+                    <a href="https://www.tiktok.com/@destinationfamily"><img src="{% static 'images/tiktok-icon.png' %}" alt="Tumblr" style="width: 20px; margin: 0 10px;"></a>
+
+
+                
+                </div>
             </div>
-        </div>
-    </footer>
-     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        </footer>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        {% block extra_js %}{% endblock %}
+        <script src="{% static 'js/header_scroll.js' %}" defer></script>
 
-</body>
+    </body>
 </html>
