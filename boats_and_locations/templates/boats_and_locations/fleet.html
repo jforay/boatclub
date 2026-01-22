@@ -59,7 +59,7 @@
 
 <div id="boat-grid" class="grid-container">
     {% for boat in boats %}
-    <a href="{% url 'boat_detail' boat.id %}" class="grid-item">
+    <a href="{% url 'boat_detail' boat.slug %}" class="grid-item">
         <div>
             <h3> {{ boat.name }}</h3>
             <img src="{{ boat.image.url }}" alt="{{ boat.name }}" style="max-width: 75%; height: auto;">
