@@ -39,9 +39,6 @@ def perks(request):
 def reasons_to_join(request):
     return render(request, 'home/reasons-to-join.html')
 
-def join(request):
-    form = JoinUs()
-    return render(request, 'home/join.html', {'form':form})
 
 def accessibilities(request):
     return render(request, 'home/accessibilities.html')
@@ -49,3 +46,6 @@ def accessibilities(request):
 def contact_us(request):
     form = ContactUs()
     return render(request,'home/contact-us.html',{'form':form})
+
+def training(request):
+    return render(request,"home/training.html")

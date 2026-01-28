@@ -26,23 +26,33 @@
         <header id="siteHeader" class="site-header">
             <div class="d-none d-md-block">
                 <div class="header-container">
-                    
-                    <div class="header-text">
-                        <a href="{% url 'home' %}">
-                            <img src="{% static 'images/dbc-logo-small.png' %}" alt="Boat Club Logo" style="height: 100px;">
-                            <h1>Destination  Boat  Clubs™</h1>
-                        </a>
-                    </div>
 
-                    <nav class="navbar navbar-dark">
-                        
-                        <ul class="nav-list">
-                            <li><a href="{% url 'home' %}">Home</a></li>
-                            <li><a href="{% url 'boats' %}">Our Fleet</a></li>
-                            <li><a href="{% url 'locations' %}">Locations</a></li> 
-                            <li><a href="{% url 'reservations' %}">Reservations</a></li>                                         
-                            <li><a href="{% url 'first-responders' %}">First Responders</a></li>
-                            <li class="dropdown">
+                    <div class="header-center">
+                        <div class="header-top">
+                            <div class="header-promo">
+                                <a href="{% url 'contact-us' %}">Check out our Specials!</a>
+                            </div>
+
+                            <div class="header-text">
+                                <a href="{% url 'home' %}">
+                                    <img src="{% static 'images/dbc-logo-small.png' %}" alt="Boat Club Logo" style="height: 100px;">
+                                    <h1>Destination  Boat  Clubs™</h1>
+                                </a>
+                            </div>
+
+                            <div class="header-phone">
+                                <a href="tel:+12397450110">(239) 745 - 0110</a>
+                            </div>
+                        </div>
+
+                        <nav class="navbar navbar-dark">
+                            <ul class="nav-list">
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'boats' %}">Our Fleet</a></li>
+                                <li><a href="{% url 'locations' %}">Locations</a></li> 
+                                <li><a href="{% url 'reservations' %}">Reservations</a></li>                                         
+                                <li><a href="{% url 'first-responders' %}">First Responders</a></li>
+                                <li class="dropdown">
                                 <a href="#">Reasons To Join ▼</a>
                                 <div class="dropdown-content">
                                     <a href="{% url 'perks' %}">Membership Perks</a>
@@ -52,19 +62,19 @@
                                     <a href="{% url 'maintenance' %}">Maintenance</a>
                                     <a href="{% url 'accessibilities' %}">Accessibilities</a>
                                     <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
-
                                 </div>
-                            </li>
-                            <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
-                        </ul>
-                        
-                    </nav>
+                                </li>
+                                <li><a href="{% url 'contact-us' %}">Contact Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
 
                 </div>
             </div>
+
             <!-- Mobile screens -->
-                <div class="d-block d-md-none">
-                    <nav class="navbar navbar-dark mobile-nav">
+            <div class="d-block d-md-none">
+                <nav class="navbar navbar-dark mobile-nav">
                         
                         <div class="header-text">
                             <a href="{% url 'home' %}">
@@ -104,20 +114,18 @@
                                     <a class="nav-link text-white" href="{% url 'first-responders' %}">First Responders</a> 
                                 </li>
 
-                                <li class="nav-item">
-                                    <li class="dropdown">
-                                        <a class ="nav-link text-white" href="#">Reasons To Join ▼</a>
-                                        <div class="dropdown-content">
-                                            <a href="{% url 'perks' %}">Membership Perks</a>
-                                            <a href="{% url 'FAQs' %}">FAQs</a>
-                                            <a href="{% url 'amenities' %}">Amenities</a>
-                                            <a href="{% url 'equipment' %}">Equipment</a>
-                                            <a href="{% url 'maintenance' %}">Maintenance</a>
-                                            <a href="{% url 'accessibilities' %}">Accessibilities</a>
-                                            <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
+                                <li class="nav-item dropdown">
+                                    <a class ="nav-link text-white" href="#">Reasons To Join ▼</a>
+                                    <div class="dropdown-content">
+                                        <a href="{% url 'perks' %}">Membership Perks</a>
+                                        <a href="{% url 'FAQs' %}">FAQs</a>
+                                        <a href="{% url 'amenities' %}">Amenities</a>
+                                        <a href="{% url 'equipment' %}">Equipment</a>
+                                        <a href="{% url 'maintenance' %}">Maintenance</a>
+                                        <a href="{% url 'accessibilities' %}">Accessibilities</a>
+                                        <a href="{% url 'reasons_to_join' %}">Reasons To Join</a>
 
-                                        </div>
-                                    </li>                            
+                                    </div>
                                 </li>
 
                                 <li class="nav-item">
@@ -126,8 +134,8 @@
 
                             </ul>
                         </div>
-                    </nav>
-                </div>
+                </nav>
+            </div>
         </header>
         <!-- Main Content Area -->
         <main class="site-main">

@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Member Training{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/training.css' %}">
+{% endblock %}
+
+{% block content %}
+<header class="training-hero">
+    <div class="training-hero-media" aria-hidden="true">
+        <!-- Swap to your own image -->
+        <img src="{% static 'images/training-hero.jpg' %}" alt="">
+        <div class="training-hero-scrim"></div>
+    </div>
+
+    <div class="training-hero-inner">
+        <p class="kicker">Member Training</p>
+        <h1>Safety. Confidence. Simple boating.</h1>
+        <p class="subhead">
+        Whether you’re brand new or experienced, we’ll get you comfortable on the exact boats you’ll be using —
+        docking, navigation basics, rules of the water, and club procedures.
+        </p>
+
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#schedule">Schedule Training</a>
+            <a class="btn btn-ghost" href="#what-to-expect">What to expect</a>
+        </div>
+
+        <div class="hero-badges" aria-label="Training highlights">
+            <div class="badge">
+                <span class="badge-title">Typical duration</span>
+                <span class="badge-value">3–4 hours</span>
+            </div>
+            <div class="badge">
+                <span class="badge-title">Format</span>
+                <span class="badge-value">Hands-on, on-water</span>
+            </div>
+            <div class="badge">
+                <span class="badge-title">Pace</span>
+                <span class="badge-value">Built around you</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="training-page">
+
+  <!-- VALUE / FEATURES -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head">
+                <h2>Training that makes boating feel easy</h2>
+                <p>
+                You’ll learn the essentials quickly, practice with a trainer, and leave knowing exactly how to reserve,
+                check out, operate, and return the boat — safely and confidently.
+                </p>
+            </div>
+
+            <div class="card-grid">
+                <article class="info-card">
+                    <h3>Personal attention</h3>
+                    <p>One-on-one coaching so you can ask questions and practice what matters most for your comfort level.</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Hands-on experience</h3>
+                    <p>Operate the boat with an instructor — docking, slow-speed control, maneuvering, and safety routines.</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Comfort-first</h3>
+                    <p>No pressure. We build confidence step-by-step before you ever run a boat on your own.</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Family / co-members welcome</h3>
+                    <p>Primary and co-members can train so everyone feels comfortable operating and assisting.</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Real boats, real routines</h3>
+                    <p>Train on the boats you’ll reserve, using the same check-in/out process and equipment you’ll use every trip.</p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Ongoing support</h3>
+                    <p>Need a refresher? Want to try a new boat type? We offer retraining and specialty sessions.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+  <!-- WHAT TO EXPECT -->
+    <section id="what-to-expect" class="section section-alt">
+        <div class="container">
+            <div class="section-head">
+                <h2>What to expect</h2>
+                <p>A simple, proven flow — overview, practice, check-in, and a clear next step.</p>
+            </div>
+
+            <ol class="steps">
+                <li class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <h3>Pre-training brief</h3>
+                        <p>Goals for the day, safety basics, local rules, and how club outings work.</p>
+                        <ul>
+                            <li>Reservation + arrival timing</li>
+                            <li>Safety gear + required checks</li>
+                            <li>Weather and “go / no-go” decisions</li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <h3>On-water practice</h3>
+                        <p>Hands-on boat control with coaching — slow-speed handling first, then real scenarios.</p>
+                        <ul>
+                            <li>Leaving/approaching the dock</li>
+                            <li>Throttle control, turns, trim basics</li>
+                            <li>Anchoring, idle zones, navigation awareness</li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="step">
+                <div class="step-num">3</div>
+                    <div class="step-body">
+                        <h3>Skills check</h3>
+                        <p>A low-stress review to confirm you’re ready — and identify what you want more practice on.</p>
+                        <ul>
+                            <li>Docking + basic maneuvering</li>
+                            <li>Safety procedures</li>
+                            <li>Returning and securing the boat</li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-body">
+                        <h3>Wrap-up + next steps</h3>
+                        <p>We answer questions, recommend next outings, and outline any optional refresher or specialty sessions.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+  <!-- SPECIALTY TRAINING -->
+    <section class="section">
+        <div class="container">
+            <div class="split">
+                <div>
+                    <h2>Specialty & refresher training</h2>
+                    <p>
+                        Different boats require different skills. If you’re upgrading size, switching styles, or trying something new,
+                        we’ll set you up with a focused session.
+                    </p>
+
+                    <div class="pill-list">
+                        <span class="pill">Upgrading to larger vessels</span>
+                        <span class="pill">First-time sail / twin engine</span>
+                        <span class="pill">Wake / surf systems</span>
+                        <span class="pill">Docking refreshers</span>
+                        <span class="pill">New marina / new waterway</span>
+                    </div>
+                </div>
+
+                <aside class="callout">
+                    <h3>Good to know</h3>
+                    <p>
+                        If you ever want extra time with a trainer, just ask — we’d rather do a refresher than rush your comfort level.
+                    </p>
+
+                <!-- Optional links -->
+                    <div class="callout-links">
+                        <a href="#" class="text-link">Download Member Handbook (PDF)</a>
+                        <a href="#" class="text-link">Watch docking basics (video)</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+  <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-head">
+                <h2>FAQ</h2>
+                <p>Quick answers for new members.</p>
+            </div>
+
+            <div class="faq">
+                <details class="faq-item">
+                    <summary>Do I need boating experience?</summary>
+                    <div class="faq-body">No — training is built for beginners and tailored to your comfort level.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Can my spouse / co-member train too?</summary>
+                    <div class="faq-body">Yes. We recommend it so everyone feels confident operating and assisting.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>How long does training take?</summary>
+                    <div class="faq-body">Typically 3–4 hours, depending on experience and the skills you want to practice.</div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Can I get a refresher later?</summary>
+                    <div class="faq-body">Absolutely — refreshers and specialty sessions are available as needed.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+  <!-- CTA -->
+    <section id="schedule" class="section cta">
+        <div class="container">
+            <div class="cta-card">
+                <div>
+                    <h2>Ready to schedule?</h2>
+                    <p>
+                        Tell us your experience level and preferred times — we’ll match you with a trainer and a boat that fits your goals.
+                    </p>
+                </div>
+                <div class="cta-actions">
+                    <a class="btn btn-primary" href="#">Schedule Training</a>
+                    <a class="btn btn-ghost" href="#">Contact the Dock Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

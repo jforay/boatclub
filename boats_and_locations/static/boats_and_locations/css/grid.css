@@ -19,6 +19,7 @@
     color: inherit;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
+    border-radius: 60px;
 }
 
 .grid-item:hover {
