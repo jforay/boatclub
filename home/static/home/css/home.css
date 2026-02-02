@@ -1,3 +1,11 @@
+.home-hero-page{
+  background-color: #7ad7f2;
+}
+
+.home-hero-page .site-main{
+  background-color: #7ad7f2;
+}
+
 .home-hero{
   position: relative;
   height: 85vh;
@@ -64,9 +72,9 @@
     /* Fade into your site background color */
     background: linear-gradient(
         to bottom,
-        rgba(73,120,186,0),
-        rgba(73,120,186,.55),
-        rgba(73,120,186,1)
+        rgba(122,215,242,0),
+        rgba(122,215,242,.55),
+        rgba(122,215,242,1)
     );
 }
 
@@ -84,7 +92,7 @@
 }
 
 .hero-btn.primary{
-  background:#4978ba;
+  background:#7ad7f2;
   border-color: transparent;
   color:#fff;
 }
@@ -104,12 +112,14 @@
 }
 
 .home-cards h1 {
-    color: white;
+    color: #0f1d32;;
     text-align: center;
     margin: 0 auto 28px;
     font-size: 3rem;
-    line-height: 1.00;
-    letter-spacing: -0.02em;
+    line-height: 1.4;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-style: italic;
 }
 
 /* slightly softer background behind the cards */
@@ -134,7 +144,7 @@
 }
 
 .home-card{
-    background: #0f1d32;
+    background: rgba(18, 122, 98, 0.78);
 
     border-radius: 26px;
     padding: 44px 36px;

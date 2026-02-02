@@ -9,7 +9,7 @@ body {
 
 main {
     min-height: 65vh;
-    background-color: #4978ba;
+    background-color: #7ad7f2;
 }
 /* =========================================================
    HEADER (CLEAN)
@@ -32,6 +32,8 @@ body.home-hero-page .site-header{
   position: fixed;
   left: 0;
   right: 0;
+  /* default transparent until JS sets --hdr */
+  --hdr: 0;
 }
 
 /* Header “surface” (desktop + mobile) */
@@ -190,8 +192,10 @@ body.home-hero-page .site-header .mobile-nav{
   min-width: 200px;
   z-index: 1000;
 
-  background-color: #0f1d32;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  background-color: rgba(15, 29, 50, calc(.96 * var(--hdr, 1)));
+  box-shadow: 0px 8px 16px rgba(0,0,0, calc(.2 * var(--hdr, 1)));
+  backdrop-filter: blur(calc(10px * var(--hdr, 0)));
+  border: 1px solid rgba(255,255,255, calc(.45 * (1 - var(--hdr, 0))));
 }
 
 .dropdown:hover .dropdown-content{
@@ -208,21 +212,6 @@ body.home-hero-page .site-header .mobile-nav{
 
 .dropdown-content a:hover{
   background-color: #1c3454;
-}
-
-/* “Glass” dropdown when header is transparent */
-.site-header.is-transparent .dropdown-content{
-  background-color: transparent;
-  box-shadow: none;
-  border: 1px solid rgba(255,255,255,.45);
-}
-
-.site-header.is-transparent .dropdown-content a{
-  background-color: transparent;
-}
-
-.site-header.is-transparent .dropdown-content a:hover{
-  background-color: rgba(255,255,255,.12);
 }
 
 
