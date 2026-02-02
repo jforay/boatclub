@@ -8,9 +8,16 @@ body {
 }
 
 main {
-    min-height: 65vh;
-    background-color: #7ad7f2;
+  min-height: 65vh;
+
+  background-image:
+    linear-gradient(90deg, rgba(15,29,50,.62), rgba(15,29,50,.35) 55%, rgba(15,29,50,.18)),
+    url("/static/images/water.jpg");
+  background-size:auto;
+  background-position: center;
+  background-repeat: repeat;
 }
+
 /* =========================================================
    HEADER (CLEAN)
    ========================================================= */
