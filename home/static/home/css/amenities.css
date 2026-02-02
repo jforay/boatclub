@@ -5,7 +5,7 @@
     align-items: center;
     width: calc(100% + 40px); /* Stretching to full width */
     height: auto;
-    background-color: #0f1d32; /* Dark background */
+    background: rgba(18, 122, 98, 0.77); /* Dark background */
     padding: 20px; /* Add inner spacing */
     margin-left: -20px;
     margin-right: -20px;

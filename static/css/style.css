@@ -28,8 +28,8 @@ main {
   top: 0;
   z-index: 999;
 
-  /* fade-able background layer controlled by JS variable --hdr */
-  background-color: rgba(15, 29, 50, var(--hdr, 0));
+  /* align opacity with footer */
+  background-color: rgba(18, 122, 98, 0.57);
   box-shadow: 0 10px 28px rgba(0,0,0, calc(.25 * var(--hdr, 0)));
   transition: background-color .12s linear, box-shadow .12s linear, backdrop-filter .25s ease;
 }
@@ -46,7 +46,7 @@ body.home-hero-page .site-header{
 /* Header “surface” (desktop + mobile) */
 .site-header .header-container,
 .site-header .mobile-nav{
-  background: #0f1d32;
+  background: rgba(18, 122, 98, 0.57);
   box-shadow: 0 10px 28px rgba(0,0,0,.25);
   transition: background-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
 }
@@ -62,7 +62,7 @@ body.home-hero-page .site-header{
 /* Solid after scroll */
 .site-header.is-scrolled .header-container,
 .site-header.is-scrolled .mobile-nav{
-  background: rgba(15,29,50,.96);
+  background: rgba(18, 122, 98, 0.57);
   box-shadow: 0 10px 28px rgba(0,0,0,.25);
   backdrop-filter: blur(10px);
 }
