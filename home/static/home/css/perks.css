@@ -50,7 +50,7 @@
   width: 100vw;                      /* full bleed */
   margin-left: 50%; transform: translateX(-50%); /* center the 100vw block */
 
-  background: #4a7dc3;
+  background: transparent;
   display: grid;
   grid-template-columns: 1fr minmax(320px, 620px) 1fr; /* L | card | R */
   grid-template-rows: auto auto;       /* logos + card, then bottom badge */

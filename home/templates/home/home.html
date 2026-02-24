@@ -11,11 +11,6 @@
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/fleet.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
-
-<script src="{% static 'home/js/tabs.js' %}"></script>
-<script src="{% static 'boats_and_locations/js/fleet.js' %}"></script>
-
-<script src="{% static 'home/js/carousel.js' %}" defer></script>
 {% block body_class %}home-hero-page{% endblock %}
 
 {% block content %}
@@ -295,10 +290,12 @@
 
 
 
+{% endblock %}
+
+{% block extra_js %}
 <script src="https://player.vimeo.com/api/player.js"></script>
-<script src="{% static 'home/js/photo.js' %}"></script>
-<script src="{% static 'boats_and_locations/js/fleet.js' %}"></script>
+<script src="{% static 'home/js/tabs.js' %}" defer></script>
+<script src="{% static 'home/js/carousel.js' %}" defer></script>
+<script src="{% static 'home/js/photo.js' %}" defer></script>
 <script src="{% static 'home/js/reveal.js' %}" defer></script>
-
-
 {% endblock %}

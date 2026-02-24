@@ -69,19 +69,34 @@
 .rotater-item {
     max-width: 100%;
     flex: 0 0 100%;
-    height: 400px;
-    overflow: hidden;
+    min-height: 420px;
+    height: auto;
+    overflow: visible;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .rotater-item img {
     width: 100%;
     height: auto;
-    max-height: 600px;
-    object-fit:cover;
+    max-height: 280px;
+    object-fit: contain;
     align-items: center;
     justify-content: center;
     display: block;
+}
+
+.rotater-item h3 {
+    margin: 0;
+    min-height: 2.6em;
+    line-height: 1.3;
+    text-align: center;
 }
 
 
