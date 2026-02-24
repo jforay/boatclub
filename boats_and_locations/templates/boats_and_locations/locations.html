@@ -19,10 +19,10 @@
   <script src="{% static 'boats_and_locations/js/map.js' %}"></script>
 </section>
 
-<div class="states-grid">
+<div class="states-grid locations-cards">
     {% for state, lakes in grouped_marinas.items %}
-    <div class="state-column">
-        <h2 style="color: #0f1d32;">{{ state }}</h2>
+    <div class="state-column home-card">
+        <h2>{{ state }}</h2>
         {% for lake, marinas in lakes.items %}
         <h4>{{ lake }}</h4>
 
@@ -41,8 +41,8 @@
         
     </div>
     {% endfor %}
-    <div class="state-column">
-        <h2 style="color: #0f1d32;">Coming Soon!</h2>
+    <div class="state-column home-card">
+        <h2>Coming Soon!</h2>
         {% for lakes in coming_soon %}
         <h4>{{ lakes.lake }}</h4>
         <br>
