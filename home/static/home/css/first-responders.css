@@ -90,6 +90,7 @@
     align-items: center;
     justify-content: center;
     display: block;
+    border-radius: 16px;
 }
 
 .rotater-item h3 {

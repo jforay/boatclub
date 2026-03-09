@@ -25,7 +25,6 @@
         <h2>{{ state }}</h2>
         {% for lake, marinas in lakes.items %}
         <h4>{{ lake }}</h4>
-
         <ul>
             {% for marina in marinas %}
             <li>
@@ -35,10 +34,11 @@
                 <small>{{ marina.address }}</small>
             </li>
             {% endfor %}
-            <hr>
-        {% endfor %}
         </ul>
-        
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+        {% endfor %}
     </div>
     {% endfor %}
     <div class="state-column home-card">

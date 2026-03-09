@@ -8,10 +8,11 @@
 }
 
 .box {
-    background-color: white;
+    background: rgb(18,122,98,0.57);
     padding: 40px;
     width: 70%;
     text-align: center;
+    color: white;
 }
 
 .logo {

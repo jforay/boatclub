@@ -10,6 +10,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 16px;
 }
 
 .photo-text {
@@ -20,7 +21,7 @@
     font-size: 24px;
     text-align: center;
     width: auto;
-    background: rgba(0,0,0,0.5);
+    background: rgba(18, 122, 98, 0.57);
     width: 100%;
     text-shadow: 2px 2px 8px rgba(0,0,0,1.5),
     -1px -1px 1px rgba(0, 0, 0, 0.2);
@@ -179,11 +180,11 @@
   align-items: center;
   justify-content: space-evenly;
   text-align: center;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .parallax-section .overlay {
-  background: rgba(0, 0, 0, 0.5); /* dark layer for readability */
+  background: rgba(18, 122, 98, 0.57); /* dark layer for readability */
   color: white;
   padding: 40px 60px;
   border-radius: 10px;

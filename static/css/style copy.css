@@ -331,6 +331,7 @@ body.home-hero-page .site-main{
     display: flex !important;
     align-items: center;
     white-space: nowrap;
+    flex-direction: column;
   }
 
   /* desktop header layout ONLY */

@@ -244,6 +244,7 @@ body.home-hero-page .site-header .mobile-nav{
     display: flex !important;
     align-items: center;
     white-space: nowrap;
+    flex-direction: column;
   }
 
   .header-container{
