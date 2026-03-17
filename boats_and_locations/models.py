@@ -32,6 +32,15 @@ class Marina(models.Model):
         blank=True,
         null=True
     )
+    # Optional feature section (e.g. Vol Navy)
+    feature_title = models.CharField(max_length=255, blank=True, null=True)
+    feature_description = models.TextField(blank=True, null=True)
+    feature_image = models.ImageField(
+        upload_to='marina_features/',
+        blank=True,
+        null=True
+)
+
 
     def boats_by_type(self):
         """Returns [{'boat_type': 'Pontoon', 'count': 3}, ...] for this marina."""

@@ -20,36 +20,73 @@
 </section>
 
 <div class="states-grid locations-cards">
-    {% for state, lakes in grouped_marinas.items %}
+
+  <!-- LEFT: North Carolina -->
     <div class="state-column home-card">
+        <h2>North Carolina</h2>
+        {% for lake, marinas in nc.items %}
+        <h4>{{ lake }}</h4>
+        <ul>
+        {% for marina in marinas %}
+        <li>
+            <a href="{% url 'marina_detail' marina.slug %}">{{ marina.name }}</a><br>
+            <small>{{ marina.address }}</small>
+        </li>
+        {% endfor %}
+        </ul>
+        {% if not forloop.last %}<hr>{% endif %}
+        {% endfor %}
+    </div>
+
+  <!-- MIDDLE: South Carolina -->
+    <div class="state-column home-card">
+        <h2>South Carolina</h2>
+        {% for lake, marinas in sc.items %}
+        <h4>{{ lake }}</h4>
+        <ul>
+        {% for marina in marinas %}
+        <li>
+            <a href="{% url 'marina_detail' marina.slug %}">{{ marina.name }}</a><br>
+            <small>{{ marina.address }}</small>
+        </li>
+        {% endfor %}
+        </ul>
+        {% if not forloop.last %}<hr>{% endif %}
+        {% endfor %}
+    </div>
+
+  <!-- RIGHT: everything else stacked -->
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+        {% for state, lakes in grouped_marinas.items %}
+        <div class="state-column home-card">
         <h2>{{ state }}</h2>
         {% for lake, marinas in lakes.items %}
         <h4>{{ lake }}</h4>
         <ul>
             {% for marina in marinas %}
             <li>
-                <a href="{% url 'marina_detail' marina.slug %}">
-                    {{ marina.name }}
-                </a><br>
-                <small>{{ marina.address }}</small>
+            <a href="{% url 'marina_detail' marina.slug %}">{{ marina.name }}</a><br>
+            <small>{{ marina.address }}</small>
             </li>
             {% endfor %}
         </ul>
-        {% if not forloop.last %}
-        <hr>
-        {% endif %}
+        {% if not forloop.last %}<hr>{% endif %}
         {% endfor %}
     </div>
     {% endfor %}
-    <div class="state-column home-card">
-        <h2>Coming Soon!</h2>
-        {% for lakes in coming_soon %}
-        <h4>{{ lakes.lake }}</h4>
-        <br>
-        {% endfor %}
-        <h5 style="font-style: italic; text-align: center;">More to come...</h5>
+
+        <!-- Coming Soon -->
+        <div class="state-column home-card">
+            <h2>Coming Soon!</h2>
+            {% for marina in coming_soon %}
+            <h4>{{ marina.lake }}</h4>
+            {% endfor %}
+            <h5 style="font-style: italic; text-align: center;">More to come...</h5>
+        </div>
     </div>
+
 </div>
+
 
 <br>
 

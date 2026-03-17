@@ -25,17 +25,27 @@ def reservations_view(request):
     for marina in reservations:
         grouped_marinas[marina.state][marina.lake].append(marina)
     grouped_marinas = {
-        state: dict(sorted(lakes.items()))  # ✅ sort lakes alphabetically
-        for state, lakes in sorted(grouped_marinas.items())  # ✅ also sorts states alphabetically
+        state: dict(sorted(lakes.items()))
+        for state, lakes in sorted(grouped_marinas.items())
     }
     grouped_marinas = dict(
         sorted(
             grouped_marinas.items(),
-            key=lambda item: sum(len(m) for m in item[1].values()),  # count marinas under each state
+            key=lambda item: sum(len(m) for m in item[1].values()),
             reverse=True
         )
     )
-    return render(request, 'boats_and_locations/reservations.html', {'marinas':marinas, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
+
+    nc = grouped_marinas.pop("North Carolina", {})
+    sc = grouped_marinas.pop("South Carolina", {})
+
+    return render(request, 'boats_and_locations/reservations.html', {
+        'marinas': marinas,
+        'user': request.user,
+        'grouped_marinas': grouped_marinas,
+        'nc': nc,
+        'sc': sc,
+    })
 
 def fleet_view(request):
     boats = Boat.objects.order_by('?')
@@ -121,18 +131,28 @@ def locations_view(request):
     for marina in active_marinas:
         grouped_marinas[marina.state][marina.lake].append(marina)
     grouped_marinas = {
-        state: dict(sorted(lakes.items()))  # ✅ sort lakes alphabetically
-        for state, lakes in sorted(grouped_marinas.items())  # ✅ also sorts states alphabetically
+        state: dict(sorted(lakes.items()))
+        for state, lakes in sorted(grouped_marinas.items())
     }
-    # ✅ Sort states by number of total marinas (descending)
     grouped_marinas = dict(
         sorted(
             grouped_marinas.items(),
-            key=lambda item: sum(len(m) for m in item[1].values()),  # count marinas under each state
+            key=lambda item: sum(len(m) for m in item[1].values()),
             reverse=True
         )
     )
-    return render(request, 'boats_and_locations/locations.html', {'marinas':active_marinas, 'coming_soon':coming_soon, 'user':request.user,'grouped_marinas':dict(grouped_marinas)})
+
+    nc = grouped_marinas.pop("North Carolina", {})
+    sc = grouped_marinas.pop("South Carolina", {})
+
+    return render(request, 'boats_and_locations/locations.html', {
+        'marinas': active_marinas,
+        'coming_soon': coming_soon,
+        'user': request.user,
+        'grouped_marinas': grouped_marinas,  # everything except NC and SC
+        'nc': nc,
+        'sc': sc,
+    })
 
 def marina_detail_view(request, slug):
     marina = get_object_or_404(Marina, slug = slug)

@@ -26,27 +26,64 @@
     </div>
    
 </div>
+
 <div class="states-grid reservations-cards">
-    {% for state, lakes in grouped_marinas.items %}
-    <div class="state-column home-card">
-        <h2>{{ state }}</h2>
-        {% for lake, marinas in lakes.items %}
-        <h4>{{ lake }}</h4>
 
-        <ul>
-            {% for marina in marinas %}
-            <li>
-                <a href="{{ marina.checkfront_url | safe }}">
-                    {{ marina.name }}
-                </a><br>
-                <small>{{ marina.address }}</small>
-            </li>
-            {% endfor %}
-        {% endfor %}
-        </ul>
-    </div>
+  <!-- LEFT: North Carolina -->
+  <div class="state-column home-card">
+    <h2>North Carolina</h2>
+    {% for lake, marinas in nc.items %}
+    <h4>{{ lake }}</h4>
+    <ul>
+      {% for marina in marinas %}
+      <li>
+        <a href="{{ marina.checkfront_url | safe }}">{{ marina.name }}</a><br>
+        <small>{{ marina.address }}</small>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
-</div>
+  </div>
 
+  <!-- MIDDLE: South Carolina -->
+  <div class="state-column home-card">
+    <h2>South Carolina</h2>
+    {% for lake, marinas in sc.items %}
+    <h4>{{ lake }}</h4>
+    <ul>
+      {% for marina in marinas %}
+      <li>
+        <a href="{{ marina.checkfront_url | safe }}">{{ marina.name }}</a><br>
+        <small>{{ marina.address }}</small>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- RIGHT: everything else stacked -->
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+        {% for state, lakes in grouped_marinas.items %}
+        <div class="state-column home-card">
+            <h2>{{ state }}</h2>
+            {% for lake, marinas in lakes.items %}
+            <h4>{{ lake }}</h4>
+            <ul>
+                {% for marina in marinas %}
+                <li>
+                <a href="{{ marina.checkfront_url | safe }}">{{ marina.name }}</a><br>
+                <small>{{ marina.address }}</small>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if not forloop.last %}<hr>{% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
 <br>
 {% endblock  %}

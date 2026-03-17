@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/marina.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/amenities.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/first-responders.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/photos.css' %}">
+
+
 
 {% endblock %}
 
@@ -26,34 +30,20 @@
       <p>{{ marina.lake }}{% if marina.state %}, {{ marina.state }}{% endif %}</p>
     </div>
   </div>
+  
 </section>
 
 <br>
 
-<!-- ABOUT CARD -->
+
+<!-- RESTAURANT CARD — only shows if filled in -->
+{% if marina.restaurant_name %}
 <div class="detail-section">
   <div class="detail-card">
-    <div class="about-grid">
+    <h2>Description</h2>
+    <div class="restaurant-grid">
 
-      <!-- LEFT: location details -->
-      <div>
-        <p class="about-label">Location</p>
-        <p class="about-value">
-          {% if marina.address %}{{ marina.address }}<br>{% endif %}
-          {{ marina.lake }}{% if marina.state %}, {{ marina.state }}{% endif %}
-        </p>
-
-        {% with boat_counts=marina.boats_by_type %}
-        {% if boat_counts %}
-        <p class="about-label">Our Fleet Here</p>
-        <p class="about-value">
-          {% for item in boat_counts %}
-            {{ item.count }} {{ item.boat_type }}{{ item.count|pluralize }}{% if not forloop.last %}, {% endif %}
-          {% endfor %}
-        </p>
-        {% endif %}
-        {% endwith %}
-      </div>
+            <!-- LEFT: location details -->
 
       <!-- RIGHT: description -->
       <div>
@@ -64,9 +54,23 @@
         {% endif %}
       </div>
 
+
+        <div class="rotater-container">
+          <div class="rotater">
+              {% for photo in marina.photos.all %}
+              <div class="rotater-item" style="justify-content: center; align-items: center; text-align: center;">
+                  <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:marina.name }}" style="object-fit:fill; height: auto; width: 100%;">
+              </div>
+              {% endfor %}
+          </div>
+          <button class="rotater-btn prev">&lt;</button>
+          <button class="rotater-btn next">&gt;</button>
+      </div>
     </div>
   </div>
 </div>
+{% endif %}
+
 
 <!-- RESTAURANT CARD — only shows if filled in -->
 {% if marina.restaurant_name %}
@@ -86,7 +90,7 @@
       <!-- RIGHT: image -->
       {% if marina.restaurant_image %}
       <div>
-        <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}">
+        <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}" style="object-fit: contain;">
       </div>
       {% endif %}
 
@@ -94,28 +98,27 @@
   </div>
 </div>
 {% endif %}
+<!-- EXTRA FEATURE + CTA side by side -->
+<div class="detail-section" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
 
-<div class="amenities">
-    <div class="carousel-text-container">
+  {% if marina.extra_title %}
+  <div class="detail-card">
+    <h2>{{ marina.extra_title }}</h2>
+    <p class="about-description">{{ marina.extra_description }}</p>
+  </div>
+  {% endif %}
 
-        <div class="text-container">
-            <h2>{{ marina.name }}</h2>
-            <p style="line-height: 1.6;">{{ marina.description }}</p>
-        </div>
+  <div class="detail-card" style="text-align: center;">
+    <h2>Ready To Get On The Water?</h2>
+    <p class="about-description">Visit our main site to learn more about membership and book your next adventure.</p>
+    <br>
+    <a href="https://destinationboatclubscarolinas.com" target="_blank" rel="noopener"
+       style="display: inline-block; background: white; color: #0f1d32; font-weight: 800;
+              padding: 14px 32px; border-radius: 12px; text-decoration: none; font-size: 1.1rem;">
+      Visit Our Main Site
+    </a>
+  </div>
 
-        <div class="rotater-container">
-            <div class="rotater">
-                {% for photo in marina.photos.all %}
-                <div class="rotater-item" style="justify-content: center; align-items: center; text-align: center;">
-                    <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:marina.name }}" style="object-fit: contain; height: auto; width: 100%;">
-                </div>
-                {% endfor %}
-            </div>
-            <button class="rotater-btn prev">&lt;</button>
-            <button class="rotater-btn next">&gt;</button>
-        </div>
-
-    </div>
 </div>
 {% endblock %}
 
