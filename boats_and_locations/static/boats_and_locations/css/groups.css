@@ -1,130 +1,114 @@
-.states-grid{
-  column-count: 3;
-  column-gap: 30px;
-
+/* ── Grid wrapper ─────────────────────────────────────── */
+.states-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   max-width: 75%;
   margin: auto;
   color: white;
+  align-items: start;
 }
 
-/* IMPORTANT: prevent a card from splitting between columns */
-.state-column{
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid; /* Safari */
-  margin: 0 0 30px;
-  display: table;                    /* fixes ::before/::after & hover â€” unlike inline-block, table doesn't confuse column rendering */
-  width: 100%;
+@media (max-width: 1100px) {
+  .states-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .states-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Card — identical look to .home-card ──────────────── */
 .state-column {
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;           /* required for ::before / ::after */
+  background: rgba(18, 122, 98, 0.57);
+  border-radius: 26px;
+  padding: 34px 28px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Sheen overlay */
+.state-column::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  border-radius: 26px;
+  background:
+    radial-gradient(700px 240px at 20% 0%,   rgba(255,255,255,.16), rgba(255,255,255,0) 60%),
+    radial-gradient(700px 240px at 90% 110%,  rgba(73,120,186,.22),  rgba(73,120,186,0)  55%);
+  opacity: 0.95;
+}
+
+/* Top accent line */
+.state-column::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 22px;
+  width: 56px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+  opacity: 0.85;
+}
+
+/* Ensure card content sits above the overlays */
+.state-column > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover — shadow only, no translateY (avoids column-layout glitch) */
+.state-column:hover {
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* ── Typography ───────────────────────────────────────── */
 .state-column h2 {
-    color: #0f1d32;
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-align: center;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .state-column h4 {
-    text-align: center;
-    text-decoration: underline;
+  color: #fff;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.6);
 }
+
+.state-column h5 {
+  color: #fff;
+}
+
+.state-column small {
+  color: rgba(255,255,255,0.75);
+}
+
+/* ── List ─────────────────────────────────────────────── */
 .state-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .state-column li {
-    padding: 6px 0;
+  padding: 6px 0;
 }
+
+/* ── Links ────────────────────────────────────────────── */
 .state-column a {
-    color: #004aad;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.3rem;
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3rem;
 }
+
 .state-column a:hover {
-    text-decoration: underline;
-}
-
-/* Locations page: reuse home-card visual style */
-.locations-cards .home-card,
-.reservations-cards .home-card {
-    position: relative;
-    background: rgba(18, 122, 98, 0.57);
-    border-radius: 26px;
-    padding: 34px 28px;
-    min-height: 260px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-}
-
-.locations-cards .home-card::before,
-.reservations-cards .home-card::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    z-index: 0;
-    pointer-events: none;
-    border-radius: 26px;
-    background:
-      radial-gradient(700px 240px at 20% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%),
-      radial-gradient(700px 240px at 90% 110%, rgba(73, 120, 186, 0.22), rgba(73, 120, 186, 0) 55%);
-    opacity: 0.95;
-}
-
-.locations-cards .home-card::after,
-.reservations-cards .home-card::after {
-    content: "";
-    position: absolute;
-    top: 16px;
-    left: 22px;
-    width: 56px;
-    height: 4px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
-    opacity: 0.85;
-}
-
-.locations-cards .home-card > *,
-.reservations-cards .home-card > * {
-    position: relative;
-    z-index: 1;
-}
-
-.locations-cards .home-card:hover,
-.reservations-cards .home-card:hover {
-    box-shadow:
-      0 28px 80px rgba(0, 0, 0, 0.55),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14);
-}
-
-.locations-cards .home-card h2,
-.locations-cards .home-card h4,
-.locations-cards .home-card h5,
-.locations-cards .home-card small,
-.reservations-cards .home-card h2,
-.reservations-cards .home-card h4,
-.reservations-cards .home-card h5,
-.reservations-cards .home-card small {
-    color: #fff;
-}
-
-.locations-cards .home-card h4,
-.reservations-cards .home-card h4 {
-    text-decoration-color: rgba(255, 255, 255, 0.8);
-}
-
-.locations-cards .home-card a,
-.reservations-cards .home-card a {
-    color: rgba(255, 255, 255, 0.92);
-}
-
-.locations-cards .home-card a:hover,
-.reservations-cards .home-card a:hover {
-    color: #fff;
+  color: #fff;
+  text-decoration: underline;
 }

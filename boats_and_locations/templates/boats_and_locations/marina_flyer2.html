@@ -3,12 +3,17 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/marina_flyer2.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/marina.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/amenities.css' %}">
+
 {% endblock %}
 
 {% block content %}
 
-<!-- FULL-WIDTH HERO -->
+<!-- HERO / CAROUSEL -->
 <section class="marina-hero">
+
   {% if marina.image %}
     <img src="{{ marina.image.url }}" alt="{{ marina.name }}">
   {% else %}
@@ -22,70 +27,100 @@
     </div>
   </div>
 </section>
+
 <br>
-<!-- NORMAL PAGE CONTENT (in your site width) -->
-<section class="marina-content">
-    <div class="marina-card">
-        <div class="marina-grid">
 
-            <!-- LEFT -->
-            <div class="marina-main">
-                <div class="marina-block">
-                    <h2>Location</h2>
-                    <p class="muted">
-                    {% if marina.address %}{{ marina.address }}<br>{% endif %}
-                    {{ marina.lake }}{% if marina.state %}, {{ marina.state }}{% endif %}
-                    </p>
-                </div>
-                
-                {% with boat_counts=marina.boats_by_type %}
-                    {% if boat_counts %}
-                        <div class="marina-block">
-                        <h2>Boats</h2>
-                        <ul class="boat-counts">
-                            {% for item in boat_counts %}
-                            <li><strong>{{ item.count }}</strong> {{ item.boat_type }}{{ item.count|pluralize }}</li>
-                            {% endfor %}
-                        </ul>
-                        </div>
-                    {% else %}
-                        <p class="muted">No boats assigned.</p>
-                    {% endif %}
-                {% endwith %}
+<!-- ABOUT CARD -->
+<div class="detail-section">
+  <div class="detail-card">
+    <div class="about-grid">
 
+      <!-- LEFT: location details -->
+      <div>
+        <p class="about-label">Location</p>
+        <p class="about-value">
+          {% if marina.address %}{{ marina.address }}<br>{% endif %}
+          {{ marina.lake }}{% if marina.state %}, {{ marina.state }}{% endif %}
+        </p>
 
-            </div>
+        {% with boat_counts=marina.boats_by_type %}
+        {% if boat_counts %}
+        <p class="about-label">Our Fleet Here</p>
+        <p class="about-value">
+          {% for item in boat_counts %}
+            {{ item.count }} {{ item.boat_type }}{{ item.count|pluralize }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+        {% endif %}
+        {% endwith %}
+      </div>
 
-            <!-- RIGHT -->
-            <aside class="marina-aside">
-                <div class="marina-block">
-                    <h2>Highlights</h2>
-                    <ul class="highlights">
-                    <li>Premium boat fleet</li>
-                    <li>Member-only access</li>
-                    <li>Multiple reservation options</li>
-                    <li>Easy online booking</li>
-                    </ul>
-                </div>
+      <!-- RIGHT: description -->
+      <div>
+        {% if marina.description %}
+        <p class="about-description">{{ marina.description }}</p>
+        {% else %}
+        <p class="about-description">More information about this location coming soon.</p>
+        {% endif %}
+      </div>
 
-                
-            </aside>
-
-            <div class="flyer-cta-full">
-                <div class="cta-card">
-                    <h2>Learn More</h2>
-                    <p class="muted" style="color: white;">View Our Website To Learn More!</p>
-                    <a class="btn primary" href="https://destinationboatclubscarolinas.com" target="_blank" rel="noopener">
-                    Visit Website
-                    </a>
-                </div>
-            </div>
-
-
-        </div>
     </div>
-        
+  </div>
+</div>
 
-</section>
+<!-- RESTAURANT CARD — only shows if filled in -->
+{% if marina.restaurant_name %}
+<div class="detail-section">
+  <div class="detail-card">
+    <h2>Local Dining</h2>
+    <div class="restaurant-grid">
+
+      <!-- LEFT: text -->
+      <div>
+        <p class="restaurant-name">{{ marina.restaurant_name }}</p>
+        {% if marina.restaurant_description %}
+        <p class="restaurant-description">{{ marina.restaurant_description }}</p>
+        {% endif %}
+      </div>
+
+      <!-- RIGHT: image -->
+      {% if marina.restaurant_image %}
+      <div>
+        <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}">
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="amenities">
+    <div class="carousel-text-container">
+
+        <div class="text-container">
+            <h2>{{ marina.name }}</h2>
+            <p style="line-height: 1.6;">{{ marina.description }}</p>
+        </div>
+
+        <div class="rotater-container">
+            <div class="rotater">
+                {% for photo in marina.photos.all %}
+                <div class="rotater-item" style="justify-content: center; align-items: center; text-align: center;">
+                    <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:marina.name }}" style="object-fit: contain; height: auto; width: 100%;">
+                </div>
+                {% endfor %}
+            </div>
+            <button class="rotater-btn prev">&lt;</button>
+            <button class="rotater-btn next">&gt;</button>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'home/js/carousel.js' %}" defer></script>
+<script src="{% static 'home/js/photo.js' %}" defer></script>
 
 {% endblock %}
