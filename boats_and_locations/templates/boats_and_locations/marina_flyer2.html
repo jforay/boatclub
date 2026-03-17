@@ -71,54 +71,52 @@
 </div>
 {% endif %}
 
-
-<!-- RESTAURANT CARD — only shows if filled in -->
-{% if marina.restaurant_name %}
-<div class="detail-section">
-  <div class="detail-card">
-    <h2>Local Dining</h2>
-    <div class="restaurant-grid">
-
-      <!-- LEFT: text -->
-      <div>
-        <p class="restaurant-name">{{ marina.restaurant_name }}</p>
-        {% if marina.restaurant_description %}
-        <p class="restaurant-description">{{ marina.restaurant_description }}</p>
-        {% endif %}
-      </div>
-
-      <!-- RIGHT: image -->
-      {% if marina.restaurant_image %}
-      <div>
-        <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}" style="object-fit: contain;">
-      </div>
-      {% endif %}
-
-    </div>
-  </div>
-</div>
-{% endif %}
-<!-- EXTRA FEATURE + CTA side by side -->
+<!-- RESTAURANT + EXTRA FEATURE side by side -->
 <div class="detail-section" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
 
-  {% if marina.extra_title %}
+  <!-- RESTAURANT -->
+  {% if marina.restaurant_name %}
   <div class="detail-card">
-    <h2>{{ marina.extra_title }}</h2>
-    <p class="about-description">{{ marina.extra_description }}</p>
+    <h2>{{ marina.restaurant_name }}</h2>
+    <div>
+      {% if marina.restaurant_description %}
+      <p class="restaurant-description">{{ marina.restaurant_description }}</p>
+      {% endif %}
+    </div>
+    {% if marina.restaurant_image %}
+    <div>
+      <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}" style="object-fit: contain;">
+    </div>
+    {% endif %}
   </div>
   {% endif %}
 
+  <!-- EXTRA FEATURE -->
+  {% if marina.feature_title %}
+  <div class="detail-card">
+    <h2>{{ marina.feature_title }}</h2>
+    <p class="about-description">{{ marina.feature_description }}</p>
+    {% if marina.feature_image %}
+    <br>
+    <img src="{{ marina.feature_image.url }}" alt="{{ marina.feature_title }}" style="width: 100%; border-radius: 12px; object-fit: contain; max-height: 250px;">
+    {% endif %}
+  </div>
+  {% endif %}
+
+</div>
+
+<!-- CTA -->
+<div class="detail-section" style="max-width: 520px; margin: 0 auto 40px;">
   <div class="detail-card" style="text-align: center;">
     <h2>Ready To Get On The Water?</h2>
     <p class="about-description">Visit our main site to learn more about membership and book your next adventure.</p>
     <br>
     <a href="https://destinationboatclubscarolinas.com" target="_blank" rel="noopener"
-       style="display: inline-block; background: white; color: #0f1d32; font-weight: 800;
+       style="display: inline-block; background: white; color: #35a1db; font-weight: 800;
               padding: 14px 32px; border-radius: 12px; text-decoration: none; font-size: 1.1rem;">
       Visit Our Main Site
     </a>
   </div>
-
 </div>
 {% endblock %}
 
