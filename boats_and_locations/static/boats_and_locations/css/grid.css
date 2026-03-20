@@ -86,3 +86,48 @@
         min-width: 100%;
     }
 }
+
+/* ── Fleet page: uniform tile sizing ─────────────────── */
+.fleet-grid {
+    align-items: start;
+}
+
+.fleet-grid .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 320px;              /* fixed card height */
+}
+
+.fleet-grid .grid-item div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.fleet-grid .grid-item h3 {
+    font-size: 1rem;
+    height: 48px;               /* fixed name area — fits 2 lines */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;      /* max 2 lines then clip */
+    -webkit-box-orient: vertical;
+    margin: 0 0 8px;
+    width: 100%;
+}
+
+.fleet-grid .grid-item img {
+    height: 160px;
+    width: 100%;
+    max-width: 85%;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;             /* image never squishes */
+}
+
+.fleet-grid .grid-item p {
+    margin-top: auto;           /* boat type pushed to bottom */
+    font-size: 0.9rem;
+}
