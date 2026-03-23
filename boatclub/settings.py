@@ -179,7 +179,6 @@ mimetypes.add_type("application/javascript", ".mjs", strict=True)
 
 # AWS S3 Media Storage
 if os.environ.get('AWS_ACCESS_KEY_ID'):
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
@@ -188,7 +187,14 @@ if os.environ.get('AWS_ACCESS_KEY_ID'):
     AWS_DEFAULT_ACL = None
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
-
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+        },
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
 #Docusign RSA Public key: -----BEGIN PUBLIC KEY-----
 # MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsPt+snvLhrXxDfTF3A+B
 # EdkR2dlAcfEIk715kNKHwWufgIvQ7QNodKOYtJdrZmT3AN3u6R4+fCHKfLEEhEfN
