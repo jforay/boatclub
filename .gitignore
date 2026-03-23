@@ -32,3 +32,8 @@ local_settings.py
 Thumbs.db
 
 .codegpt
+
+# Credentials and secrets
+token.json
+credentials.json
+.env

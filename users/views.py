@@ -1,21 +1,15 @@
-from django.db.models.base import Model as Model
-from django.db.models.query import QuerySet
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import Group
-from django.contrib.auth.decorators import login_required, user_passes_test
-from boats_and_locations.models import Boat,Marina
+from boats_and_locations.models import Marina
 from django.contrib.auth import get_user_model
-from django.http import HttpResponseForbidden,HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from .forms import AddUserForm
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.urls import reverse_lazy,reverse
-from django.views.generic import CreateView,TemplateView,DeleteView,DetailView,UpdateView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import CreateView, TemplateView, DeleteView, DetailView, UpdateView
 from reservations.models import Reservation
 from django.utils import timezone
 from .models import CustomUser
-from docusign.utils import save_completed_pdf
-from reservations.utils import send_float_plan_email_with_pdf
-# Create your views here.
 def is_member(user):
     return user.group.filter(name='Member').exists()
 
@@ -127,11 +121,6 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_object(self, queryset = None):
         return get_object_or_404(get_user_model(), id = self.kwargs['pk'])
 
-# @login_required
-# @user_passes_test(is_employee)
-# def view_schedule(request):
-    
-    
 class UserProfileView(LoginRequiredMixin, DetailView):
     model = get_user_model()
     template_name = 'users/user_profile.html'
@@ -148,51 +137,6 @@ class UserProfileView(LoginRequiredMixin, DetailView):
             confirmed=True
         ).order_by('date')
         context['request'] = self.request
-        envelope_id = self.request.GET.get("envelope_id")  # Get envelope ID from return_url query params
-        print(f"Envelope ID: {envelope_id}")
-        if envelope_id:
-            try:
-                reservation = Reservation.objects.filter(user=user).last()
-                save_completed_pdf(envelope_id=envelope_id, reservation=reservation)
-                # Email PDF to the user or another recipient
-                print(reservation.float_plan_pdf.path)
-                send_float_plan_email_with_pdf(user, reservation.float_plan_pdf.path)
-
-            except Exception as e:
-                print(f"Error processing signed PDF: {str(e)}")
-
-        return context
-
-
-# class UserProfileView(LoginRequiredMixin, DetailView):
-#     model = get_user_model()
-#     template_name = 'users/user_profile.html'
-#     context_object_name = 'user'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         user_id = self.kwargs['pk']
-#         user = CustomUser.objects.get(pk = user_id)
-#         # Add reservations to the context
-#         context['reservations'] = Reservation.objects.filter(
-#             user=user, 
-#             date__gte=timezone.now(), 
-#             confirmed=True
-#         ).order_by('date')
-#         context['request'] = self.request
-#         envelope_id = self.request.GET.get("envelope_id")  # Get envelope ID from return_url query params
-#         print(f"Envelope ID: {envelope_id}")
-#         if envelope_id:
-#             try:
-#                 reservation = Reservation.objects.filter(user=user).last()
-#                 save_completed_pdf(envelope_id=envelope_id, reservation=reservation)
-#                 # Email PDF to the user or another recipient
-#                 print(reservation.float_plan_pdf.path)
-#                 #send_float_plan_email_with_pdf(user, reservation.float_plan_pdf.path)
-
-#             except Exception as e:
-#                 print(f"Error processing signed PDF: {str(e)}")
-
         return context
 
 class UserEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
