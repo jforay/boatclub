@@ -13,6 +13,9 @@
   margin: 0;
   width: 100%;
   background: rgba(18, 122, 98, 0.57);
+  border-radius: 26px;
+  overflow: hidden;
+  padding: 24px 28px;
 
 }
 
