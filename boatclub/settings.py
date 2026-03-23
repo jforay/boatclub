@@ -107,6 +107,26 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
 mimetypes.add_type("application/javascript", ".mjs", strict=True)
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.herokuapp.com',
+    'https://destinationboatclub.com',
+    'https://www.destinationboatclub.com',
+]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler'},
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+        },
+    },
+}
+
 if os.environ.get('AWS_ACCESS_KEY_ID'):
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
