@@ -10,7 +10,6 @@ urlpatterns = [
     
     path('fleet/',include('boats_and_locations.urls')),
     path('users/', include('users.urls')),
-    path('reservations/', include('reservations.urls')),
 
 
 

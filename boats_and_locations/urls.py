@@ -4,7 +4,6 @@ urlpatterns = [
     path('', views.fleet_view, name='boats'),
 
     path('boats/<slug:slug>/', views.boat_detail_view, name='boat_detail'),
-    path('boats/<slug:slug>/<str:date>',views.BoatAvailabilityView.as_view(), name ='boat_availabilty'),
     path("filter/", views.filter_boats, name="filter_boats"),
 
     path('locations/', views.locations_view, name='locations'),

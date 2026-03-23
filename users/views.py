@@ -7,8 +7,6 @@ from .forms import AddUserForm
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView, DeleteView, DetailView, UpdateView
-from reservations.models import Reservation
-from django.utils import timezone
 from .models import CustomUser
 def is_member(user):
     return user.group.filter(name='Member').exists()
@@ -131,11 +129,6 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         user_id = self.kwargs['pk']
         user = CustomUser.objects.get(pk = user_id)
         # Add reservations to the context
-        context['reservations'] = Reservation.objects.filter(
-            user=user, 
-            date__gte=timezone.now(), 
-            confirmed=True
-        ).order_by('date')
         context['request'] = self.request
         return context
 

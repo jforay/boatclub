@@ -2,9 +2,7 @@ from django.shortcuts import render,get_object_or_404
 from .models import Boat,Marina
 from .forms import AddBoatForm, AddMarinaForm
 from django.urls import reverse_lazy
-from django.views.generic import CreateView,UpdateView,TemplateView
-from reservations.models import Reservation
-from django.utils import timezone
+from django.views.generic import CreateView, UpdateView
 from django.http import JsonResponse
 import json
 import os
@@ -71,57 +69,6 @@ def boat_detail_view(request, slug):
 
     return render(request, "boats_and_locations/boat_detail.html", {"boat": boat, "image_urls": image_urls})
 
-class BoatAvailabilityView(TemplateView):
-    template_name = 'boats_and_locations/boat_availability.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        boat_id = self.kwargs['boat_id']
-        date = self.kwargs['date']
-        user = self.request.user
-
-        # Query for availability based on the boat and selected date
-        boat = Boat.objects.get(id=boat_id)
-        marina = boat.marina
-        morning_reserved = Reservation.objects.filter(boat=boat, date=date, time_slot="Morning",confirmed = True).exists()
-        afternoon_reserved = Reservation.objects.filter(boat=boat, date=date, time_slot="Afternoon",confirmed = True).exists()
-        all_day_reserved = Reservation.objects.filter(boat=boat, date = date, time_slot="All Day",confirmed = True).exists()
-        if (morning_reserved and afternoon_reserved) or all_day_reserved:
-            all_day_available = False
-        else:
-            all_day_available = True
-
-        cancelled_morning = Reservation.objects.filter(
-            boat=boat, date=date, time_slot="Morning", confirmed=False
-        ).exists()
-        cancelled_afternoon = Reservation.objects.filter(
-            boat=boat, date=date, time_slot="Afternoon", confirmed=False
-        ).exists()
-        cancelled_all_day = Reservation.objects.filter(
-            boat=boat, date=date, time_slot="All Day", confirmed=False
-        ).exists()
-
-        boss_morning_available = not morning_reserved or cancelled_morning
-        boss_afternoon_available = not afternoon_reserved or cancelled_afternoon
-        boss_all_day_available = (
-            not morning_reserved
-            and not afternoon_reserved
-            and not all_day_reserved
-            and cancelled_all_day
-)
-
-        # Pass the boat availability details to the context
-        context['boss_all_day_available'] = boss_all_day_available
-        context['boss_morning_available'] = boss_morning_available
-        context['boss_afternoon_available'] = boss_afternoon_available
-        context['boat'] = boat
-        context['date'] = date
-        context['marina'] = marina
-        context['morning_available'] = not morning_reserved
-        context['afternoon_available'] = not afternoon_reserved
-        context['all_day_available'] = all_day_available
-
-        return context
 
 def locations_view(request):
     COMING_SOON_STATE = "Coming Soon!"

@@ -20,7 +20,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages',
     'home',
-    'reservations',
     'boats_and_locations',
     'users',
 ]
