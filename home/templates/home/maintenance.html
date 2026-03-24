@@ -4,28 +4,28 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'home/css/maintenance.css' %}">
-<div class="container">
-    <br><br>
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/grid.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/map.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/groups.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/photos.css' %}">
 
-    
-    <div class="left-50">
-        <br>
-        <img src="{% static 'home/images/boat_powerwash.jpg' %}" alt="We do the dirty work">
+<div class="carousel-text-container">
+    <div class="photos">
+        <img src="{% static 'home/images/boat_powerwash.jpg' %}" alt="We do the dirty work" style="height: 550px; width: auto;">
+
     </div>
-    <br><br>
-<div class="right-50">
-    <h1 style="text-align: center;">Maintenance</h1>
-    <div>
 
-            <p>Instead of cleaning, repairing, storing, taxes, depreciation, trailering, routine maintenance and 
+
+    <div class="text-container" style="padding: 30px;">
+        <h1 style="font-weight: bolder;font-style: italic;">Maintenance</h1>
+            <p>
+                Instead of cleaning, repairing, storing, taxes, depreciation, trailering, routine maintenance and 
                 all the other hassles of owning a boat, we here at Destination Boat Clubs™ we take that
                 head ache away from you. Thus, allowing you to have a fun filled day on the water, hassle free and worry free. 
-                Isn't that the way boating should be?</p>
-
-        </div>
+                Isn't that the way boating should be?
+            </p>
     </div>
-
+   
 </div>
-
 
 {% endblock %}

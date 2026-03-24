@@ -41,12 +41,12 @@ img {
 }
 
 .right-50 p {
-    font-size: 1rem;          /* Adjusts font size for readability */
-    line-height: 1.6;         /* Adds spacing between lines */
-    margin: 0;                /* Removes default margins */
-    text-align: justify;      /* Aligns text for cleaner appearance */
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+    color: white;
 }
-
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 768px) {
     .container {
@@ -63,4 +63,12 @@ img {
     .right {
         padding-top: 10px;        /* Adds space between photo and text */
     }
+}
+
+.left-50 img {
+    border-radius: 16px;
+}
+
+.right-50 h1 {
+    color: white;
 }
