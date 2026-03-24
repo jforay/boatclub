@@ -6,6 +6,8 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'home/css/photos.css' %}">
 <link rel="stylesheet" href="{% static 'boats_and_locations/css/marina_flyer2.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/FAQs.css' %}">
+<script src="{% static 'home/js/FAQS.js' %}" defer></script>
 
 
 <section class="marina-hero">
@@ -20,25 +22,57 @@
   
 </section>
 
-<div class="accessibilities">
-    <h1 style="font-size: 3rem">Accessibility</h1>
-    <p>Destination Boat Clubs™ is proud to offer people with disabilities the ability to enjoy all the pleasures and excitement of boating without the problems usually associated with boating. As a DBC member, people with disabilities get to enjoy what boating truly is all about – enjoying the pleasures and excitement of boating without the headaches, hassles and high costs. And what sets us apart – you get to enjoy that at Ultimate resort locations with all the amenities included in your membership at no additional costs. Not one single boat club out there can claim that! In fact our amenities are so great, that sometimes our members use the facilities by themselves, even when they do not go boating.</p>
-    <h1>Accessibility Statement:</h1>
-    <h4>Updated: February 2023</h4>
+<br>
+<div class="text-container" style="padding: 30px; align-self: center; margin: 0 auto; width: 90%; max-width: 1200px;">
+    <h4>Destination Boat Clubs™ is proud to offer people with disabilities the ability to enjoy all the pleasures and excitement of boating without the problems usually associated with boating. As a DBC member, people with disabilities get to enjoy what boating truly is all about – enjoying the pleasures and excitement of boating without the headaches, hassles and high costs. And what sets us apart – you get to enjoy that at Ultimate resort locations with all the amenities included in your membership at no additional costs. Not one single boat club out there can claim that! In fact our amenities are so great, that sometimes our members use the facilities by themselves, even when they do not go boating.</h4>
+</div>
 
-    <p style="font-weight: bolder;">General</p>
-    <p>Destinationboatclubscarolinas.com strives to ensure that its services are accessible to people with disabilities. Destinationboatclubscarolinas.com has invested a significant amount of resources to help ensure that its website is made easier to use and more accessible for people with disabilities, with the strong belief that every person has the right to live with dignity, equality, comfort and independence.</p>
-    <p style="font-weight: bolder;">Accessibility on Destinationboatclubscarolinas.com</p>
-    <p>Destinationboatclubscarolinas.com makes available the UserWay Website Accessibility Widget that is powered by a dedicated accessibility server. The software allows Destinationboatclubscarolinas.com to improve its compliance with the Web Content Accessibility Guidelines (WCAG 2.1).</p>
-    <p style="font-weight: bolder;">Enabling the Accessibility Menu</p>
-    <p>TheDestinationboatclubscarolinas.com accessibility menu can be enabled by clicking the accessibility menu icon that appears on the corner of the page. After triggering the accessibility menu, please wait a moment for the accessibility menu to load in its entirety.</p>
-    <p style="font-weight: bolder;">Disclaimer</p>
-    <p>Destinationboatclubscarolinas.com continues its efforts to constantly improve the accessibility of its site and services in the belief that it is our collective moral obligation to allow seamless, accessible and unhindered use also for those of us with disabilities.</p>
-    <p>Despite our efforts to make all pages and content on Destinationboatclubscarolinas.com fully accessible, some content may not have yet been fully adapted to the strictest accessibility standards. This may be a result of not having found or identified the most appropriate technological solution.</p>
-    <p style="font-weight: bolder;">Here For You</p>
-    <p>If you are experiencing difficulty with any content on Destinationboatclubscarolinas.com or require assistance with any part of our site, please contact us during normal business hours as detailed below and we will be happy to assist. </p>
-    <p style="font-weight: bolder;">Contact Us</p>
-    <p>If you wish to report an accessibility issue, have any questions or need assistance, please contact Destinationboatclubscarolinas.com Customer Support <a style="color: white;" href="{% url 'contact-us' %}">HERE</a></p>
+<h1>Accessibility Statement</h1>
+<h4>Updated: February 2023</h4>
+
+<div class="faq-container">
+    <div class="faq-item">
+        <div class="faq-question">
+            General
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">Destinationboatclubscarolinas.com strives to ensure that its services are accessible to people with disabilities. Destinationboatclubscarolinas.com has invested a significant amount of resources to help ensure that its website is made easier to use and more accessible for people with disabilities, with the strong belief that every person has the right to live with dignity, equality, comfort and independence.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">
+            Accessibility on Destinationboatclubscarolinas.com
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">Destinationboatclubscarolinas.com makes available the UserWay Website Accessibility Widget that is powered by a dedicated accessibility server. The software allows Destinationboatclubscarolinas.com to improve its compliance with the Web Content Accessibility Guidelines (WCAG 2.1).</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">
+            Enabling the Accessibility Menu
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">The Destinationboatclubscarolinas.com accessibility menu can be enabled by clicking the accessibility menu icon that appears on the corner of the page. After triggering the accessibility menu, please wait a moment for the accessibility menu to load in its entirety.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">
+            Disclaimer
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">Destinationboatclubscarolinas.com continues its efforts to constantly improve the accessibility of its site and services in the belief that it is our collective moral obligation to allow seamless, accessible and unhindered use also for those of us with disabilities. Despite our efforts to make all pages and content fully accessible, some content may not have yet been fully adapted to the strictest accessibility standards. This may be a result of not having found or identified the most appropriate technological solution.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">
+            Here For You
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">If you are experiencing difficulty with any content on Destinationboatclubscarolinas.com or require assistance with any part of our site, please contact us during normal business hours as detailed below and we will be happy to assist.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">
+            Contact Us
+            <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">If you wish to report an accessibility issue, have any questions or need assistance, please contact Destinationboatclubscarolinas.com Customer Support <a style="color: white; text-decoration: underline;" href="{% url 'contact-us' %}">HERE</a>.</div>
+    </div>
 </div>
 
 {% endblock %}
