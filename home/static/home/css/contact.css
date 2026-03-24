@@ -10,12 +10,12 @@
     padding: 60px 15px;
     flex-wrap: wrap;
     gap: 40px;
-    width: calc((100% + 40px));
-    margin: -20px;
+    width: 100%;
+    margin: 0;
 }
 
 .rate-box {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(18, 122, 98, 0.77);
     padding: 30px;
     border-radius: 8px;
     max-width: 600px;
@@ -38,4 +38,19 @@
 
 .rate-box h4{
     text-align: center;
+}
+
+.submit-btn {
+    background-color: white;
+    color: #1a6bbf;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #1a6bbf;
+    color: white;
 }

@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{% static 'home/css/amenities.css' %}">
 
 <div class="reasons_to_join">
+    <br>
     <h1>Why Join Destination Boat Club?</h1>
     <h3 style="font-style:italic;">What exactly is a boat club?</h3>
     <p>Maybe you’ve heard little about them. Hopefully, after spending a little time browsing our site, you will get a better understanding about what a boat club is, how it works, how we operate and what separates us from the all the other clubs.</p>
@@ -16,110 +17,115 @@
     </p>
     <p>Typical considerations are the cost of the boat itself, maintenance, cleaning, insurance, routine repairs and storage. Our staff takes care of all that. As a DBC member, you get to enjoy what boating truly is all about – enjoying the pleasures and excitement of boating without the headaches, hassles and high costs. And what sets us apart – you get to enjoy that at Ultimate resort locations with all the amenities included in your membership at no additional costs. Not one single boat club out there can claim that! In fact our amenities are so great, that sometimes our members use the facilities by themselves, even when they do not go boating.</p>
     
-    <div style="display:flex;">
-        <a href="{% url 'contact-us' %}" class="learn-more-btn">Join Us!</a>
-    </div>
-</div>
-<div class="amenities">
-    <h1 style="padding-left: 20px;">Destination Boat Club (The Upside)</h1>
-    <div class="amenities-box">    
-        <div class="grid-item">
-            <div class="small-images-container">
-                <img src="{% static 'home/images/small_online_res.png' %}" alt="small online reservation">
-                <img src="{% static 'home/images/small_computer.png' %}" alt="small computer">
-                <img src="{% static 'home/images/small_beach_chair.png' %}" alt="small beach chair">
+    <a href="{% url 'contact-us' %}" class="learn-more-btn">Join Us!</a><br>
+    <br>
+    <div class="amenities">
+        <h1 style="text-align: center;">Upside</h1>
+        <div class="amenities-box">    
+            <div class="grid-item">
+                <div class="small-images-container">
+                    <img src="{% static 'home/images/small_online_res.png' %}" alt="small online reservation">
+                    <img src="{% static 'home/images/small_computer.png' %}" alt="small computer">
+                    <img src="{% static 'home/images/small_beach_chair.png' %}" alt="small beach chair">
+
+                </div>
+
+                <p style="font-weight: bold;">ONLINE RESERVATION SYSTEM</p>
+                <p style="font-weight: bold;">ACCESS TO ANENITIES AT MARINA RESORTS</p>
+                <p style="font-weight: bold;">EASE - "JUST GET A BOAT AND GO"</p>
+                <p style="font-weight: bold;">YEAR ROUND AVAILABILITY</p>
 
             </div>
-
-            <p style="font-weight: bold;">ONLINE RESERVATION SYSTEM</p>
-            <p style="font-weight: bold;">ACCESS TO ANENITIES AT MARINA RESORTS</p>
-            <p style="font-weight: bold;">EASE - "JUST GET A BOAT AND GO"</p>
-            <p style="font-weight: bold;">YEAR ROUND AVAILABILITY</p>
-
-        </div>
-        <div class="grid-item image-item">
-            <img src="{% static 'home/images/Dirty_Work.jpg' %}" alt="dirty work">
-        </div>
-        <div class="grid-item">
-            <div class="small-images-container">
-                <img src="{% static 'home/images/small_boat.png' %}" alt="small boat">
-                <img src="{% static 'home/images/small_swimmer.png' %}" alt="small swimmer">
-                <img src="{% static 'home/images/small_sunny_DAY.png' %}" alt="small sunny day">
-
+            <div class="grid-item image-item">
+                <img src="{% static 'home/images/Dirty_Work.jpg' %}" alt="dirty work">
             </div>
-            <p style="font-weight: bold;">MULTIPLE PREMIUM LOCATIONS</p>
-            <p style="font-weight: bold;">LOW UPFRONT INVESTMENT</p>
-            <p style="font-weight: bold;">FRIENDLY DOCK STAFF TO ASSIST</p>
-            <p style="font-weight: bold;">UNLMIITED ON-THE-WATER-TRAINING</p>
-        </div>
-        <div class="grid-item image-item">
-            <img src="{% static 'home/images/dock_work.jpg' %}" alt="dock work">
-        </div>
-        <div class="grid-item">
-            <div class="small-images-container">
-                <img src="{% static 'home/images/small_jetski.png' %}" alt="small jetski">
-                <img src="{% static 'home/images/small_sideways_boat.png' %}" alt="small sideways boat">
-                <img src="{% static 'home/images/small_head_on_boat.png' %}" alt="small head on boat">
+            <div class="grid-item">
+                <div class="small-images-container">
+                    <img src="{% static 'home/images/small_boat.png' %}" alt="small boat">
+                    <img src="{% static 'home/images/small_swimmer.png' %}" alt="small swimmer">
+                    <img src="{% static 'home/images/small_sunny_DAY.png' %}" alt="small sunny day">
 
+                </div>
+                <p style="font-weight: bold;">MULTIPLE PREMIUM LOCATIONS</p>
+                <p style="font-weight: bold;">LOW UPFRONT INVESTMENT</p>
+                <p style="font-weight: bold;">FRIENDLY DOCK STAFF TO ASSIST</p>
+                <p style="font-weight: bold;">UNLMIITED ON-THE-WATER-TRAINING</p>
             </div>
-            <p style="font-weight: bold;">VARIETY OF BOATS</p>
-            <P style="font-weight: bold;">UNLIMITED BOAT ACCESS</P>
-            <P style="font-weight: bold;">NO HEADACHES OR HASSLES</P>
-        </div>
-        <div class="grid-item image-item">
-            <img src="{% static 'home/images/johnny_and_brian.jpg' %}" alt="brian and johnny">
-        </div>
+            <div class="grid-item image-item">
+                <img src="{% static 'home/images/dock_work.jpg' %}" alt="dock work">
+            </div>
+            <div class="grid-item">
+                <div class="small-images-container">
+                    <img src="{% static 'home/images/small_jetski.png' %}" alt="small jetski">
+                    <img src="{% static 'home/images/small_sideways_boat.png' %}" alt="small sideways boat">
+                    <img src="{% static 'home/images/small_head_on_boat.png' %}" alt="small head on boat">
+
+                </div>
+                <p style="font-weight: bold;">VARIETY OF BOATS</p>
+                <P style="font-weight: bold;">UNLIMITED BOAT ACCESS</P>
+                <P style="font-weight: bold;">NO HEADACHES OR HASSLES</P>
+            </div>
+            <div class="grid-item image-item">
+                <img src="{% static 'home/images/johnny_and_brian.jpg' %}" alt="brian and johnny">
+            </div>
+            
         
-    
+        </div>
     </div>
-</div>
-<div class="amenities" style="background-color: #4978ba;">
-    <h1 style="padding-left: 20px;">Own Your Own Boat (The Downside)</h1>
-    <p>It should be fun, not drudgery.</p>
-    <div class="amenities-box">    
-        <div class="grid-item">
-            <div class="small-images-container">
-                <img src="{% static 'home/images/same_boat.png' %}" alt="same boats">
-            </div>
+    <br>
+    <h1>VS</h1>
+    <br>
+    <div class="amenities">
+        <h1 style="padding-left: 20px;">Downside</h1>
+        <p>It should be fun, not drudgery.</p>
+        <div class="amenities-box">    
+            <div class="grid-item">
+                <div class="small-images-container">
+                    <img src="{% static 'home/images/same_boat.png' %}" alt="same boats">
+                </div>
 
-            <p style="font-weight: bold;">SAME BOAT EVERY TIME</p>
-            <p style="font-weight: bold;">SLIP/STORAGE FEES</p>
-            <p style="font-weight: bold;">INSURANCE COSTS</p>
-        </div>
-        <div class="grid-item image-item">
-            <img src="{% static 'home/images/marina.jpg' %}" alt="marina">
-        </div>
-        <div class="grid-item">
-            <div class="small-images-container">
-                <img src="{% static 'home/images/boat_costs.png' %}" alt="boat costs">
+                <p style="font-weight: bold;">SAME BOAT EVERY TIME</p>
+                <p style="font-weight: bold;">SLIP/STORAGE FEES</p>
+                <p style="font-weight: bold;">INSURANCE COSTS</p>
             </div>
-            <p style="font-weight: bold;">HIGH DEPRECIATION</p>
-            <p style="font-weight: bold;">TOWING/TRAILER EXPENSES</p>
-            <p style="font-weight: bold;">CLEANING AND WAXING</p>
-        </div>
-        <div class="grid-item image-item">
-            <img src="{% static 'home/images/boat_powerwash.jpg' %}" alt="boat powerwash">
-        </div>
-        <div class="grid-item">
-            <div class="small-images-container">
-                <img src="{% static 'home/images/boat_sink.png' %}" alt="boat sinking">
-               
+            <div class="grid-item image-item">
+                <img src="{% static 'home/images/marina.jpg' %}" alt="marina">
             </div>
-            <p style="font-weight: bold;">MAINTENANCE/REPAIR COSTS</p>
-            <P style="font-weight: bold;">DOWNTIME FOR REPAIRS</P>
-            <P style="font-weight: bold;">TIME TO PREPARE BOAT</P>
+            <div class="grid-item">
+                <div class="small-images-container">
+                    <img src="{% static 'home/images/boat_costs.png' %}" alt="boat costs">
+                </div>
+                <p style="font-weight: bold;">HIGH DEPRECIATION</p>
+                <p style="font-weight: bold;">TOWING/TRAILER EXPENSES</p>
+                <p style="font-weight: bold;">CLEANING AND WAXING</p>
+            </div>
+            <div class="grid-item image-item">
+                <img src="{% static 'home/images/boat_powerwash.jpg' %}" alt="boat powerwash">
+            </div>
+            <div class="grid-item">
+                <div class="small-images-container">
+                    <img src="{% static 'home/images/boat_sink.png' %}" alt="boat sinking">
+                
+                </div>
+                <p style="font-weight: bold;">MAINTENANCE/REPAIR COSTS</p>
+                <P style="font-weight: bold;">DOWNTIME FOR REPAIRS</P>
+                <P style="font-weight: bold;">TIME TO PREPARE BOAT</P>
+            </div>
+            <div class="grid-item image-item">
+                <img src="{% static 'home/images/cleaning_boat.jpg' %}" alt="cleaning boat">
+            </div>    
         </div>
-        <div class="grid-item image-item">
-            <img src="{% static 'home/images/cleaning_boat.jpg' %}" alt="cleaning boat">
-        </div>    
     </div>
+    <br>
+    <h1>Pricing:</h1>
+    <p>Unlimited Weekday Monthly Payments as Low As: $299/month* </p>
+    <p style="font-weight: bold; font-style: italic;">Contact Us For Current Specials and Incentives</p>
+    <a href="{% url 'contact-us' %}" class="learn-more-btn">Join Us!</a>
+    <br><br>
+    <p style="font-size: 11px;">* Membership as low as is based on weekday boating at remote mountainside locations</p>
+    <br>
 </div>
 
-<h1>Pricing:</h1>
-<p>Unlimited Weekday Monthly Payments as Low As: $299/month* </p>
-<p style="font-weight: bold; font-style: italic;">Contact Us For Current Specials and Incentives</p>
-<a href="{% url 'contact-us' %}" class="learn-more-btn">Join Us!</a>
-<br><br>
-<p style="font-size: 11px;">* Membership as low as is based on weekday boating at remote mountainside locations</p>
+
 
 {% endblock %}

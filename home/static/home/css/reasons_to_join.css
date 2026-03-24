@@ -1,9 +1,14 @@
 .reasons_to_join {
     color: white;
     line-height: 1.6;
+    text-align: center;
 }
 
 .title {
     font-weight: bold;
     font-style: italic;
+}
+
+.image-item img {
+    border-radius: 5px;
 }
