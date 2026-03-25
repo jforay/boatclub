@@ -83,7 +83,12 @@ def locations_view(request):
     coming_soon = Marina.objects.filter(state=COMING_SOON_STATE)
     grouped_marinas = defaultdict(lambda: defaultdict(list))
     for marina in active_marinas:
-        grouped_marinas[marina.state][marina.lake].append(marina)
+        states = [marina.state]
+        if marina.display_states:
+            states += [s.strip() for s in marina.display_states.split(',')]
+        for state in states:
+            grouped_marinas[state][marina.lake].append(marina)
+    
     grouped_marinas = {
         state: dict(sorted(lakes.items()))
         for state, lakes in sorted(grouped_marinas.items())
