@@ -6,31 +6,45 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'home/css/photos.css' %}">
 <link rel="stylesheet" href="{% static 'home/css/amenities.css' %}">
+<link rel="stylesheet" href="{% static 'boats_and_locations/css/marina_flyer2.css' %}">
 
 <script src="{% static 'home/js/carousel.js' %}" defer></script>
-<h1 style="text-align: center; color: white;">The Ultimate Amenities</h1>
-<h3 style="text-align: center; color: white;">Like No Other...</h3>
-<p style="color: white; line-height: 1.6; font-size: 1.2rem;">At Destination Boat Clubs™ we offer you the best way to enjoy boating without the hassle of ownership. You can choose from a variety of late model boats at any of our locations in North Carolina, South Carolina, Georgia, Tennessee, and Florida. Whether you want to cruise, fish, or enjoy water-sports, we have the perfect boat for you. 
-        When you're done with your boating adventure, you can relax and have fun at our luxury resort-like marinas. You'll find restaurants, bars, pools, and more to make your day complete. Join us today and experience the ultimate boating lifestyle with Destination Boat Clubs™.</p>
 
-<div class="photos">
-    <img src="{% static 'home/images/background_marina.jpg' %}" alt="marina">
-</div>
+<div class="page">
 
-<br><br>
-<div class="carousel-text-container" style="overflow-x: hidden;">
-     <div class="text-container">
-        <h2>Resorts</h2>
-        <p>Many of our Boat Club site are located with full resort amenities.  Enjoy a dip in the pool, have a picnic, dine at a great restaurant and so much more.</p>
+    <section class="marina-hero">
+        <img src="{% static 'home/images/background_marina.jpg' %}" alt="marina">
+        <div class="marina-hero-overlay">
+            <div class="marina-hero-inner">
+                <h1>The Ultimate Amenities</h1>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <div class="carousel-text-container">
+
+        <div class="carousel-container">
+            <img src="{% static 'home/images/Kayaks3.jpg' %}" alt="Resort Marina" style="object-fit: cover; height: 500px;">
+        </div>
+
+        <div class="text-container">
+            <h2>Amenities like no other</h2>
+            <p>At Destination Boat Clubs™ we offer you the best way to enjoy boating without the hassle of ownership. You can choose from a variety of late model boats at any of our locations in North Carolina, South Carolina, Georgia, Tennessee, and Florida. Whether you want to fish, paddle board, kayak, jetski, or just cruise, we have the perfect boat for you. When you're done with your boating adventure, you can relax and have fun at our luxury resort-like marinas. You'll find restaurants, bars, pools, and more to make your day complete. Join us today and experience the ultimate boating lifestyle with Destination Boat Clubs™.</p>
+        </div>
+
     </div>
-    <div class="photos">
-        <img src="{% static 'home/images/pool_resort.jpg' %}" alt="Resort Marina" style="width: 900px; height: auto;">
 
+    <div class="carousel-text-container">
+        <div class="text-container">
+            <h2>Resorts</h2>
+            <p>Many of our Boat Club sites are located with full resort amenities. Enjoy a dip in the pool, have a picnic, dine at a great restaurant and so much more.</p>
+        </div>
+        <div class="carousel-container">
+            <img src="{% static 'home/images/pool_resort.jpg' %}" alt="Resort Marina" style="object-fit: cover; height: 500px;">
+        </div>
     </div>
-            
-    <!-- Text Section -->
-   
-</div>
 
+</div>
 
 {% endblock %}
