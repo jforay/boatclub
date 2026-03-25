@@ -21,11 +21,18 @@ def reservations_view(request):
     reservations = Marina.objects.filter(checkfront_url__isnull=False).exclude(checkfront_url__exact='None').order_by('state','lake','name')
     grouped_marinas = defaultdict(lambda: defaultdict(list))
     for marina in reservations:
-        grouped_marinas[marina.state][marina.lake].append(marina)
+        states = [marina.state]
+        if marina.display_states:
+            states += [s.strip() for s in marina.display_states.split(',')]
+        for state in states:
+            grouped_marinas[state][marina.lake].append(marina)
+
+   
     grouped_marinas = {
         state: dict(sorted(lakes.items(), key=lambda x: len(x[1]), reverse=True))
         for state, lakes in sorted(grouped_marinas.items())
     }
+    
     grouped_marinas = dict(
         sorted(
             grouped_marinas.items(),

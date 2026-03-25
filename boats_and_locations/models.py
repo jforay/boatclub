@@ -16,13 +16,9 @@ class Marina(models.Model):
     video_url = models.URLField(blank=True, null=True)
     checkfront_url = models.URLField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
-
+    display_states = models.CharField(max_length=200, blank=True, default='')
     # Lake / location write-up
     description = models.TextField(blank=True, null=True)
-
-    # Optional extra feature card (e.g. "Vol Navy" tradition)
-    extra_title = models.CharField(max_length=255, blank=True, null=True)
-    extra_description = models.TextField(blank=True, null=True)
 
     # Optional restaurant section
     restaurant_name = models.CharField(max_length=255, blank=True, null=True)
@@ -39,7 +35,7 @@ class Marina(models.Model):
         upload_to='marina_features/',
         blank=True,
         null=True
-)
+    )
 
 
     def boats_by_type(self):
