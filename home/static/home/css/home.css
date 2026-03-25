@@ -98,21 +98,27 @@
   border-radius: 999px;
   text-decoration:none;
   font-weight:700;
-  border:1px solid rgba(255,255,255,.22);
+  background-color: white;
+  color: #127a62;
+  border: 2px solid #127a62;
+  transition: all 0.3s ease;
 }
 
 .hero-btn.primary{
-  background:#7ad7f2;
-  border-color: transparent;
-  color:#fff;
+  background: white;
+  border-color: #127a62;
+  color: #127a62;
 }
 
 .hero-btn.ghost{
-  background: transparent;
-  color:#fff;
+  background: white;
+  color: #127a62;
+  border-color: #127a62;
 }
 
 .hero-btn:hover {
+    background-color: #127a62;
+    color: white;
     transform: scale(1.05); /* Slightly enlarge the button */
 }
 /* Cards pulled up into hero like Carefree */

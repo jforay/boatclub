@@ -81,21 +81,25 @@
   border-radius: 999px;
   text-decoration:none;
   font-weight: 650;
-  border: 1px solid rgba(255,255,255,.18);
-  transition: transform .18s ease, background-color .18s ease, border-color .18s ease, opacity .18s ease;
+  background-color: white;
+  color: #127a62;
+  border: 2px solid #127a62;
+  transition: transform .18s ease, background-color .18s ease, border-color .18s ease, color .18s ease;
 }
 
-.btn:hover{ transform: translateY(-1px); }
+.btn:hover{ transform: translateY(-1px); background-color: #127a62; color: white; }
 .btn:active{ transform: translateY(0); }
 
 .btn-primary{
-  background: rgba(255,255,255,.14);
-  border-color: rgba(255,255,255,.25);
-  backdrop-filter: blur(10px);
+  background: white;
+  border-color: #127a62;
+  color: #127a62;
 }
 
 .btn-ghost{
-  background: transparent;
+  background: white;
+  color: #127a62;
+  border-color: #127a62;
 }
 
 .hero-badges{

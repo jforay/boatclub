@@ -36,16 +36,18 @@
 }
 
 .submit-btn {
-    background-color: #4978ba;
-    color: white;
+    background-color: white;
+    color: #127a62;
     padding: 10px;
     font-size: 16px;
-    border: none;
+    border: 2px solid #127a62;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #4978ba;
+    background-color: #127a62;
+    color: white;
 }

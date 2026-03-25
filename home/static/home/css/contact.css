@@ -42,15 +42,16 @@
 
 .submit-btn {
     background-color: white;
-    color: #1a6bbf;
-    border: none;
+    color: #127a62;
+    border: 2px solid #127a62;
     padding: 10px 24px;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #1a6bbf;
+    background-color: #127a62;
     color: white;
 }

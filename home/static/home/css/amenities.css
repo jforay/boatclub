@@ -59,20 +59,20 @@
     width: auto;
     padding: 10px 20px; /* Padding inside the button */
     background-color: white; /* Button background color */
-    color: #0f1d32; /* Text color */
+    color: #127a62; /* Text color */
     text-decoration: none; /* Remove underline */
     font-size: 1rem; /* Font size */
     font-weight: bold; /* Make text bold */
     border-radius: 5px; /* Rounded corners */
-    border: 2px solid white; /* Border around the button */
+    border: 2px solid #127a62; /* Border around the button */
     text-align: center; /* Center the text */
     transition: all 0.3s ease; /* Smooth hover effect */
 }
 
 /* Button hover effect */
 .learn-more-btn:hover {
-    background-color: #0078A0; /* Darker blue on hover */
-    color: #ffffff; /* Ensure the text stays white */
+    background-color: #127a62; /* Green on hover */
+    color: #ffffff; /* White text on hover */
     transform: scale(1.05); /* Slightly enlarge the button */
     cursor: pointer; /* Change cursor to pointer */
 }

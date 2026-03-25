@@ -7,19 +7,21 @@
 .tab-button {
     padding: 10px 20px;
     margin: 0 5px;
-    border: none;
-    background-color: #f0f0f0;
+    border: 2px solid #127a62;
+    background-color: white;
+    color: #127a62;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .tab-button.active {
-    background-color: #007bff;
+    background-color: #127a62;
     color: white;
 }
 
 .tab-button:hover {
-    background-color: #0056b3;
+    background-color: #127a62;
     color: white;
 }
