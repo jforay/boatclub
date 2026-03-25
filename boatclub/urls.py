@@ -2,16 +2,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from boats_and_locations import views as bl_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('home.urls')),
-    
+
     path('fleet/',include('boats_and_locations.urls')),
     path('users/', include('users.urls')),
 
-
+    path('<slug:slug>/', bl_views.marina_flyer_view, name='marina_flyer_root'),
 
 ]
 

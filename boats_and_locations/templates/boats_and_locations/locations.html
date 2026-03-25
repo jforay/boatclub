@@ -29,7 +29,7 @@
         <ul>
         {% for marina in marinas %}
         <li>
-            <a href="{% url 'marina_detail' marina.slug %}">{{ marina.name }}</a><br>
+            <a href="{% url 'marina_flyer_root' marina.slug %}">{{ marina.name }}</a><br>
             <small>{{ marina.address }}</small>
         </li>
         {% endfor %}
@@ -46,7 +46,7 @@
         <ul>
         {% for marina in marinas %}
         <li>
-            <a href="{% url 'marina_detail' marina.slug %}">{{ marina.name }}</a><br>
+            <a href="{% url 'marina_flyer_root' marina.slug %}">{{ marina.name }}</a><br>
             <small>{{ marina.address }}</small>
         </li>
         {% endfor %}
@@ -65,7 +65,7 @@
         <ul>
             {% for marina in marinas %}
             <li>
-            <a href="{% url 'marina_detail' marina.slug %}">{{ marina.name }}</a><br>
+            <a href="{% url 'marina_flyer_root' marina.slug %}">{{ marina.name }}</a><br>
             <small>{{ marina.address }}</small>
             </li>
             {% endfor %}
