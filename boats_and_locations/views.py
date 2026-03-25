@@ -23,7 +23,7 @@ def reservations_view(request):
     for marina in reservations:
         grouped_marinas[marina.state][marina.lake].append(marina)
     grouped_marinas = {
-        state: dict(sorted(lakes.items()))
+        state: dict(sorted(lakes.items(), key=lambda x: len(x[1]), reverse=True))
         for state, lakes in sorted(grouped_marinas.items())
     }
     grouped_marinas = dict(
@@ -34,8 +34,8 @@ def reservations_view(request):
         )
     )
 
-    nc = grouped_marinas.pop("North Carolina", {})
-    sc = grouped_marinas.pop("South Carolina", {})
+    nc = dict(sorted(grouped_marinas.pop("North Carolina", {}).items(), key=lambda x: len(x[1]), reverse=True))
+    sc = dict(sorted(grouped_marinas.pop("South Carolina", {}).items(), key=lambda x: len(x[1]), reverse=True))
 
     return render(request, 'boats_and_locations/reservations.html', {
         'marinas': marinas,

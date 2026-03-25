@@ -1,3 +1,8 @@
+/* Global image rounding */
+img {
+    border-radius: 16px;
+}
+
 /* General Styling */
 body {
     font-family: 'Arial', sans-serif;
@@ -262,12 +267,16 @@ body.home-hero-page .site-header .mobile-nav{
   .header-phone{ justify-self: end; }
 
   .header-promo a{
-    color: #b9dcff;
+    color: white;
     font-weight: 700;
     text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease, font-size 0.2s ease;
   }
   .header-promo a:hover{
-    text-decoration: underline;
+    color: #1a90ff;
+    font-size: 1.15rem;
+    text-decoration: none;
   }
 
   .header-phone a{

@@ -26,63 +26,58 @@
    
 </div>
 
-<div class="states-grid reservations-cards">
+<div style="max-width: 1100px; margin: 40px auto; padding: 0 20px;">
 
-  <!-- LEFT: North Carolina -->
-  <div class="state-column home-card">
-    <h2>North Carolina</h2>
+  <!-- North Carolina -->
+  {% if nc %}
+  <h2 class="reservations-state-heading">North Carolina</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-bottom: 40px;">
     {% for lake, marinas in nc.items %}
-    <h4>{{ lake }}</h4>
-    <ul>
+    <div class="state-column" style="width: 280px; flex: 0 0 280px;">
+      <h4 style="color: white;">{{ lake }}</h4>
       {% for marina in marinas %}
-      <li>
-        <a href="{{ marina.checkfront_url | safe }}">{{ marina.name }}</a><br>
-        <small>{{ marina.address }}</small>
-      </li>
+      <a href="{{ marina.checkfront_url }}" target="_blank" class="book-now-btn">
+        {{ marina.name }}<br><span>BOOK NOW</span>
+      </a>
       {% endfor %}
-    </ul>
-    {% if not forloop.last %}<hr>{% endif %}
-    {% endfor %}
-  </div>
-
-  <!-- MIDDLE: South Carolina -->
-  <div class="state-column home-card">
-    <h2>South Carolina</h2>
-    {% for lake, marinas in sc.items %}
-    <h4>{{ lake }}</h4>
-    <ul>
-      {% for marina in marinas %}
-      <li>
-        <a href="{{ marina.checkfront_url | safe }}">{{ marina.name }}</a><br>
-        <small>{{ marina.address }}</small>
-      </li>
-      {% endfor %}
-    </ul>
-    {% if not forloop.last %}<hr>{% endif %}
-    {% endfor %}
-  </div>
-
-  <!-- RIGHT: everything else stacked -->
-    <div style="display: flex; flex-direction: column; gap: 30px;">
-        {% for state, lakes in grouped_marinas.items %}
-        <div class="state-column home-card">
-            <h2>{{ state }}</h2>
-            {% for lake, marinas in lakes.items %}
-            <h4>{{ lake }}</h4>
-            <ul>
-                {% for marina in marinas %}
-                <li>
-                <a href="{{ marina.checkfront_url | safe }}">{{ marina.name }}</a><br>
-                <small>{{ marina.address }}</small>
-                </li>
-                {% endfor %}
-            </ul>
-            {% if not forloop.last %}<hr>{% endif %}
-            {% endfor %}
-        </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- South Carolina -->
+  {% if sc %}
+  <h2 class="reservations-state-heading">South Carolina</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-bottom: 40px;">
+    {% for lake, marinas in sc.items %}
+    <div class="state-column" style="width: 280px; flex: 0 0 280px;">
+      <h4 style="color: white;">{{ lake }}</h4>
+      {% for marina in marinas %}
+      <a href="{{ marina.checkfront_url }}" target="_blank" class="book-now-btn">
+        {{ marina.name }}<br><span>BOOK NOW</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- All other states -->
+  {% for state, lakes in grouped_marinas.items %}
+  <h2 class="reservations-state-heading">{{ state }}</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-bottom: 40px;">
+    {% for lake, marinas in lakes.items %}
+    <div class="state-column" style="width: 280px; flex: 0 0 280px;">
+      <h4 style="color:white">{{ lake }}</h4>
+      {% for marina in marinas %}
+      <a href="{{ marina.checkfront_url }}" target="_blank" class="book-now-btn">
+        {{ marina.name }}<br><span>BOOK NOW</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
 
 </div>
-<br>
 {% endblock  %}

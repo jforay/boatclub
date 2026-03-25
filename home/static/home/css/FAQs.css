@@ -35,11 +35,14 @@
 }
 .faq-answer {
     display: none; /* Hidden by default */
-    margin-top: 10px;
-    padding-left: 10px;
+    margin-top: 5px;
+    padding: 14px 16px;
     color: white;
     font-size: 1em;
     line-height: 1.6;
+    background-color: rgba(18, 122, 98, 0.57);
+    border-radius: 5px;
+    text-align: left;
 }
 
 h1 {
