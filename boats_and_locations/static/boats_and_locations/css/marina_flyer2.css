@@ -29,8 +29,10 @@
 .marina-hero-inner{
   width: auto;
   margin: 0;
-  padding: 0;
+  padding: 10px 16px 12px;
   color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
 }
 
 .marina-hero-inner h1{
