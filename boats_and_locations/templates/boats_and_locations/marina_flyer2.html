@@ -71,39 +71,78 @@
 </div>
 {% endif %}
 
-<!-- RESTAURANT + EXTRA FEATURE side by side -->
-<div class="detail-section" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+<!-- RESTAURANT + EXTRA FEATURE -->
+{% if marina.restaurant_name and marina.feature_title %}
 
-  <!-- RESTAURANT -->
-  {% if marina.restaurant_name %}
-  <div class="detail-card">
-    <h2>{{ marina.restaurant_name }}</h2>
-    <div>
-      {% if marina.restaurant_description %}
-      <p class="restaurant-description">{{ marina.restaurant_description }}</p>
+  <!-- BOTH: two columns side by side -->
+  <div class="detail-section" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+
+    <div class="detail-card">
+      <h2>{{ marina.restaurant_name }}</h2>
+      <div>
+        {% if marina.restaurant_description %}
+        <p class="restaurant-description">{{ marina.restaurant_description }}</p>
+        {% endif %}
+      </div>
+      {% if marina.restaurant_image %}
+      <div>
+        <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}" style="object-fit: contain;">
+      </div>
       {% endif %}
     </div>
-    {% if marina.restaurant_image %}
-    <div>
-      <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}" style="object-fit: contain;">
+
+    <div class="detail-card">
+      <h2>{{ marina.feature_title }}</h2>
+      <p class="about-description">{{ marina.feature_description }}</p>
+      {% if marina.feature_image %}
+      <br>
+      <img src="{{ marina.feature_image.url }}" alt="{{ marina.feature_title }}" style="width: 100%; border-radius: 12px; object-fit: contain; max-height: 250px;">
+      {% endif %}
     </div>
-    {% endif %}
-  </div>
-  {% endif %}
 
-  <!-- EXTRA FEATURE -->
-  {% if marina.feature_title %}
-  <div class="detail-card">
-    <h2>{{ marina.feature_title }}</h2>
-    <p class="about-description">{{ marina.feature_description }}</p>
-    {% if marina.feature_image %}
-    <br>
-    <img src="{{ marina.feature_image.url }}" alt="{{ marina.feature_title }}" style="width: 100%; border-radius: 12px; object-fit: contain; max-height: 250px;">
-    {% endif %}
   </div>
-  {% endif %}
 
-</div>
+{% elif marina.restaurant_name %}
+
+  <!-- Only restaurant: wide layout, photo left, text right -->
+  <div class="detail-section">
+    <div class="detail-card">
+      <h2>{{ marina.restaurant_name }}</h2>
+      <div class="restaurant-grid">
+        {% if marina.restaurant_image %}
+        <div>
+          <img class="restaurant-img" src="{{ marina.restaurant_image.url }}" alt="{{ marina.restaurant_name }}" style="object-fit: contain;">
+        </div>
+        {% endif %}
+        <div>
+          {% if marina.restaurant_description %}
+          <p class="restaurant-description">{{ marina.restaurant_description }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% elif marina.feature_title %}
+
+  <!-- Only feature: wide layout, photo left, text right -->
+  <div class="detail-section">
+    <div class="detail-card">
+      <h2>{{ marina.feature_title }}</h2>
+      <div class="restaurant-grid">
+        {% if marina.feature_image %}
+        <div>
+          <img src="{{ marina.feature_image.url }}" alt="{{ marina.feature_title }}" style="width: 100%; border-radius: 12px; object-fit: contain; max-height: 300px;">
+        </div>
+        {% endif %}
+        <div>
+          <p class="about-description">{{ marina.feature_description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
 
 <!-- CTA -->
 <div class="detail-section" style="max-width: 520px; margin: 0 auto 40px;">
