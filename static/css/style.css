@@ -266,16 +266,18 @@ body.home-hero-page .site-header .mobile-nav{
   .header-promo{ justify-self: start; }
   .header-phone{ justify-self: end; }
 
+  @keyframes promoBlink {
+    0%, 49% { color: white; }
+    50%, 100% { color: #1a90ff; }
+  }
+
   .header-promo a{
-    color: white;
     font-weight: 700;
     text-decoration: none;
     font-size: 1rem;
-    transition: color 0.2s ease, font-size 0.2s ease;
+    animation: promoBlink 1s step-start infinite;
   }
   .header-promo a:hover{
-    color: #1a90ff;
-    font-size: 1.15rem;
     text-decoration: none;
   }
 
