@@ -53,10 +53,14 @@ def reservations_view(request):
     })
 
 def fleet_view(request):
-    boats = Boat.objects.order_by('?')
+    from itertools import chain
+    top = Boat.objects.filter(position='top').order_by('name')
+    middle = Boat.objects.filter(position='middle').order_by('name')
+    bottom = Boat.objects.filter(position='bottom').order_by('name')
+    boats = list(chain(top, middle, bottom))
     boat_types = Boat.objects.all().values_list('boat_type', flat=True).distinct()
     marinas = Marina.objects.filter(boats__isnull=False).distinct().order_by("name")
-
+    
     return render(request, 'boats_and_locations/fleet.html', {'boats': boats, 'boat_types':boat_types,'marinas':marinas})
 
 def boat_detail_view(request, slug):

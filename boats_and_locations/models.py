@@ -2,6 +2,11 @@ from django.db import models
 from django.db.models import Count
 from django.utils.text import slugify
 
+POSITION_CHOICES = [
+    ('top', 'Top'),
+    ('middle', 'Middle'),
+    ('bottom', 'Bottom'),
+]
 
 class Marina(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
@@ -83,7 +88,7 @@ class Boat(models.Model):
         blank=True,
     )
     slug = models.SlugField(unique=True, blank=True, null=True)
-
+    position = models.CharField(max_length=10, choices=POSITION_CHOICES, default='middle')
     def save(self, *args, **kwargs):
         if not self.slug:
             base = slugify(self.name)
