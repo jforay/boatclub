@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function (){
     const boatTypeDropdown = document.getElementById('boat_type');
     const marinaDropdown = document.getElementById('marina');
 
-    if (!boatTypeDropdown || !marinaDropdown) return;
+    if (!marinaDropdown) return;
 
     function buildFetchUrl() {
-        const boatType = boatTypeDropdown.value;
+        const boatType = boatTypeDropdown ? boatTypeDropdown.value : '';
         const marinaId = marinaDropdown.value;
 
         const params = new URLSearchParams();
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function (){
                 : '';
 
             const item = `
-                <a href="/boats/${boat.id}/" class="grid-item">
+                <a href="/fleet/boats/${boat.slug}/" class="grid-item">
                     <div>
                         <h3>${boat.name}</h3>
                         ${imageTag}
@@ -48,6 +48,6 @@ document.addEventListener('DOMContentLoaded', function (){
             });
     }
 
-    boatTypeDropdown.addEventListener('change', fetchAndRender);
+    if (boatTypeDropdown) boatTypeDropdown.addEventListener('change', fetchAndRender);
     marinaDropdown.addEventListener('change', fetchAndRender);
 });

@@ -174,6 +174,7 @@ def filter_boats(request):
     for boat in boats:
         boats_data.append({
             'id': boat.id,
+            'slug': boat.slug,
             'name': boat.name,
             'boat_type': boat.boat_type,
             'image': request.build_absolute_uri(boat.image.url) if boat.image else None,
