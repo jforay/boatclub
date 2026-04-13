@@ -14,7 +14,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'destinationboatclub.com',
-    'www.destinationboatclub.com'
+    'www.destinationboatclub.com',
     'destinationboatclubscarolinas.com',
     'www.destinationboatclubscarolinas.com',
 ]
