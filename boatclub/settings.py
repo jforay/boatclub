@@ -9,7 +9,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-z$qd=(8%%)!l8$#6ka^*_
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1', 'destinationboatclub.com', 'www.destinationboatclub.com']
+ALLOWED_HOSTS = [
+    '.herokuapp.com',
+    'localhost',
+    '127.0.0.1',
+    'destinationboatclub.com',
+    'www.destinationboatclub.com'
+    'destinationboatclubscarolinas.com',
+    'www.destinationboatclubscarolinas.com',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
