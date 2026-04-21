@@ -24,11 +24,11 @@ class AddMarinaForm(forms.ModelForm):
     name = forms.CharField(required=True)
     address = forms.CharField(required=True)
     lake = forms.CharField(required=True)
-    image = forms.ImageField(required=True)
+    hero_image = forms.ImageField(required=True)
     state = forms.CharField(required=True)
     class Meta:
         model = Marina
-        fields = ['name','address','state','lake','image']
+        fields = ['name','address','state','lake','hero_image']
         widgets = {
             'description': forms.Textarea(attrs={'rows':4, 'cols':40})
         }
@@ -37,8 +37,8 @@ class EditMarinaForm(forms.ModelForm):
     name = forms.CharField(required=True)
     address = forms.CharField(required=True)
     lake = forms.CharField(required=True)
-    image = forms.ImageField(required=True)
+    hero_image = forms.ImageField(required=True)
     state = forms.CharField(required=True)
     class Meta:
         model = Marina
-        fields = ['name','address','state','lake','image']
+        fields = ['name','address','state','lake','hero_image']

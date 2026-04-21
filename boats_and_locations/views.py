@@ -148,7 +148,7 @@ class AddMarinaView(CreateView):
     
 class MarinaEditView(UpdateView):
     model = Marina
-    fields = ['name', 'address','state', 'lake','image']
+    fields = ['name', 'address','state', 'lake','hero_image']
     template_name = 'boats_and_locations/edit_marina.html'
     success_url = reverse_lazy('locations')
         

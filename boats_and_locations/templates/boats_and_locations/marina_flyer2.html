@@ -18,8 +18,8 @@
 <!-- HERO / CAROUSEL -->
 <section class="marina-hero">
 
-  {% if marina.image %}
-    <img src="{{ marina.image.url }}" alt="{{ marina.name }}">
+  {% if marina.hero_image %}
+    <img src="{{ marina.hero_image.url }}" alt="{{ marina.name }}">
   {% else %}
     <img src="{% static 'images/dbc-logo-small.png' %}" alt="Destination Boat Clubs">
   {% endif %}

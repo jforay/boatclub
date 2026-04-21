@@ -12,8 +12,13 @@ class Marina(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
     lake = models.TextField(default='Unknown', null=True, blank=True)
-    image = models.ImageField(
+    hero_image = models.ImageField(
         upload_to='marinas/',
+        blank=True,
+        null=True
+    )
+    carousel_image = models.ImageField(
+        upload_to='marina_carousel/',
         blank=True,
         null=True
     )
