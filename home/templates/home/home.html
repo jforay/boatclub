@@ -222,6 +222,11 @@
                 {% for lake in unique_lakes %}
                 <div class="rotater-item" style="justify-content: center;align-items: center;text-align: center;">
                     <h3>{{lake.lake}}</h3>
+                    {% if lake.carousel_image %}
+                        <img src="{{ lake.carousel_image.url }}" alt="{{ lake.lake }}" style="object-fit:contain; height: auto; width: 100%;">
+                    {% elif lake.hero_image %}
+                        <img src="{{ lake.hero_image.url }}" alt="{{ lake.lake }}" style="object-fit:contain; height: auto; width: 100%;">
+                    {% endif %}
 
                     <img src="{{ lake.image.url }}" alt="{{ lake.lake }}" style="object-fit:contain; height: auto; width: 100%;">
                     
