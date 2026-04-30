@@ -19,7 +19,19 @@
 
         <form method="post">
             {% csrf_token %}
+            {% if form.errors %}
+                <div class="form-errors">
+                    {{ form.errors }}
+                </div>
+            {% endif %}    
             
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="success-message">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <div class="form-group text-white">
                 {{ form.desired_location.label_tag }}
                 {{ form.desired_location }}

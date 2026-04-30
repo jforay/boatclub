@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import redirect, render,get_object_or_404
 from boats_and_locations.models import Boat,Marina
 from .forms import ContactUs, JoinUs
 from django.http import JsonResponse
@@ -43,9 +43,21 @@ def reasons_to_join(request):
 def accessibilities(request):
     return render(request, 'home/accessibilities.html')
 
+from django.contrib import messages
+
 def contact_us(request):
-    form = ContactUs()
-    return render(request,'home/contact-us.html',{'form':form})
+    if request.method == 'POST':
+        form = ContactUs(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thanks! We’ll get back to you soon.")
+            return redirect('contact-us')
+
+    else:
+        form = ContactUs()
+
+    return render(request, 'home/contact-us.html', {'form': form})
 
 def training(request):
     return render(request,"home/training.html")

@@ -26,6 +26,27 @@ main {
   background-repeat: repeat;
 }
 
+.message-container {
+  position: fixed;
+  top: 90px; /* adjust based on your header height */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 90%;
+  max-width: 800px;
+}
+
+.message {
+  background: white;
+  color: #0f1d32;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  font-weight: 600;
+  text-align: center;
+  border-left: 6px solid #2bb673; /* green accent */
+}
+
 /* =========================================================
    HEADER (CLEAN)
    ========================================================= */
