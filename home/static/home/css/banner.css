@@ -1,0 +1,9 @@
+.banner-text {
+    position: absolute;
+    bottom: 45px;
+    width: 100%;
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+    color: white;
+}
