@@ -61,3 +61,19 @@ def contact_us(request):
 
 def training(request):
     return render(request,"home/training.html")
+
+from django.shortcuts import redirect
+
+def qr_redirect(request, location):
+    redirects = {
+        "nashville": "https://destinationboatclub.com/sun-life-marina-at-turtle-bay/",
+        "charlotte": "https://destinationboatclub.com/charlotte-location/",
+        "tampa": "https://destinationboatclub.com/tampa-location/",
+    }
+
+    url = redirects.get(location)
+
+    if url:
+        return redirect(url)
+    else:
+        return redirect("/")  # fallback

@@ -14,5 +14,6 @@ urlpatterns = [
     path('accessibilities/',views.accessibilities, name='accessibilities'),
     path('contact-us/',views.contact_us,name='contact-us'),
     path('training/',views.training,name="training"),
+    path('qr/<slug:location>/', views.qr_redirect, name='qr_redirect')
 ]
 
