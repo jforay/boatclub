@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'home',
     'boats_and_locations',
     'users',
+    'honeypot',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
+
+HONEYPOT_FIELD_NAME = 'phone_number_2'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 

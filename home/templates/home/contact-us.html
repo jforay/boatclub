@@ -5,7 +5,7 @@
 {% block title %}Contact Us{% endblock %}
 
 {% block content %}
-
+{% load honeypot %}
 <div class="contact-bg">
     <br>        
     <div class="rate-box">
@@ -61,7 +61,7 @@
                 {{ form.question.label_tag }}
                 {{ form.question }}
             </div>
-
+            {% render_honeypot_field %}
             <button type="submit" class="submit-btn">Submit</button>
         </form>
     </div>

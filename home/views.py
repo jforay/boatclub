@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render,get_object_or_404
 from boats_and_locations.models import Boat,Marina
 from .forms import ContactUs, JoinUs
 from django.http import JsonResponse
+from honeypot.decorators import check_honeypot
+
 # Create your views here.
 def home(request):
     boats = Boat.objects.order_by('?')[:12]
@@ -45,6 +47,7 @@ def accessibilities(request):
 
 from django.contrib import messages
 
+@check_honeypot
 def contact_us(request):
     if request.method == 'POST':
         form = ContactUs(request.POST)
