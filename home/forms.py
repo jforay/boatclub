@@ -1,6 +1,7 @@
 from django import forms
 from .models import Contact,Join
 from boats_and_locations.models import Marina
+import re
 
 class ContactUs(forms.ModelForm):
     desired_location = forms.ModelChoiceField(
@@ -17,6 +18,13 @@ class ContactUs(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ['desired_location','email','first_name','last_name','phone_number','question']
+    
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get('phone_number')
+        cleaned = re.sub(r'\D', '', phone)
+        if len(cleaned) < 10:
+            raise forms.ValidationError("Please enter a valid phone number.")
+        return phone
 
 
 class JoinUs(forms.ModelForm):

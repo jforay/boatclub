@@ -3,6 +3,8 @@ from boats_and_locations.models import Boat,Marina
 from .forms import ContactUs, JoinUs
 from django.http import JsonResponse
 from honeypot.decorators import check_honeypot
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 def home(request):
@@ -53,7 +55,20 @@ def contact_us(request):
         form = ContactUs(request.POST)
 
         if form.is_valid():
-            form.save()
+            contact = form.save()
+            send_mail(
+                subject=f"New Lead: {contact.first_name} {contact.last_name} - {contact.desired_location}",
+                message=(
+                    f"Name: {contact.first_name} {contact.last_name}\n"
+                    f"Email: {contact.email}\n"
+                    f"Phone: {contact.phone_number}\n"
+                    f"Desired Location: {contact.desired_location}\n\n"
+                    f"Message:\n{contact.question}"
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=['destinationboatclubsnc@gmail.com'],
+                fail_silently=False,
+            )
             messages.success(request, "Thanks! We’ll get back to you soon.")
             return redirect('contact-us')
 
