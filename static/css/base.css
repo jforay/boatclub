@@ -65,3 +65,14 @@ footer {
 body.home-hero-page .site-main{
   padding-top: 0;
 }
+
+* {
+    animation: none !important;
+    transition: none !important;
+}
+
+.parallax-section,
+.hero,
+.home-hero {
+    background-attachment: scroll !important;
+}

@@ -295,3 +295,19 @@
     }
 
 }
+
+*,
+*::before,
+*::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+.parallax-section,
+.hero,
+.home-hero,
+.home-hero-section,
+[class*="parallax"] {
+    background-attachment: scroll !important;
+}
