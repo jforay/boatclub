@@ -157,14 +157,14 @@
 }
 
 .scroll-photo {
-  opacity: 0;
-  transform: translateX(-100px); /* shift left */
-  transition: all 0.8s ease-out; /* smooth animation */
+  opacity: 1;
+  transform: none; /* shift left */
+  transition: none /* smooth animation */
 }
 
 .scroll-photo.in-view {
   opacity: 1;
-  transform: translateX(0); /* back to normal */
+  transform: none; /* back to normal */
 }
 
 

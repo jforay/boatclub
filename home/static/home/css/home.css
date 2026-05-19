@@ -175,6 +175,9 @@
     padding: 44px 36px;
     min-height: 260px;
 
+    position: relative;
+    overflow: hidden;
+    
     box-shadow:
         0 30px 80px rgba(0,0,0,.25);
 
@@ -183,7 +186,7 @@
     align-items: center;
     text-align: center;
 
-    transition: transform .3s ease, box-shadow .3s ease;
+    transition: none;
 }
 
 
@@ -243,7 +246,7 @@
 }
 
 /* --- Scroll reveal animation --- */
-.reveal-up{
+/* .reveal-up{
     opacity: 0;
     transform: translateY(18px);
     transition: opacity .6s ease, transform .6s ease;
@@ -255,11 +258,23 @@
     transform: translateY(0);
 }
 
-/* Stagger */
+/* Stagger 
 .home-cards-inner .home-card.reveal-up{
     transition-delay: var(--reveal-delay, 0ms);
 }
+ */
 
+.reveal-up,
+.reveal-up.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+}
+
+.home-cards-inner .home-card.reveal-up {
+    transition-delay: 0ms;
+}
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce){
     .reveal-up{
@@ -294,20 +309,4 @@
         padding: 0 20px 110px;
     }
 
-}
-
-*,
-*::before,
-*::after {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-}
-
-.parallax-section,
-.hero,
-.home-hero,
-.home-hero-section,
-[class*="parallax"] {
-    background-attachment: scroll !important;
 }
