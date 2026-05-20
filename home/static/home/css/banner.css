@@ -3,7 +3,47 @@
     bottom: 45px;
     width: 100%;
     text-align: center;
-    font-size: 46px;
+    font-size: 56px;
     font-weight: bold;
-    color: white;
+    color: yellow;
+}
+
+/* Hero overlay overrides for marketing banner pages */
+.home-hero-overlay {
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 5% 6% 0 0;
+}
+
+.home-hero-inner {
+    padding-left: 0;
+    text-align: left;
+    width: min(900px, 55%);
+    margin: 0;
+}
+
+.home-hero-inner h1 {
+    font-size: clamp(3rem, 5.5vw, 5rem);
+}
+
+.home-hero-inner h1:nth-child(2) {
+    text-align: center;
+}
+
+.home-hero-inner p {
+    font-size: 1.35rem;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.home-hero-actions {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-btn {
+    font-size: 1.2rem;
+    padding: 0.85rem 1.8rem;
 }
