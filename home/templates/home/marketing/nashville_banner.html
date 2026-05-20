@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=1920">
         <title>{% block title %}Destination Boat Clubs{% endblock %}</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -76,5 +76,19 @@
                 SPECIAL NEW LOCATION MEMBERSHIP PRICING
             </div>
         </div>
+        <script>
+            (function () {
+                var DESIGN_W = 1920, DESIGN_H = 1080;
+                function scale() {
+                    var s = Math.min(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H);
+                    document.body.style.transform = 'scale(' + s + ')';
+                    document.body.style.transformOrigin = 'top left';
+                    document.body.style.width = DESIGN_W + 'px';
+                    document.body.style.height = DESIGN_H + 'px';
+                }
+                scale();
+                window.addEventListener('resize', scale);
+            })();
+        </script>
     </body>
 </html>

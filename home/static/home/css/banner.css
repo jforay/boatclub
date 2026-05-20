@@ -1,3 +1,33 @@
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#siteHeader {
+    flex-shrink: 0;
+}
+
+.banner {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+.home-hero {
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+.banner .home-hero-img {
+    border-radius: 0;
+}
+
 .banner-text {
     position: absolute;
     bottom: 45px;
