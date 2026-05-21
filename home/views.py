@@ -98,3 +98,6 @@ from django.shortcuts import render
 
 def nashville_banner(request):
     return render(request, "home/marketing/nashville_banner.html")
+
+def inland_sea_banner(request):
+    return render(request, "home/marketing/inland_sea_banner.html")

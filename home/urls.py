@@ -16,5 +16,7 @@ urlpatterns = [
     path('training/',views.training,name="training"),
     path('qr/<slug:location>/', views.qr_redirect, name='qr_redirect'),
     path('nashville-banner/', views.nashville_banner, name='nashville_banner'),
+    path('inland-sea-banner/', views.inland_sea_banner, name='inland_sea_banner'),
+
 ]
 
