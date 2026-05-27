@@ -41,31 +41,27 @@
 <div class="detail-section">
   <div class="detail-card">
     <h2>Description</h2>
-    <div class="restaurant-grid">
+    <div class="desc-float-wrap">
 
-            <!-- LEFT: location details -->
-
-      <!-- RIGHT: description -->
-      <div>
-        {% if marina.description %}
-        <p class="about-description">{{ marina.description }}</p>
-        {% else %}
-        <p class="about-description">More information about this location coming soon.</p>
-        {% endif %}
+      <!-- Carousel floated to top-right; text wraps beside it then flows full-width beneath -->
+      <div class="rotater-container rotater-float">
+        <div class="rotater">
+            {% for photo in marina.photos.all %}
+            <div class="rotater-item" style="justify-content: center; align-items: center; text-align: center;">
+                <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:marina.name }}" style="object-fit:fill; height: auto; width: 100%;">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="rotater-btn prev">&lt;</button>
+        <button class="rotater-btn next">&gt;</button>
       </div>
 
+      {% if marina.description %}
+      <p class="about-description">{{ marina.description }}</p>
+      {% else %}
+      <p class="about-description">More information about this location coming soon.</p>
+      {% endif %}
 
-        <div class="rotater-container">
-          <div class="rotater">
-              {% for photo in marina.photos.all %}
-              <div class="rotater-item" style="justify-content: center; align-items: center; text-align: center;">
-                  <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:marina.name }}" style="object-fit:fill; height: auto; width: 100%;">
-              </div>
-              {% endfor %}
-          </div>
-          <button class="rotater-btn prev">&lt;</button>
-          <button class="rotater-btn next">&gt;</button>
-      </div>
     </div>
   </div>
 </div>
