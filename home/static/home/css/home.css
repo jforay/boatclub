@@ -134,11 +134,12 @@
     color: white;
     text-align: center;
     margin: 0 auto 28px;
-    font-size: 3rem;
+    font-size: clamp(1.6rem, 5vw, 3rem);  /* was hard 3rem — scales down on mobile */
     line-height: 1.4;
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-style: italic;
+    padding: 0 12px;
 }
 
 /* slightly softer background behind the cards */
@@ -304,9 +305,44 @@
     .home-hero-overlay{
       align-items: flex-end;
     }
-    .home-hero-inner { 
+    .home-hero-inner {
         margin: 0;
         padding: 0 20px 110px;
     }
+}
 
+/* ── Responsive photo helpers (used in home.html) ────────────
+   Uses .photos img.class-name selectors to beat the
+   ".photos img { height: 100% }" rule in photos.css
+   ─────────────────────────────────────────────────────────── */
+
+/* Full-width banner photo (e.g. "dirty work") — desktop: 550px */
+.photos img.section-photo-tall {
+    width: 100%;
+    object-fit: cover;
+    height: 550px;         /* matches the original inline style */
+    border-radius: 16px;
+}
+
+/* Side-by-side carousel photos (woman on boat, equipment) — desktop: 500px / 60vw */
+.photos img.carousel-side-photo {
+    object-fit: cover;
+    height: 500px;         /* matches the original inline style */
+    max-width: 700px;
+    width: 60vw;
+    border-radius: 16px;
+}
+
+/* ── Mobile overrides — shrink these to a sensible height ── */
+@media (max-width: 768px) {
+    .photos img.section-photo-tall {
+        height: clamp(220px, 55vw, 340px);
+        width: 100%;
+    }
+
+    .photos img.carousel-side-photo {
+        height: clamp(200px, 55vw, 300px);
+        width: 100%;
+        max-width: 100%;
+    }
 }

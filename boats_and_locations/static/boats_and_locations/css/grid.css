@@ -6,8 +6,18 @@
     justify-content: center;
     align-content: start;
     margin: auto;
-    max-width: 70%;
+    max-width: min(70%, 1400px); /* was 70% — too narrow on phones */
+    width: calc(100% - 32px);    /* expands to nearly full-width on mobile */
     padding: 20px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    .grid-container {
+        max-width: 95%;
+        gap: 16px;
+        padding: 12px;
+    }
 }
 
 .grid-item {

@@ -100,28 +100,55 @@
     right: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .carousel-text-container {
-        flex-direction: column; /* Stack carousel and text vertically */
-        height: auto; /* Adjust height for smaller screens */
-    }
-
-    .carousel-container,
-    .text-container {
-        max-width: 100%; /* Take full width on smaller screens */
-        flex: none; /* Remove flex shrinking */
-        margin-bottom: 20px; /* Add space between sections */
-    }
-}
-
+/* ── Text box (appears alongside images throughout the site) ──
+   Base styles MUST come before the media query below,
+   otherwise max-width:50% would override max-width:100% on mobile. */
 .text-container {
-    flex: 1;
-    max-width: 50%;
-    padding: 20px;
+    flex: 1.2;                  /* slightly wider than the image column */
+    max-width: 55%;             /* was 50% — a bit more room for text */
+    min-width: 280px;
+    padding: 36px 32px;
+
     background: rgba(18, 122, 98, 0.57);
+    border-radius: 26px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    position: relative;
+    overflow: hidden;
+
     color: white;
     text-align: center;
+}
+
+/* Sheen overlay */
+.text-container::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    pointer-events: none;
+    border-radius: 26px;
+    background:
+        radial-gradient(700px 240px at 20% 0%, rgba(255,255,255,.16), rgba(255,255,255,0) 60%),
+        radial-gradient(700px 240px at 90% 110%, rgba(73,120,186,.22), rgba(73,120,186,0) 55%);
+    opacity: .95;
+}
+
+/* Top accent line */
+.text-container::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 22px;
+    width: 56px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+    opacity: .85;
+}
+
+/* Keep actual content above pseudo-elements */
+.text-container > * {
+    position: relative;
+    z-index: 1;
 }
 
 .text-container h2{
@@ -130,9 +157,43 @@
 }
 
 .text-container p {
-    font-size: 1.2rem; /* Paragraph size */
+    font-size: 1.2rem;
     margin-bottom: 20px;
-    line-height: 1.5; /* Improve readability */
+    line-height: 1.5;
+}
+
+/* ── Responsive: stack on mobile ──────────────────────────────
+   This block is AFTER .text-container on purpose — media query
+   rules win over plain rules only if they come later in the file. */
+@media (max-width: 768px) {
+    .carousel-text-container {
+        flex-direction: column;
+        height: auto;
+        gap: 16px;
+    }
+
+    .carousel-container,
+    .text-container {
+        max-width: 100%;    /* full-width when stacked */
+        min-width: 0;
+        flex: none;
+        width: 100%;
+        margin-bottom: 0;   /* gap handles spacing now */
+    }
+
+    /* Always show text ABOVE the photo on mobile, regardless of
+       which order they appear in the HTML (fixes back-to-back
+       photos on the Membership Perks page and anywhere else the
+       desktop layout reverses the two columns). */
+    .carousel-text-container .text-container {
+        order: 1;
+    }
+    .carousel-text-container .carousel-container,
+    .carousel-text-container .photos,
+    .carousel-text-container .rotater-container,
+    .carousel-text-container .scroll-photo {
+        order: 2;
+    }
 }
 
 .h1 {
@@ -193,7 +254,8 @@
 }
 
 .rotate-photo img {
-    width: 400px; /* adjust as needed */
+    width: min(400px, 100%);    /* was fixed 400px — shrinks on narrow screens */
+    max-width: 400px;
     animation: spin 20s linear infinite;
     height: auto;
 }
@@ -201,4 +263,28 @@
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
- }
+}
+
+/* ── Mobile fixes ────────────────────────────────────────── */
+@media (max-width: 768px) {
+    /* iOS Safari doesn't support background-attachment:fixed —
+       fall back to scroll so the background doesn't jump */
+    .parallax-section {
+        background-attachment: scroll;
+        flex-direction: column;
+        padding: 30px 16px;
+        min-height: 0;
+    }
+
+    .parallax-section .overlay {
+        padding: 24px 20px;
+        max-width: 100%;
+    }
+
+    /* Spinning emblem: hide on very small screens to avoid overflow */
+    .rotate-photo {
+        display: none;
+    }
+    /* Image height overrides for specific home page photos are
+       handled in home.css (.photos img.section-photo-tall etc.) */
+}

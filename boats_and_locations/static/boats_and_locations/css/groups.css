@@ -2,10 +2,28 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  max-width: 75%;
+  max-width: min(75%, 1400px);  /* was 75% — keeps desktop look, adds a cap */
+  width: calc(100% - 32px);     /* full-width on small screens */
   margin: auto;
   color: white;
   align-items: start;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 900px) {
+  .states-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 95%;
+  }
+}
+
+/* Phone: single column, full width */
+@media (max-width: 580px) {
+  .states-grid {
+    grid-template-columns: 1fr;
+    max-width: 95%;
+    gap: 20px;
+  }
 }
 
 .state-column{
