@@ -47,6 +47,11 @@ class Marina(models.Model):
         null=True
     )
 
+    # Location owner contact info (shown in the per-location footer)
+    owner_name  = models.CharField(max_length=100, blank=True, null=True)
+    owner_phone = models.CharField(max_length=20,  blank=True, null=True)
+    owner_email = models.EmailField(blank=True, null=True)
+
 
     def boats_by_type(self):
         """Returns [{'boat_type': 'Pontoon', 'count': 3}, ...] for this marina."""

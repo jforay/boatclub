@@ -155,6 +155,46 @@
 </div>
 {% endblock %}
 
+{% block footer %}
+<footer style="background: rgba(18, 122, 98, 0.57); color: #FFFFFF; padding: 20px 0; text-align: center;">
+  <div>
+    <div class="footer-info">
+
+      <!-- Always-visible company line -->
+      <p>The Ultimate Boating Club: <a href="tel:+12397450110" style="color:#fff; text-decoration:underline;">(239) 745-0110</a></p>
+
+      <!-- Per-location owner info — only shown when filled in via admin -->
+      {% if marina.owner_name or marina.owner_phone or marina.owner_email %}
+        <p style="margin-top: 8px; font-weight: 700;">{{ marina.name }} Owner</p>
+        {% if marina.owner_name %}
+          <p style="margin: 2px 0;">{{ marina.owner_name }}</p>
+        {% endif %}
+        {% if marina.owner_phone %}
+          <p style="margin: 2px 0;">
+            <a href="tel:{{ marina.owner_phone }}" style="color:#fff; text-decoration:underline;">{{ marina.owner_phone }}</a>
+          </p>
+        {% endif %}
+        {% if marina.owner_email %}
+          <p style="margin: 2px 0;">
+            <a href="mailto:{{ marina.owner_email }}" style="color:#fff; text-decoration:underline;">{{ marina.owner_email }}</a>
+          </p>
+        {% endif %}
+      {% endif %}
+
+      <p style="margin-top: 8px;">A Part of Destination Boat Club™</p>
+    </div>
+
+    <div class="social-media" style="margin-top: 10px;">
+      <a href="https://www.facebook.com/destinationboatclubscarolinas"><img src="{% static 'images/facebook-icon.jpg' %}" alt="Facebook" style="width: 20px; margin: 0 10px;"></a>
+      <a href="https://x.com/DBCCfamily"><img src="{% static 'images/twitter-icon.jpg' %}" alt="Twitter" style="width: 20px; margin: 0 10px;"></a>
+      <a href="https://www.instagram.com/dbccfamily/"><img src="{% static 'images/instagram-icon.png' %}" alt="Instagram" style="width: 20px; margin: 0 10px;"></a>
+      <a href="https://www.linkedin.com/company/destination-boat-clubs-carolinas/"><img src="{% static 'images/linkedin-icon.png' %}" alt="Linkedin" style="width: 20px; margin: 0 10px;"></a>
+      <a href="https://www.tiktok.com/@destinationfamily"><img src="{% static 'images/tiktok-icon.png' %}" alt="TikTok" style="width: 20px; margin: 0 10px;"></a>
+    </div>
+  </div>
+</footer>
+{% endblock footer %}
+
 {% block extra_js %}
 <script src="{% static 'home/js/carousel.js' %}" defer></script>
 <script src="{% static 'home/js/photo.js' %}" defer></script>
