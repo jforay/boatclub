@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - Destination Boat Clubs{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'home/css/FAQs.css' %}">
+<style>
+    .privacy-section {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+    .privacy-heading {
+        font-weight: bold;
+        padding: 14px 16px;
+        background-color: rgba(18, 122, 98, 0.57);
+        border-radius: 5px;
+        color: white;
+        font-size: 1.1rem;
+        text-align: left;
+    }
+    .privacy-body {
+        margin-top: 5px;
+        padding: 14px 16px;
+        color: white;
+        font-size: 1em;
+        line-height: 1.6;
+        background-color: rgba(18, 122, 98, 0.57);
+        border-radius: 5px;
+        text-align: left;
+    }
+    .privacy-body a {
+        color: #a8e6cf;
+    }
+</style>
+
+<h1 style="color: white;">Privacy Policy</h1>
+<h4>Last updated: May 28, 2026</h4>
+
+<div class="faq-container">
+
+    <div class="privacy-section">
+        <div class="privacy-body">
+            Destination Boat Clubs™ operates destinationboatclub.com. This Privacy Policy explains how we collect and use information you provide when you express interest in our membership through our Facebook lead form or our website.
+        </div>
+    </div>
+
+    <div class="privacy-section">
+        <div class="privacy-heading">Information We Collect</div>
+        <div class="privacy-body">
+            When you fill out our Facebook lead form or contact form, we collect your name, email address, and phone number.
+        </div>
+    </div>
+
+    <div class="privacy-section">
+        <div class="privacy-heading">How We Use Your Information</div>
+        <div class="privacy-body">
+            We use your name, email address, and phone number solely to follow up with you about membership at Destination Boat Clubs™. A member of our team may call or email you to answer questions and share information about joining our club. We do not use your information for any other purpose.
+        </div>
+    </div>
+
+    <div class="privacy-section">
+        <div class="privacy-heading">Data Sharing</div>
+        <div class="privacy-body">
+            We do not sell, trade, or share your personal information with third parties.
+        </div>
+    </div>
+
+    <div class="privacy-section">
+        <div class="privacy-heading">Data Retention</div>
+        <div class="privacy-body">
+            We retain your contact information only as long as needed to follow up on your inquiry. If you would like us to delete your information, please contact us and we will do so promptly.
+        </div>
+    </div>
+
+    <div class="privacy-section">
+        <div class="privacy-heading">Contact Us</div>
+        <div class="privacy-body">
+            If you have any questions about this Privacy Policy or would like to be removed from our contact list, please reach out to us:
+            <br><br>
+            Email: <a href="mailto:email@destinationboatclub.com">email@destinationboatclub.com</a><br>
+            Phone: <a href="tel:+12397450110">(239) 745-0110</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

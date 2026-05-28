@@ -101,3 +101,6 @@ def nashville_banner(request):
 
 def inland_sea_banner(request):
     return render(request, "home/marketing/inland_sea_banner.html")
+
+def privacy_policy(request):
+    return render(request, "home/privacy-policy.html")

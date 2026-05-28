@@ -17,6 +17,6 @@ urlpatterns = [
     path('qr/<slug:location>/', views.qr_redirect, name='qr_redirect'),
     path('nashville-banner/', views.nashville_banner, name='nashville_banner'),
     path('inland-sea-banner/', views.inland_sea_banner, name='inland_sea_banner'),
-
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
 ]
 
